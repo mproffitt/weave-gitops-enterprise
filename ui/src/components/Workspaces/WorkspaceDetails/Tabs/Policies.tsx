@@ -1,4 +1,4 @@
-import { DataTable, Link, Severity, V2Routes, formatURL } from '@weaveworks/weave-gitops';
+import { DataTable, Link, Severity, V2Routes, formatURL } from '@choclab/weave-gitops';
 import moment from 'moment';
 import { useGetWorkspacePolicies } from '../../../../contexts/Workspaces';
 import { TableWrapper } from '../../../Shared';

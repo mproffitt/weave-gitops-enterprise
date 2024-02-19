@@ -14,7 +14,7 @@ import {
   theme,
   ThemeTypes,
   withBasePath,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import React, { ReactNode } from 'react';
 import {
   QueryCache,
@@ -43,7 +43,7 @@ import { addTFSupport } from './utils/request';
 const GlobalStyle = createGlobalStyle`
   /* https://github.com/weaveworks/wkp-ui/pull/283#discussion_r339958886 */
   /* https://github.com/necolas/normalize.css/issues/694 */
-  
+
   button,
   input,
   optgroup,
@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: right bottom no-repeat fixed; 
+    background: right bottom no-repeat fixed;
     background-image: ${props =>
       props.theme.mode === ThemeTypes.Dark
         ? `url(${bgDark});`
@@ -82,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.black};
     font-family: ${props => props.theme.fontFamilies.regular};
     font-size: ${props => props.theme.fontSizes.medium};
-    //we can not override Autocomplete in Mui createTheme without updating our Mui version. 
+    //we can not override Autocomplete in Mui createTheme without updating our Mui version.
     .MuiAutocomplete-inputRoot {
       &.MuiInputBase-root {
         padding: 0;
@@ -111,7 +111,7 @@ const GlobalStyle = createGlobalStyle`
           ? props.theme.colors.blueWithOpacity
           : props.theme.colors.neutral10}};
   }
-  
+
   #root {
     /* Layout - grow to at least viewport height */
     display: flex;

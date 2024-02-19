@@ -1,5 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
-import { CanaryMetric } from '@weaveworks/progressive-delivery/api/prog/types.pb';
+import { CanaryMetric } from '@choclab/progressive-delivery/api/prog/types.pb';
 import { EnterpriseClientContext } from '../../../../contexts/API';
 import {
   defaultContexts,

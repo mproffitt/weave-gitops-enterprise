@@ -1,4 +1,4 @@
-import { withBasePath } from '@weaveworks/weave-gitops';
+import { withBasePath } from '@choclab/weave-gitops';
 import GitUrlParse from 'git-url-parse';
 import { GitOpsSet } from '../api/gitopssets/types.pb';
 import { TerraformObject } from '../api/terraform/types.pb';

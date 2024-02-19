@@ -1,4 +1,4 @@
-import { Flex, Link, Text } from '@weaveworks/weave-gitops';
+import { Flex, Link, Text } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { Pipeline, Strategy } from '../../../api/pipelines/types.pb';
 import PromotePipeline from './PromotePipeline';

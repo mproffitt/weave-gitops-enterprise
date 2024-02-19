@@ -1,6 +1,6 @@
 import { Box } from '@material-ui/core';
-import { GitRepository, Link, useListSources } from '@weaveworks/weave-gitops';
-import { PageRoute } from '@weaveworks/weave-gitops/ui/lib/types';
+import { GitRepository, Link, useListSources } from '@choclab/weave-gitops';
+import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
 import _ from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';

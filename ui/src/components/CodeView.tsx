@@ -1,8 +1,8 @@
 import {
   Canary,
   CanaryMetricTemplate,
-} from '@weaveworks/progressive-delivery/api/prog/types.pb';
-import { CopyToClipboard, createYamlCommand } from '@weaveworks/weave-gitops';
+} from '@choclab/progressive-delivery/api/prog/types.pb';
+import { CopyToClipboard, createYamlCommand } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 
 type Props = {

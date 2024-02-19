@@ -1,4 +1,4 @@
-import { Button, Flex, Icon, IconType } from '@weaveworks/weave-gitops';
+import { Button, Flex, Icon, IconType } from '@choclab/weave-gitops';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Workspace } from '../../../cluster-services/cluster_services.pb';

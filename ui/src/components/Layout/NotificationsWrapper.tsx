@@ -1,7 +1,7 @@
 import {
   AlertListErrors,
   Flex
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { ListError } from '../../cluster-services/cluster_services.pb';

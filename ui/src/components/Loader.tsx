@@ -1,4 +1,4 @@
-import { LoadingPage } from '@weaveworks/weave-gitops';
+import { LoadingPage } from '@choclab/weave-gitops';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 

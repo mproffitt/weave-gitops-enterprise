@@ -1,4 +1,4 @@
-import { Button, Flex, MessageBox, Text } from '@weaveworks/weave-gitops';
+import { Button, Flex, MessageBox, Text } from '@choclab/weave-gitops';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { LinkTag } from '../Shared';
 

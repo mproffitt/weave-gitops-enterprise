@@ -1,7 +1,7 @@
 import {
   Automation,
   Canary,
-} from '@weaveworks/progressive-delivery/api/prog/types.pb';
+} from '@choclab/progressive-delivery/api/prog/types.pb';
 import {
   Flex,
   RouterTab,
@@ -9,7 +9,7 @@ import {
   Text,
   YamlView,
   createYamlCommand,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import styled from 'styled-components';
 
 import { Routes } from '../../../utils/nav';

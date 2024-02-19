@@ -1,4 +1,4 @@
-import { IconType } from '@weaveworks/weave-gitops';
+import { IconType } from '@choclab/weave-gitops';
 
 enum ObjectStatus {
   Success = 'Success',

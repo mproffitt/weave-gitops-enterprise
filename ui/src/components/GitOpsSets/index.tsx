@@ -6,8 +6,8 @@ import {
   KubeStatusIndicator,
   statusSortHelper,
   Timestamp,
-} from '@weaveworks/weave-gitops';
-import { Field } from '@weaveworks/weave-gitops/ui/components/DataTable';
+} from '@choclab/weave-gitops';
+import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
 import _ from 'lodash';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';

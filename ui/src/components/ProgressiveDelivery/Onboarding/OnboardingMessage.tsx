@@ -4,7 +4,7 @@ import {
   MessageBox,
   Spacer,
   Text,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';
 import { LinkTag } from '../../Shared';
 

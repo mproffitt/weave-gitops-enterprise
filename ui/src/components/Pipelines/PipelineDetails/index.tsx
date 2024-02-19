@@ -1,11 +1,11 @@
-import { ListError } from '@weaveworks/progressive-delivery/api/prog/types.pb';
+import { ListError } from '@choclab/progressive-delivery/api/prog/types.pb';
 import {
   Flex,
   RouterTab,
   SubRouterTabs,
   YamlView,
   createYamlCommand,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { Pipeline } from '../../../api/pipelines/types.pb';
 import { useGetPipeline } from '../../../contexts/Pipelines';
 import { Routes } from '../../../utils/nav';

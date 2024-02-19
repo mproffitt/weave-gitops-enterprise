@@ -2,7 +2,7 @@ import {
   DataTable,
   YamlView,
   createYamlCommand,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import moment from 'moment';
 import { useGetWorkspaceServiceAccount } from '../../../../contexts/Workspaces';
 import { TableWrapper } from '../../../Shared';

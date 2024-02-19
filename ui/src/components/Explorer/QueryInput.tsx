@@ -1,5 +1,5 @@
 import { FormControl } from '@material-ui/core';
-import { Flex, Icon, IconType, Input } from '@weaveworks/weave-gitops';
+import { Flex, Icon, IconType, Input } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';

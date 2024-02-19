@@ -1,6 +1,6 @@
 import { Box, CircularProgress } from '@material-ui/core';
-import { AlertListErrors, Flex } from '@weaveworks/weave-gitops';
-import { ListError } from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
+import { AlertListErrors, Flex } from '@choclab/weave-gitops';
+import { ListError } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import { FC } from 'react';
 
 interface Props {

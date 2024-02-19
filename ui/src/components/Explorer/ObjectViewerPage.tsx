@@ -1,4 +1,4 @@
-import { Page } from '@weaveworks/weave-gitops';
+import { Page } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import GenericObjectViewer, { ObjectViewerProps } from './GenericObjectViewer';
 

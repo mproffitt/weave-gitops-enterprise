@@ -1,4 +1,4 @@
-import { RouterTab, SubRouterTabs } from '@weaveworks/weave-gitops';
+import { RouterTab, SubRouterTabs } from '@choclab/weave-gitops';
 import { Routes } from '../../../utils/nav';
 import { PoliciesTab } from './Tabs/Policies';
 import { RoleBindingsTab } from './Tabs/RoleBindings';

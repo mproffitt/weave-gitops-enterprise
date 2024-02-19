@@ -1,4 +1,4 @@
-import { DataTable, filterConfig } from '@weaveworks/weave-gitops';
+import { DataTable, filterConfig } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { ResourceRef } from '../../api/terraform/types.pb';
 

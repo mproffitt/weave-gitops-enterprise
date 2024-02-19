@@ -6,8 +6,8 @@ import {
   Icon,
   Link,
   V2Routes,
-} from '@weaveworks/weave-gitops';
-import { Field } from '@weaveworks/weave-gitops/ui/components/DataTable';
+} from '@choclab/weave-gitops';
+import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { Object } from '../../api/query/query.pb';

@@ -3,7 +3,7 @@ import {
   RouterTab,
   SubRouterTabs,
   useFeatureFlags,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { useRouteMatch } from 'react-router-dom';
 import WarningMsg from '../Explorer/WarningMsg';
 import { Page } from '../Layout/App';

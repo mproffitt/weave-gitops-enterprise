@@ -1,5 +1,5 @@
 import { MenuItem } from '@material-ui/core';
-import { RequestStateHandler } from '@weaveworks/weave-gitops';
+import { RequestStateHandler } from '@choclab/weave-gitops';
 import { useListExternalSecretStores } from '../../../contexts/Secrets';
 import { RequestError } from '../../../types/custom';
 import { Select } from '../../../utils/form';

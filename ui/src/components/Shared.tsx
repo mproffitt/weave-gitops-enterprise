@@ -4,7 +4,7 @@ import {
   TooltipProps,
   Typography,
 } from '@material-ui/core';
-import { Flex, Link } from '@weaveworks/weave-gitops';
+import { Flex, Link } from '@choclab/weave-gitops';
 import { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';

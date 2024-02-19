@@ -1,4 +1,4 @@
-import { useFeatureFlags } from '@weaveworks/weave-gitops';
+import { useFeatureFlags } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { useQuery } from 'react-query';
 import {

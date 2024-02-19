@@ -1,4 +1,4 @@
-import { Flex } from '@weaveworks/weave-gitops';
+import { Flex } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 
 export const cardHeight = '154px';

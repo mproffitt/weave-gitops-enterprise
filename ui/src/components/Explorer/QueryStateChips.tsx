@@ -1,4 +1,4 @@
-import { ChipGroup } from '@weaveworks/weave-gitops';
+import { ChipGroup } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { useReadQueryState, useSetQueryState } from './hooks';
 

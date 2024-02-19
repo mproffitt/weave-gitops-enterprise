@@ -1,4 +1,4 @@
-import { coreClient } from '@weaveworks/weave-gitops';
+import { coreClient } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { Terraform } from '../api/terraform/terraform.pb';
 import { RequestMethod } from '../types/global';

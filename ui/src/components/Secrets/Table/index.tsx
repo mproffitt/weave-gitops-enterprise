@@ -3,7 +3,7 @@ import {
   formatURL,
   KubeStatusIndicator,
   Link,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import moment from 'moment';
 import { FC } from 'react';
 import { ExternalSecretItem } from '../../../cluster-services/cluster_services.pb';

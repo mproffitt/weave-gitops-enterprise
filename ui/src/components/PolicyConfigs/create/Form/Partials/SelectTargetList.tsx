@@ -1,5 +1,5 @@
 import { MenuItem } from '@material-ui/core';
-import { Flex, Text } from '@weaveworks/weave-gitops';
+import { Flex, Text } from '@choclab/weave-gitops';
 import { Dispatch } from 'react';
 import { PolicyConfigApplicationMatch } from '../../../../../cluster-services/cluster_services.pb';
 import { Select } from '../../../../../utils/form';

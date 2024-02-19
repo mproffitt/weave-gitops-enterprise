@@ -4,9 +4,9 @@ import {
   V2Routes,
   ViolationDetails,
   formatURL,
-} from '@weaveworks/weave-gitops';
-import { Breadcrumb } from '@weaveworks/weave-gitops/ui/components/Breadcrumbs';
-import { PolicyValidation } from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
+} from '@choclab/weave-gitops';
+import { Breadcrumb } from '@choclab/weave-gitops/ui/components/Breadcrumbs';
+import { PolicyValidation } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import styled from 'styled-components';
 import { useGetPolicyValidationDetails } from '../../contexts/PolicyViolations';
 import { Routes } from '../../utils/nav';

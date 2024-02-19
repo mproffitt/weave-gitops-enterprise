@@ -5,7 +5,7 @@ import {
   Text,
   V2Routes,
   formatURL,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import {
   GetPolicyConfigResponse,
   PolicyConfigPolicy,

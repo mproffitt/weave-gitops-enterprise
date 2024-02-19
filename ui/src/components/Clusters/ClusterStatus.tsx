@@ -7,7 +7,7 @@ import {
   TableRow,
 } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/styles';
-import { Icon, IconType } from '@weaveworks/weave-gitops';
+import { Icon, IconType } from '@choclab/weave-gitops';
 import { fromPairs, sortBy } from 'lodash';
 import moment from 'moment';
 import React, { FC } from 'react';

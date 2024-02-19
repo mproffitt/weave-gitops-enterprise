@@ -4,7 +4,7 @@ import {
   Flex,
   Icon,
   IconType,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { GetGithubDeviceCodeResponse } from '../../api/gitauth/gitauth.pb';
 import { useGetGithubAuthStatus } from '../../contexts/GitAuth';

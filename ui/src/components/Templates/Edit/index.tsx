@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid';
-import { Kind, useGetObject } from '@weaveworks/weave-gitops';
+import { Kind, useGetObject } from '@choclab/weave-gitops';
 import { FC } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useGetPipeline } from '../../../contexts/Pipelines';

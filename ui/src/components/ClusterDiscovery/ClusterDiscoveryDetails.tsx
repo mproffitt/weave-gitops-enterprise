@@ -23,7 +23,7 @@ import {
   KubeStatusIndicator,
   createYamlCommand,
   Metadata,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';

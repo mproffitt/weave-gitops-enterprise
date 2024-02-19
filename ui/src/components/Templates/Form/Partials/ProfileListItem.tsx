@@ -1,5 +1,5 @@
 import { Box, FormControl, Input, MenuItem, Select } from '@material-ui/core';
-import { Button, Flex } from '@weaveworks/weave-gitops';
+import { Button, Flex } from '@choclab/weave-gitops';
 import React, {
   ChangeEvent,
   Dispatch,

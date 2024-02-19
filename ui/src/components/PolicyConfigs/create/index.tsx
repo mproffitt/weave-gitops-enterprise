@@ -6,8 +6,8 @@ import {
   Text,
   useListSources,
   ThemeTypes,
-} from '@weaveworks/weave-gitops';
-import { PageRoute } from '@weaveworks/weave-gitops/ui/lib/types';
+} from '@choclab/weave-gitops';
+import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';

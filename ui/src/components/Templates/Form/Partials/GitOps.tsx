@@ -1,4 +1,4 @@
-import { Button, Flex } from '@weaveworks/weave-gitops';
+import { Button, Flex } from '@choclab/weave-gitops';
 import React, { ChangeEvent, Dispatch, FC, useCallback } from 'react';
 import styled from 'styled-components';
 import { Input } from '../../../../utils/form';

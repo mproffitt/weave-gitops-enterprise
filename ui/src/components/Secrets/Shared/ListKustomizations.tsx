@@ -1,6 +1,6 @@
 import { MenuItem } from '@material-ui/core';
-import { RequestStateHandler } from '@weaveworks/weave-gitops';
-import { RequestError } from '@weaveworks/weave-gitops/ui/lib/types';
+import { RequestStateHandler } from '@choclab/weave-gitops';
+import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import { useListKustomizationSOPS } from '../../../hooks/listSOPSKustomization';
 import { Select } from '../../../utils/form';
 

@@ -1,4 +1,4 @@
-import { Flex, GitRepository, Link, Page } from '@weaveworks/weave-gitops';
+import { Flex, GitRepository, Link, Page } from '@choclab/weave-gitops';
 import { useCallback, useMemo, useState } from 'react';
 import { GitProvider } from '../../../api/gitauth/gitauth.pb';
 import { useEnterpriseClient } from '../../../contexts/API';

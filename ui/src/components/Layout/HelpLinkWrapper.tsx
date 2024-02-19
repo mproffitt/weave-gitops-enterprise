@@ -1,5 +1,5 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { Flex, Link } from '@weaveworks/weave-gitops';
+import { Flex, Link } from '@choclab/weave-gitops';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';

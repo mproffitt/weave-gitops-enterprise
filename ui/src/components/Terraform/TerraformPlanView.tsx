@@ -1,4 +1,4 @@
-import { Flex, Link, MessageBox, Text, Spacer } from '@weaveworks/weave-gitops';
+import { Flex, Link, MessageBox, Text, Spacer } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import CodeView from '../CodeView';
 

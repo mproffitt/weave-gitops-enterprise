@@ -5,8 +5,8 @@ import {
   NavItem,
   useFeatureFlags,
   V2Routes,
-} from '@weaveworks/weave-gitops';
-import { PageRoute } from '@weaveworks/weave-gitops/ui/lib/types';
+} from '@choclab/weave-gitops';
+import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
 import { Dispatch, FC, SetStateAction, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';

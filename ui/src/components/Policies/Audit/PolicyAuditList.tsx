@@ -1,4 +1,4 @@
-import { RequestStateHandler } from '@weaveworks/weave-gitops';
+import { RequestStateHandler } from '@choclab/weave-gitops';
 import { useHistory } from 'react-router-dom';
 import { useQueryService } from '../../../hooks/query';
 import { RequestError } from '../../../types/custom';

@@ -6,7 +6,7 @@ import {
   Tabs,
   Typography,
 } from '@material-ui/core';
-import { Button, Flex } from '@weaveworks/weave-gitops';
+import { Button, Flex } from '@choclab/weave-gitops';
 import JSZip from 'jszip';
 import React, { Dispatch, FC, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';

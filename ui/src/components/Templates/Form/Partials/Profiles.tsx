@@ -1,5 +1,5 @@
 import { Checkbox } from '@material-ui/core';
-import { DataTable, Flex } from '@weaveworks/weave-gitops';
+import { DataTable, Flex } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import React, { Dispatch, FC } from 'react';
 import styled from 'styled-components';

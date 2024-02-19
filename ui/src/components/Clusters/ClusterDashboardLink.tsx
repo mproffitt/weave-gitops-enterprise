@@ -1,4 +1,4 @@
-import { Text, formatURL } from '@weaveworks/weave-gitops';
+import { Text, formatURL } from '@choclab/weave-gitops';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../utils/nav';
 

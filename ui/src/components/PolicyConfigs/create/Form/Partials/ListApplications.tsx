@@ -1,5 +1,5 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
-import { useListAutomations } from '@weaveworks/weave-gitops';
+import { useListAutomations } from '@choclab/weave-gitops';
 import { Dispatch, useEffect, useState } from 'react';
 import { PolicyConfigApplicationMatch } from '../../../../../cluster-services/cluster_services.pb';
 import LoadingWrapper from '../../../../Workspaces/WorkspaceDetails/Tabs/WorkspaceTabsWrapper';

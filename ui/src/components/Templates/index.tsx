@@ -5,7 +5,7 @@ import {
   Icon,
   IconType,
   Link,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { FC, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';

@@ -1,5 +1,5 @@
-import { ListError } from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
-import { RequestError } from '@weaveworks/weave-gitops/ui/lib/types';
+import { ListError } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
+import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import * as React from 'react';
 import { QueryClient, useQuery, useQueryClient } from 'react-query';
 import {

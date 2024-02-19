@@ -1,4 +1,4 @@
-import { PolicyTable } from '@weaveworks/weave-gitops';
+import { PolicyTable } from '@choclab/weave-gitops';
 import { useListPolicies } from '../../contexts/PolicyViolations';
 import { TableWrapper } from '../Shared';
 import LoadingWrapper from '../Workspaces/WorkspaceDetails/Tabs/WorkspaceTabsWrapper';

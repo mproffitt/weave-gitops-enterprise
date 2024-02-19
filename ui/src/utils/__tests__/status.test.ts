@@ -1,6 +1,6 @@
 import {
   IconType,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { getIndicatorInfo } from '../status';
 
 describe('getIndicatorInfo', () => {

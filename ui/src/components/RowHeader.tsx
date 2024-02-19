@@ -1,5 +1,5 @@
 import { TableCell, TableRow } from '@material-ui/core';
-import { Flex } from '@weaveworks/weave-gitops';
+import { Flex } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 
 const RowTitle = styled.div`

@@ -2,7 +2,7 @@ import {
   DataTable,
   YamlView,
   createYamlCommand,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import moment from 'moment';
 import { WorkspaceRoleBindingSubject } from '../../../../cluster-services/cluster_services.pb';
 import { useGetWorkspaceRoleBinding } from '../../../../contexts/Workspaces';

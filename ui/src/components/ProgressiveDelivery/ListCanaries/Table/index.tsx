@@ -3,13 +3,13 @@ import {
   CanaryAnalysis,
   CanaryStatus as Status,
   CanaryTargetDeployment,
-} from '@weaveworks/progressive-delivery/api/prog/types.pb';
+} from '@choclab/progressive-delivery/api/prog/types.pb';
 import {
   DataTable,
   filterConfig,
   formatURL,
   Link,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import moment from 'moment';
 import React, { FC } from 'react';

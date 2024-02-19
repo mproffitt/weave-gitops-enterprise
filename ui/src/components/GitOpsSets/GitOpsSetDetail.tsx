@@ -19,7 +19,7 @@ import {
   useGetInventory,
   SyncControls,
   YamlView,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import * as React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';

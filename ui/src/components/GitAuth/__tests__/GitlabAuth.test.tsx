@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { CoreClientContextProvider, Kind } from '@weaveworks/weave-gitops';
+import { CoreClientContextProvider, Kind } from '@choclab/weave-gitops';
 import { GitProvider } from '../../../api/gitauth/gitauth.pb';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';

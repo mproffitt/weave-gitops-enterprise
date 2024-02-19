@@ -1,4 +1,4 @@
-import { ReactQueryOptions } from '@weaveworks/weave-gitops/ui/lib/types';
+import { ReactQueryOptions } from '@choclab/weave-gitops/ui/lib/types';
 import fileDownload from 'js-file-download';
 import { useCallback, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';

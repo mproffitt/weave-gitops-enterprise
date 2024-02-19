@@ -2,7 +2,7 @@ import {
   Automation,
   GitRepository,
   Source,
-} from '@weaveworks/weave-gitops/ui/lib/objects';
+} from '@choclab/weave-gitops/ui/lib/objects';
 import GitUrlParse from 'git-url-parse';
 import styled from 'styled-components';
 import { SnakeCasedPropertiesDeep } from 'type-fest';

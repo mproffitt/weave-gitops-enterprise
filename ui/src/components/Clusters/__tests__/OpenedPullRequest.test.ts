@@ -1,4 +1,4 @@
-import { GitRepository } from '@weaveworks/weave-gitops';
+import { GitRepository } from '@choclab/weave-gitops';
 import { GetConfigResponse } from '../../../cluster-services/cluster_services.pb';
 import { getPullRequestUrl } from '../OpenedPullRequest';
 

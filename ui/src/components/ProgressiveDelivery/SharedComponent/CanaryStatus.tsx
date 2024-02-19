@@ -1,6 +1,6 @@
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import { Flex, Icon, IconType } from '@weaveworks/weave-gitops';
+import { Flex, Icon, IconType } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 
 enum CanaryDeploymentStatus {

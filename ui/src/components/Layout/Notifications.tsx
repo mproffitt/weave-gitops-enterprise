@@ -1,6 +1,6 @@
 import { Box, Collapse } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { Button, Icon, IconType, Text } from '@weaveworks/weave-gitops';
+import { Button, Icon, IconType, Text } from '@choclab/weave-gitops';
 import { FC } from 'react';
 import styled from 'styled-components';
 import useNotifications, {

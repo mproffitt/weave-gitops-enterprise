@@ -8,7 +8,7 @@ import {
   V2Routes,
   computeReady,
   formatURL,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { PipelineTargetStatus } from '../../../api/pipelines/types.pb';

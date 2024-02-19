@@ -1,5 +1,5 @@
-import { Kind, useListSources } from '@weaveworks/weave-gitops';
-import { GitRepository, Source } from '@weaveworks/weave-gitops/ui/lib/objects';
+import { Kind, useListSources } from '@choclab/weave-gitops';
+import { GitRepository, Source } from '@choclab/weave-gitops/ui/lib/objects';
 import _ from 'lodash';
 import React from 'react';
 

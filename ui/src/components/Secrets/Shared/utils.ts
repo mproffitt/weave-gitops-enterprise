@@ -1,4 +1,4 @@
-import { GitRepository, withBasePath } from '@weaveworks/weave-gitops';
+import { GitRepository, withBasePath } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import {
   ClusterAutomation,

@@ -6,9 +6,9 @@ import {
   Link,
   useFeatureFlags,
   useListSources,
-} from '@weaveworks/weave-gitops';
-import { Automation, Source } from '@weaveworks/weave-gitops/ui/lib/objects';
-import { PageRoute } from '@weaveworks/weave-gitops/ui/lib/types';
+} from '@choclab/weave-gitops';
+import { Automation, Source } from '@choclab/weave-gitops/ui/lib/objects';
+import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
 import _ from 'lodash';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';

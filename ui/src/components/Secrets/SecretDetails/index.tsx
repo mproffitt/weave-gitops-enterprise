@@ -1,4 +1,4 @@
-import { Button, Flex, SyncControls } from '@weaveworks/weave-gitops';
+import { Button, Flex, SyncControls } from '@choclab/weave-gitops';
 import moment from 'moment';
 import { useState } from 'react';
 import useNotifications from '../../../contexts/Notifications';

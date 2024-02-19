@@ -13,9 +13,9 @@ import {
   filterConfig,
   statusSortHelper,
   useListSources,
-} from '@weaveworks/weave-gitops';
-import { Source } from '@weaveworks/weave-gitops/ui/lib/objects';
-import { PageRoute } from '@weaveworks/weave-gitops/ui/lib/types';
+} from '@choclab/weave-gitops';
+import { Source } from '@choclab/weave-gitops/ui/lib/objects';
+import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
 import _ from 'lodash';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
