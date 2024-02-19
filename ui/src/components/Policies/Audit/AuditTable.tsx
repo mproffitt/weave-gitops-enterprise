@@ -11,7 +11,7 @@ import {
   Timestamp,
   V2Routes,
   formatURL,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { useState } from 'react';
 import { Object } from '../../../api/query/query.pb';
 import { useListFacets } from '../../../hooks/query';

@@ -1,4 +1,4 @@
-import { CoreClientContext } from '@weaveworks/weave-gitops';
+import { CoreClientContext } from '@choclab/weave-gitops';
 import {
   GetPolicyRequest,
   GetPolicyResponse,
@@ -6,8 +6,8 @@ import {
   GetPolicyValidationResponse,
   ListPoliciesRequest,
   ListPoliciesResponse,
-} from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
-import { RequestError } from '@weaveworks/weave-gitops/ui/lib/types';
+} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
+import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import { useContext } from 'react';
 import { useQuery } from 'react-query';
 import { formatError } from '../../utils/formatters';

@@ -1,6 +1,6 @@
 import { createStyles, Grid, makeStyles } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { Button } from '@weaveworks/weave-gitops';
+import { Button } from '@choclab/weave-gitops';
 import React, { Dispatch, FC, useCallback, useEffect, useState } from 'react';
 import {
   Kustomization,

@@ -7,7 +7,7 @@ import {
   Text,
   YamlView,
   createYamlCommand,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { GetExternalSecretResponse } from '../../../cluster-services/cluster_services.pb';
 import { Routes } from '../../../utils/nav';
 import ListEvents from '../../ListEvents';

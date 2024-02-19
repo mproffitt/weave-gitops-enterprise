@@ -1,4 +1,4 @@
-import { Button } from '@weaveworks/weave-gitops';
+import { Button } from '@choclab/weave-gitops';
 import { Dispatch, useCallback, useState } from 'react';
 import {
   ProfileValues,

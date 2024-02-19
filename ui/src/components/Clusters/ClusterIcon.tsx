@@ -1,5 +1,5 @@
 import { Badge, Tooltip } from '@material-ui/core';
-import { Link, formatURL } from '@weaveworks/weave-gitops';
+import { Link, formatURL } from '@choclab/weave-gitops';
 import { FC } from 'react';
 import styled from 'styled-components';
 import Azure from '../../assets/img/Azure.svg';

@@ -1,6 +1,6 @@
-import { CoreClientContext, FluxObject } from '@weaveworks/weave-gitops';
-import { ListError } from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
-import { RequestError } from '@weaveworks/weave-gitops/ui/lib/types';
+import { CoreClientContext, FluxObject } from '@choclab/weave-gitops';
+import { ListError } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
+import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import { useContext } from 'react';
 import { QueryClient, useQuery, useQueryClient } from 'react-query';
 import useNotifications from '../contexts/Notifications';

@@ -5,7 +5,7 @@ import {
   Icon,
   IconType,
   useListSources,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import * as React from 'react';
 import styled from 'styled-components';
 import { GitProvider } from '../../api/gitauth/gitauth.pb';

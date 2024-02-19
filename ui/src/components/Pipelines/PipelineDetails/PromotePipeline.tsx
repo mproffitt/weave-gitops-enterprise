@@ -1,4 +1,4 @@
-import { Button, Flex } from '@weaveworks/weave-gitops';
+import { Button, Flex } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { ApprovePromotionRequest } from '../../../api/pipelines/pipelines.pb';
 

@@ -5,7 +5,7 @@ import {
   IconType,
   filterConfig,
   formatURL,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { Pipeline } from '../../api/pipelines/types.pb';

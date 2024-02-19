@@ -1,4 +1,4 @@
-import { Field } from '@weaveworks/weave-gitops/ui/components/DataTable';
+import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
 import _ from 'lodash';
 import { createContext, useContext, useMemo } from 'react';
 import { Object } from '../../api/query/query.pb';

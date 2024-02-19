@@ -1,5 +1,5 @@
-import { Link } from '@weaveworks/weave-gitops';
-import { RequestError } from '@weaveworks/weave-gitops/ui/lib/types';
+import { Link } from '@choclab/weave-gitops';
+import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import { useMutation } from 'react-query';
 import {
   ApprovePromotionRequest,

@@ -3,7 +3,7 @@ import {
   Flex,
   ImageAutomation,
   useCheckCRDInstalled,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import OnboardingImageAutomationMessage from './OnboardingMessage';

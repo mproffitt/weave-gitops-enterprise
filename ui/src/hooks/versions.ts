@@ -1,5 +1,5 @@
-import { GetVersionResponse } from '@weaveworks/progressive-delivery';
-import { withBasePath } from '@weaveworks/weave-gitops';
+import { GetVersionResponse } from '@choclab/progressive-delivery';
+import { withBasePath } from '@choclab/weave-gitops';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { GetConfigResponse } from '../cluster-services/cluster_services.pb';

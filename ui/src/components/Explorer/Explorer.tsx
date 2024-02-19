@@ -1,7 +1,7 @@
 // @ts-ignore
 import { CircularProgress, IconButton } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { Flex, Icon, IconType } from '@weaveworks/weave-gitops';
+import { Flex, Icon, IconType } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';

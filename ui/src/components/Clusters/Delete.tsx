@@ -1,5 +1,5 @@
 import { Dialog, DialogContent } from '@material-ui/core';
-import { Button, Icon, IconType, Link } from '@weaveworks/weave-gitops';
+import { Button, Icon, IconType, Link } from '@choclab/weave-gitops';
 import React, { ChangeEvent, Dispatch, FC, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { ClusterNamespacedName } from '../../cluster-services/cluster_services.pb';

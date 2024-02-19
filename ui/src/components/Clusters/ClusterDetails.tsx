@@ -7,7 +7,7 @@ import {
   RouterTab,
   SubRouterTabs,
   useListSources,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { useEffect, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import { EnabledComponent } from '../../api/query/query.pb';

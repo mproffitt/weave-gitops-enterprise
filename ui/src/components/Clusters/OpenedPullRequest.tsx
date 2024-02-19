@@ -12,7 +12,7 @@ import {
   GitRepository,
   Icon,
   IconType,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import React, { useMemo } from 'react';
 import { GetConfigResponse } from '../../cluster-services/cluster_services.pb';

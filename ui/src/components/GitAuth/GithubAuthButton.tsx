@@ -1,5 +1,5 @@
 import { ButtonProps } from '@material-ui/core';
-import { Button } from '@weaveworks/weave-gitops';
+import { Button } from '@choclab/weave-gitops';
 import * as React from 'react';
 import styled from 'styled-components';
 

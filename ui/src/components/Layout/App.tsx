@@ -1,5 +1,5 @@
-import { Layout, Logo, Page as WGPage } from '@weaveworks/weave-gitops';
-import { Breadcrumb } from '@weaveworks/weave-gitops/ui/components/Breadcrumbs';
+import { Layout, Logo, Page as WGPage } from '@choclab/weave-gitops';
+import { Breadcrumb } from '@choclab/weave-gitops/ui/components/Breadcrumbs';
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ListConfigProvider, VersionProvider } from '../../contexts/ListConfig';

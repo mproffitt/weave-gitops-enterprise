@@ -4,7 +4,7 @@ import {
   Flex,
   useLinkResolver,
   useRequestState,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import qs from 'query-string';
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';

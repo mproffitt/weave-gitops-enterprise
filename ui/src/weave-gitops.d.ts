@@ -1,5 +1,5 @@
 /// <reference types="react" />
 
-declare module '@weaveworks/weave-gitops' {
-  export * from '@weaveworks/weave-gitops/ui';
+declare module '@choclab/weave-gitops' {
+  export * from '@choclab/weave-gitops/ui';
 }

@@ -1,4 +1,4 @@
-import { LoadingPage } from '@weaveworks/weave-gitops';
+import { LoadingPage } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { Object } from '../../api/query/query.pb';

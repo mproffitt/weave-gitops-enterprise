@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Alert } from '@material-ui/lab';
-import { Button, Icon, IconType } from '@weaveworks/weave-gitops';
+import { Button, Icon, IconType } from '@choclab/weave-gitops';
 import { ChangeEvent, FC, useState } from 'react';
 import { useQuery } from 'react-query';
 import {

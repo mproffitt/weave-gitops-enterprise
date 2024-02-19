@@ -4,7 +4,7 @@ import {
   Text,
   filterConfig,
   formatURL
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import moment from 'moment';
 import { FC } from 'react';
 import { PolicyConfigListItem } from '../../../cluster-services/cluster_services.pb';

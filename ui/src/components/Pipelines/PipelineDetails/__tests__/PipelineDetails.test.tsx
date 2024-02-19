@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/no-node-access */
 import { act, render, screen } from '@testing-library/react';
-import { CoreClientContextProvider } from '@weaveworks/weave-gitops';
+import { CoreClientContextProvider } from '@choclab/weave-gitops';
 import PipelineDetails from '..';
 import { GetPipelineResponse } from '../../../../api/pipelines/pipelines.pb';
 import { Pipeline } from '../../../../api/pipelines/types.pb';

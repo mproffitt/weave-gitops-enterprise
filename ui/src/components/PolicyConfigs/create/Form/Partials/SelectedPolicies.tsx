@@ -9,11 +9,11 @@ import {
   TextField,
 } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import { Flex, Icon, IconType, Text } from '@weaveworks/weave-gitops';
+import { Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
 import {
   PolicyObj,
   PolicyParam,
-} from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
+} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import { Dispatch, useState } from 'react';
 import { useListPolicies } from '../../../../../contexts/PolicyViolations';
 import { Input } from '../../../../../utils/form';

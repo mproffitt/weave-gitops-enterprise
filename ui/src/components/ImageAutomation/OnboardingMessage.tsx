@@ -4,7 +4,7 @@ import {
   MessageBox,
   Spacer,
   Text,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { LinkTag } from '../Shared';
 
 const OnboardingImageAutomationMessage = () => {

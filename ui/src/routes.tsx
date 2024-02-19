@@ -3,7 +3,7 @@ import {
   ImageAutomationUpdatesDetails,
   ImagePolicyDetails,
   V2Routes,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import qs from 'query-string';
 import Lottie from 'react-lottie-player';
 import { Redirect, Route, Switch } from 'react-router-dom';

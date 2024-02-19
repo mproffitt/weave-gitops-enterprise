@@ -2,7 +2,7 @@ import {
   GetCanaryResponse,
   ListCanariesResponse,
   ListCanaryObjectsResponse,
-} from '@weaveworks/progressive-delivery';
+} from '@choclab/progressive-delivery';
 import _ from 'lodash';
 import { useQuery } from 'react-query';
 import {

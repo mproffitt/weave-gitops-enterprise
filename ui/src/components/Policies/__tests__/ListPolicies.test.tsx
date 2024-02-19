@@ -1,5 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { CoreClientContextProvider } from '@weaveworks/weave-gitops';
+import { CoreClientContextProvider } from '@choclab/weave-gitops';
 import {
   defaultContexts,
   CoreClientMock,

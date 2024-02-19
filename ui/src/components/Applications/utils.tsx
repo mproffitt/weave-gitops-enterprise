@@ -1,4 +1,4 @@
-import { useListSources } from '@weaveworks/weave-gitops';
+import { useListSources } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { useMemo } from 'react';
 import { GitopsCluster } from '../../cluster-services/cluster_services.pb';

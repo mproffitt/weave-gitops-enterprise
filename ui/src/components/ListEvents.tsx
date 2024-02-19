@@ -5,9 +5,9 @@ import {
   RequestStateHandler,
   Text,
   Timestamp,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 
-import { RequestError } from '@weaveworks/weave-gitops/ui/lib/types';
+import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import styled from 'styled-components';
 import {
   Event,

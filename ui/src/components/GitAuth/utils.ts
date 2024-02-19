@@ -1,4 +1,4 @@
-import { PageRoute } from '@weaveworks/weave-gitops/ui/lib/types';
+import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
 import { GitProvider } from '../../api/gitauth/gitauth.pb';
 
 const tokenKey = (providerName: GitProvider) =>

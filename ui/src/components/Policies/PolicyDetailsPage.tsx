@@ -1,4 +1,4 @@
-import { Page, PolicyDetails, V2Routes } from '@weaveworks/weave-gitops';
+import { Page, PolicyDetails, V2Routes } from '@choclab/weave-gitops';
 import { useGetPolicyDetails } from '../../contexts/PolicyViolations';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

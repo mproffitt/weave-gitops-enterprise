@@ -4,8 +4,8 @@ import {
   MessageBox,
   Spacer,
   Text,
-} from '@weaveworks/weave-gitops';
-import { FluxObjectNode } from '@weaveworks/weave-gitops/ui/lib/objects';
+} from '@choclab/weave-gitops';
+import { FluxObjectNode } from '@choclab/weave-gitops/ui/lib/objects';
 import React from 'react';
 import styled from 'styled-components';
 import { TerraformObject } from '../../api/terraform/types.pb';

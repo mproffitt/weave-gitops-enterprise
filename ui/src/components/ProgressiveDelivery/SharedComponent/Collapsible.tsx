@@ -1,5 +1,5 @@
 import { Collapse } from '@material-ui/core';
-import { Flex, Icon, IconType, Text } from '@weaveworks/weave-gitops';
+import { Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
 import React from 'react';
 import styled from 'styled-components';
 

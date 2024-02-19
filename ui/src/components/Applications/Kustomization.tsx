@@ -4,8 +4,8 @@ import {
   KustomizationDetail,
   LinkResolverProvider,
   useGetObject,
-} from '@weaveworks/weave-gitops';
-import { Kustomization } from '@weaveworks/weave-gitops/ui/lib/objects';
+} from '@choclab/weave-gitops';
+import { Kustomization } from '@choclab/weave-gitops/ui/lib/objects';
 import { FC } from 'react';
 import { Routes } from '../../utils/nav';
 import { formatClusterDashboardUrl } from '../Clusters/ClusterDashboardLink';

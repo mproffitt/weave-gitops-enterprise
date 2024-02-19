@@ -1,4 +1,4 @@
-import { SourcesTable, useListSources } from '@weaveworks/weave-gitops';
+import { SourcesTable, useListSources } from '@choclab/weave-gitops';
 import { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { EnabledComponent } from '../../api/query/query.pb';

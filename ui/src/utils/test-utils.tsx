@@ -4,13 +4,13 @@ import {
   IsFlaggerAvailableResponse,
   ListCanariesResponse,
   ProgressiveDeliveryService,
-} from '@weaveworks/progressive-delivery';
+} from '@choclab/progressive-delivery';
 import {
   AppContextProvider,
   CoreClientContextProvider,
   ThemeTypes,
   theme,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import {
   GetObjectRequest,
   GetObjectResponse,
@@ -18,7 +18,7 @@ import {
   IsCRDAvailableResponse,
   ListObjectsRequest,
   ListObjectsResponse,
-} from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
+} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import _ from 'lodash';
 import React from 'react';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
@@ -41,7 +41,7 @@ import {
 import {
   GetPolicyResponse,
   ListPoliciesResponse,
-} from '@weaveworks/weave-gitops/ui/lib/api/core/core.pb';
+} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import {
   GetTerraformObjectPlanResponse,
   GetTerraformObjectResponse,

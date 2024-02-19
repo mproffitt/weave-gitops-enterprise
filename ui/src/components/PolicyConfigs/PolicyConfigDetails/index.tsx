@@ -1,4 +1,4 @@
-import { Flex } from '@weaveworks/weave-gitops';
+import { Flex } from '@choclab/weave-gitops';
 import { useGetPolicyConfigDetails } from '../../../contexts/PolicyConfigs';
 import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';

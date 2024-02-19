@@ -1,4 +1,4 @@
-import { Auth, UserGroupsTable } from '@weaveworks/weave-gitops';
+import { Auth, UserGroupsTable } from '@choclab/weave-gitops';
 import React, { FC } from 'react';
 import { Page } from './Layout/App';
 import { NotificationsWrapper } from './Layout/NotificationsWrapper';

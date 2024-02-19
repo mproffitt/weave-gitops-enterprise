@@ -15,7 +15,7 @@ import {
   SyncControls,
   Timestamp,
   YamlView,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { useState } from 'react';
 import { useLocation, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';

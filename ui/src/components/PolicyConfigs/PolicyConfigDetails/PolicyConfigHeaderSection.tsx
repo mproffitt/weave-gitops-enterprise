@@ -1,4 +1,4 @@
-import { Flex, Link, Text, formatURL } from '@weaveworks/weave-gitops';
+import { Flex, Link, Text, formatURL } from '@choclab/weave-gitops';
 import moment from 'moment';
 import { GetPolicyConfigResponse } from '../../../cluster-services/cluster_services.pb';
 import { Routes, getKindRoute } from '../../../utils/nav';

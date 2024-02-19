@@ -1,7 +1,7 @@
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { Flex } from '@weaveworks/weave-gitops';
+import { Flex } from '@choclab/weave-gitops';
 import React, { FC, useCallback, Dispatch, ChangeEvent, useMemo } from 'react';
 import { useListCredentials } from '../../../../hooks/credentials';
 import { Credential } from '../../../../types/custom';

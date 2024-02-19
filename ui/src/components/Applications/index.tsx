@@ -7,7 +7,7 @@ import {
   IconType,
   Link,
   useListAutomations,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { DataTable } from '@weaveworks/weave-gitops';
+import { DataTable } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { AccessRule } from '../../api/query/query.pb';

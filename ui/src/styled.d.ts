@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { ThemeTypes } from '@weaveworks/weave-gitops';
+import { ThemeTypes } from '@choclab/weave-gitops';
 import 'styled-components';
 export namespace colors {
   const black: string;

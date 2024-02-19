@@ -1,5 +1,5 @@
 import { DialogContent } from '@material-ui/core';
-import { Button, Text } from '@weaveworks/weave-gitops';
+import { Button, Text } from '@choclab/weave-gitops';
 import { FC, useState } from 'react';
 import styled from 'styled-components';
 import { MuiDialogTitle } from '../../Shared';

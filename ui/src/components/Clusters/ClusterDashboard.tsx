@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
-import { InfoList, KubeStatusIndicator } from '@weaveworks/weave-gitops';
-import { InfoField } from '@weaveworks/weave-gitops/ui/components/InfoList';
+import { InfoList, KubeStatusIndicator } from '@choclab/weave-gitops';
+import { InfoField } from '@choclab/weave-gitops/ui/components/InfoList';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useGetKubeconfig } from '../../hooks/clusters';

@@ -1,5 +1,5 @@
-import { CanaryMetric } from '@weaveworks/progressive-delivery/api/prog/types.pb';
-import { AppContext, DataTable, Text } from '@weaveworks/weave-gitops';
+import { CanaryMetric } from '@choclab/progressive-delivery/api/prog/types.pb';
+import { AppContext, DataTable, Text } from '@choclab/weave-gitops';
 import React, { useContext } from 'react';
 import { TableWrapper } from '../../../Shared';
 

@@ -1,5 +1,5 @@
 import { Alert } from '@material-ui/lab';
-import { AlertListErrors, LoadingPage } from '@weaveworks/weave-gitops';
+import { AlertListErrors, LoadingPage } from '@choclab/weave-gitops';
 import { useListFlaggerObjects, CanaryParams } from '../../../../contexts/ProgressiveDelivery';
 import { ManagedObjectsTable } from './ManagedObjectsTable';
 

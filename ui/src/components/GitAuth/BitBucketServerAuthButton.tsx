@@ -1,6 +1,6 @@
-import { Button } from '@weaveworks/weave-gitops';
+import { Button } from '@choclab/weave-gitops';
 // @ts-ignore
-import { CallbackStateContextType } from '@weaveworks/weave-gitops/ui/contexts/CallbackStateContext';
+import { CallbackStateContextType } from '@choclab/weave-gitops/ui/contexts/CallbackStateContext';
 import * as React from 'react';
 import styled from 'styled-components';
 import { useEnterpriseClient } from '../../contexts/API';

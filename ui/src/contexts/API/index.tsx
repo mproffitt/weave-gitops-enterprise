@@ -4,8 +4,8 @@ import { ClustersService } from '../../cluster-services/cluster_services.pb';
 import {
   UnAuthorizedInterceptor,
   setAPIPathPrefix,
-} from '@weaveworks/weave-gitops';
-import { ProgressiveDeliveryService } from '@weaveworks/progressive-delivery';
+} from '@choclab/weave-gitops';
+import { ProgressiveDeliveryService } from '@choclab/progressive-delivery';
 import { Pipelines } from '../../api/pipelines/pipelines.pb';
 import { Query } from '../../api/query/query.pb';
 import { GitAuth } from '../../api/gitauth/gitauth.pb';

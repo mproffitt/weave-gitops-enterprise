@@ -1,4 +1,4 @@
-import { Button, Flex, Icon, IconType, Text } from '@weaveworks/weave-gitops';
+import { Button, Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
 import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useListSecrets } from '../../contexts/Secrets';

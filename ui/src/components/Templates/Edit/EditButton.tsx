@@ -1,5 +1,5 @@
-import { Button, formatURL, Icon, IconType } from '@weaveworks/weave-gitops';
-import { Automation, Source } from '@weaveworks/weave-gitops/ui/lib/objects';
+import { Button, formatURL, Icon, IconType } from '@choclab/weave-gitops';
+import { Automation, Source } from '@choclab/weave-gitops/ui/lib/objects';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';

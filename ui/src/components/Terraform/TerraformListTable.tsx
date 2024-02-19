@@ -8,7 +8,7 @@ import {
   statusSortHelper,
   Timestamp,
   useFeatureFlags,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { TerraformObject } from '../../api/terraform/types.pb';

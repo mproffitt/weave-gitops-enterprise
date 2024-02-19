@@ -1,4 +1,4 @@
-import { RouterTab, SubRouterTabs } from '@weaveworks/weave-gitops';
+import { RouterTab, SubRouterTabs } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';

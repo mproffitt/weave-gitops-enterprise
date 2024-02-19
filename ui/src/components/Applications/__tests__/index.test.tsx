@@ -6,7 +6,7 @@ import {
   Kind,
   theme,
   ThemeTypes,
-} from '@weaveworks/weave-gitops';
+} from '@choclab/weave-gitops';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';

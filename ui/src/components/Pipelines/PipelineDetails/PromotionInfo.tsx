@@ -1,4 +1,4 @@
-import { Flex, Text, computeReady } from '@weaveworks/weave-gitops';
+import { Flex, Text, computeReady } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { PipelineTargetStatus } from '../../../api/pipelines/types.pb';
 import { EnvironmentCard } from './styles';

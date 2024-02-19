@@ -1,4 +1,4 @@
-import { Button, Icon, IconType } from '@weaveworks/weave-gitops';
+import { Button, Icon, IconType } from '@choclab/weave-gitops';
 import { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useListPolicyConfigs } from '../../contexts/PolicyConfigs';

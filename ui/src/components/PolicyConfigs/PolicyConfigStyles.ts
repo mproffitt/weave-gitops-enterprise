@@ -1,6 +1,6 @@
 import { RemoveCircleOutline, ReportProblem } from '@material-ui/icons';
 import { Alert } from '@material-ui/lab';
-import { Flex, Text } from '@weaveworks/weave-gitops';
+import { Flex, Text } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import { TableWrapper } from '../Shared';
 
