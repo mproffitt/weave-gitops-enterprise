@@ -811,14 +811,14 @@ func RunInProcessGateway(ctx context.Context, addr string, setters ...Option) er
 		args.SessionManager,
 	)
 	if err != nil {
-		return fmt.Errorf("could not create auth server: %w", err)
+		return fmt.Errorf("could not create auth server config: %w", err)
 	}
 	srv, err := auth.NewAuthServer(
 		ctx,
 		authServerConfig,
 	)
 	if err != nil {
-		return fmt.Errorf("could not create auth server: %w", err)
+		return fmt.Errorf("could not create new auth server: %w", err)
 	}
 
 	args.Log.Info("Registering callback route")
