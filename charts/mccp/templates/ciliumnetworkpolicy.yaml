@@ -1,0 +1,21 @@
+{{- if .Capabilities.APIVersions.Has "cilium.io/v2" -}}
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "mccp.fullname" . }}-allow-wge-ingress
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "mccp.labels" . | nindent 4 }}
+spec:
+  egress:
+  - toEntities:
+    - kube-apiserver
+    - cluster
+    - world
+  endpointSelector:
+    matchLabels:
+      app: clusters-service
+  ingress:
+  - fromEntities:
+    - cluster
+{{ end }}

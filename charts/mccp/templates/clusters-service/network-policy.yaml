@@ -7,6 +7,8 @@ metadata:
   labels:
     {{- include "mccp.labels" . | nindent 4 }}
 spec:
+  egress:
+  - {}
   ingress:
   - from:
     - namespaceSelector: {}
@@ -15,4 +17,5 @@ spec:
       app: clusters-service
   policyTypes:
   - Ingress
+  - Egress
 {{- end }}
