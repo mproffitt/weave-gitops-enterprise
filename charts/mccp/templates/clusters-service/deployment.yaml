@@ -32,6 +32,13 @@ spec:
         volumeMounts:
         - mountPath: /target
           name: ui-server-volume
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
+
       containers:
         - name: clusters-service
           ports:
@@ -59,6 +66,7 @@ spec:
             - --explorer-cleaner-disabled=true
             {{- end }}
           imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           envFrom:
           - configMapRef:
               name: {{ include "mccp.fullname" . }}-cluster-service
@@ -137,6 +145,18 @@ spec:
             {{- if .Values.extraVolumeMounts }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumeMounts "context" $) | nindent 12 }}
             {{- end }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
+
       volumes:
       {{- if .Values.tls.secretName }}
       - name: clusters-service-tls-volume
@@ -151,3 +171,9 @@ spec:
       {{- if .Values.extraVolumes }}
       {{- include "common.tplvalues.render" (dict "value" .Values.extraVolumes  "context" $) | nindent 6 }}
       {{- end }}
+      securityContext:
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+        supplementalGroups:
+        - 1

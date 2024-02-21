@@ -25,7 +25,7 @@ FROM alpine:3.18
 RUN apk upgrade libssl3 libcrypto3
 
 WORKDIR /
-COPY --from=build /home/node/build /html
+COPY --from=build --chown=1000:1000 /home/node/build /html
 
 ARG now
 ARG revision
