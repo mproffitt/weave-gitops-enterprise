@@ -17,6 +17,10 @@ GOOS := $(shell go env GOOS)
 TIER=enterprise
 BRANCH?=main
 
+UI_SERVER := $(IMAGE_PREFIX)ui-server
+CLUSTER_SERVICE := $(IMAGE_PREFIX)clusters-service
+
+IMAGE_NAMES := $(UI_SERVER) $(CLUSTER_SERVICE)
 
 ifeq ($(GOOS),linux)
 	cgo_ldflags=-linkmode external -w -extldflags "-static"
@@ -59,7 +63,6 @@ cmd/clusters-service/$(UPTODATE): cmd/clusters-service/Dockerfile cmd/clusters-s
 
 
 
-UI_SERVER := docker.io/choclab/weave-gitops-enterprise-ui-server
 ui/.uptodate: ui/*
 	$(SUDO) docker build \
 		--build-arg=version=$(WEAVE_GITOPS_VERSION) \
@@ -89,8 +92,6 @@ DOCKERFILES := $(shell find . \
 	-name wks-ci -prune -o \
 	-type f -name 'Dockerfile' -print)
 UPTODATE_FILES := $(patsubst %/Dockerfile,%/$(UPTODATE),$(DOCKERFILES))
-DOCKER_IMAGE_DIRS := $(patsubst %/Dockerfile,%,$(DOCKERFILES))
-IMAGE_NAMES := $(foreach dir,$(DOCKER_IMAGE_DIRS),$(patsubst %,$(IMAGE_PREFIX)%,$(subst wkp-,,$(shell basename $(dir)))))
 images:
 	$(info $(IMAGE_NAMES))
 	@echo > /dev/null
