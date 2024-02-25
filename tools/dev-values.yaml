@@ -8,17 +8,28 @@ policy-agent:
 
 config:
   logLevel: debug
-  # un-comment to disable auth
-  # auth:
-  #   noAuthentication:
-  #     user: "wego-admin"
-  #
-  # un-comment to enable OIDC against dex-01
-  # oidc:
-  #   enabled: true
-  #   issuerURL: "https://dex-01.wge.dev.weave.works"
-  #   redirectURL: "http://localhost:3000/oauth2/callback"
-  #   clientCredentialsSecret: "oidc-auth"
+  git:
+    type: github
+    hostname: github.com
+  capi:
+    templates:
+      namespace: default
+      injectPruneAnnotation: enabled
+      addBasesKustomization: enabled
+    clusters:
+      namespace: ""
+    repositoryURL: ""
+    repositoryApiURL: ""
+    repositoryPath: "./management-clusters/{{ .MANAGEMENT_CLUSTER }}/organizations/{{ .organization }}/workload-clusters"
+    repositoryClustersPath: "./mapi"
+    baseBranch: main
+    extraReplacementFields:
+      organization: namespace:{{ .NAMESPACE }}:labels:giantswarm.io/organization
+
+  ui:
+    footer:
+      hideVersion: false
+      content: "&nbsp;"
 
 tls:
   enabled: false
@@ -38,18 +49,18 @@ explorer:
 # Turns on terraform UI features for local dev
 enableTerraformUI: true
 
-extraEnvVars:
-  - name: WEAVE_GITOPS_FEATURE_COST_ESTIMATION
-    value: ""
-  - name: WEAVE_GITOPS_FEATURE_TELEMETRY
-    value: "false"
-  - name: BITBUCKET_SERVER_HOSTNAME
-    value: "bitbucket.yiannis.net"
-  # un-comment when running under weave-gitops-enterprise under a subpath e.g /weave-gitops-enterprise
-  # - name: ROUTE_PREFIX
-  #   value: /weave-gitops-enterprise
+envVars:
+  - name: WEAVE_GITOPS_FEATURE_TENANCY
+    value: "true"
+  - name: WEAVE_GITOPS_FEATURE_CLUSTER
+    value: "true"
+  - name: WEAVE_GITOPS_USERS_CLIENTS_TTL
+    value: "30s"
   - name: WEAVE_GITOPS_FEATURE_GITOPS_RUNTIME
     value: "true"
+  - name: WEAVE_GITOPS_FEATURE_TELEMETRY
+    value: "true"
+
 
 extraEnvVarsSecret: ""
 

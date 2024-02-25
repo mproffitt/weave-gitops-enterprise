@@ -17,6 +17,8 @@
 
 source $PWD/tools/flags.env
 
+export INSTALL_NGINX_INGRESS=1
+
 do_capi(){
   tool_check "clusterctl"
 
