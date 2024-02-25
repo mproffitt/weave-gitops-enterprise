@@ -924,23 +924,24 @@ func validateKustomization(kustomization *capiv1_proto.Kustomization) error {
 func getClusterManifestPath(cluster types.NamespacedName) string {
 	return filepath.Join(
 		viper.GetString("capi-repository-path"),
-		cluster.Namespace,
+		cluster.Name,
 		fmt.Sprintf("%s.yaml", cluster.Name),
 	)
 }
 
 func getClusterDirPath(cluster types.NamespacedName) string {
 	return filepath.Join(
-		viper.GetString("capi-repository-clusters-path"),
-		cluster.Namespace,
+		viper.GetString("capi-repository-path"),
 		cluster.Name,
+		viper.GetString("capi-repository-clusters-path"),
+		"clusters",
 	)
 }
 
 func getCommonKustomizationPath(cluster types.NamespacedName) string {
 	return filepath.Join(
 		getClusterDirPath(cluster),
-		"clusters-bases-kustomization.yaml",
+		fmt.Sprintf("%s.yaml", cluster.Name),
 	)
 }
 
@@ -1202,6 +1203,8 @@ func kubeConfigFromSecret(s *corev1.Secret) ([]byte, bool) {
 }
 
 func createNamespacedName(name, namespace string) types.NamespacedName {
+	// Lookup namespace to retrieve labels
+
 	return types.NamespacedName{
 		Name:      name,
 		Namespace: namespace,

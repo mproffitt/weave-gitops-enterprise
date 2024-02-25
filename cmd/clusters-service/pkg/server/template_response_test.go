@@ -7,6 +7,8 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
+	"sigs.k8s.io/controller-runtime/pkg/client/fake"
+
 	capiv1 "github.com/weaveworks/templates-controller/apis/capi/v1alpha2"
 	templatesv1 "github.com/weaveworks/templates-controller/apis/core"
 	capiv1_protos "github.com/weaveworks/weave-gitops-enterprise/cmd/clusters-service/pkg/protos"
@@ -232,9 +234,11 @@ func TestToTemplate(t *testing.T) {
 		},
 	}
 
+	c := fake.NewClientBuilder().Build()
+
 	for _, tt := range testCases {
 		t.Run(tt.name, func(t *testing.T) {
-			result := ToTemplateResponse(tt.value)
+			result := ToTemplateResponse(tt.value, c)
 			if diff := cmp.Diff(tt.expected, result, protocmp.Transform()); diff != "" {
 				t.Fatalf("templates didn't match expected:\n%s", diff)
 			}

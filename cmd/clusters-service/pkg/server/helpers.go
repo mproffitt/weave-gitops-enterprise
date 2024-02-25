@@ -1,8 +1,11 @@
 package server
 
 import (
+	"bytes"
 	"fmt"
+	"regexp"
 	"strings"
+	"text/template"
 
 	"github.com/spf13/viper"
 	"k8s.io/apimachinery/pkg/api/meta"
@@ -12,7 +15,45 @@ import (
 	apitemplates "github.com/weaveworks/templates-controller/apis/core"
 	"github.com/weaveworks/weave-gitops-enterprise/cmd/clusters-service/pkg/templates"
 	"github.com/weaveworks/weave-gitops-enterprise/pkg/git"
+	"k8s.io/apimachinery/pkg/runtime/schema"
 )
+
+func parseGvk(gvk string) (*schema.GroupVersionKind, error) {
+	var (
+		p      string            = `(?P<k>[a-z0-9]+)\.?(?P<g>([a-z0-9.]+)*)?(/?(?P<v>v\d+.*))?`
+		re     *regexp.Regexp    = regexp.MustCompile(p)
+		match  []string          = re.FindStringSubmatch(gvk)
+		result map[string]string = make(map[string]string)
+
+		group, version, kind string
+	)
+
+	if len(match) == 0 {
+		return nil, fmt.Errorf("failed to parse gvk from string %s", gvk)
+	}
+
+	{
+		for i, name := range re.SubexpNames() {
+			if i != 0 && name != "" {
+				result[name] = match[i]
+			}
+		}
+		fmt.Printf("\n\n  %+v \n\n", result)
+		group = result["g"]
+		version = result["v"]
+		kind = result["k"]
+
+		if version == "" {
+			version = "v1"
+		}
+	}
+
+	return &schema.GroupVersionKind{
+		Group:   group,
+		Version: version,
+		Kind:    kind,
+	}, nil
+}
 
 func renderTemplateWithValues(t apitemplates.Template, name, namespace string, values map[string]string, mapper meta.RESTMapper) ([]templates.RenderedTemplate, error) {
 	opts := []templates.RenderOptFunc{
@@ -44,6 +85,20 @@ func renderTemplateWithValues(t apitemplates.Template, name, namespace string, v
 	}
 
 	return templateBits, nil
+}
+
+func renderTemplateStringWithValues(t string, values map[string]string) (string, error) {
+	tpl, err := template.New("__string").Parse(t)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse resource template definition: %w", err)
+	}
+
+	var s bytes.Buffer
+	err = tpl.Execute(&s, values)
+	if err != nil {
+		return "", fmt.Errorf("failed to render resource template definition path: %w", err)
+	}
+	return s.String(), nil
 }
 
 func shouldInjectPruneAnnotation(t apitemplates.Template) bool {

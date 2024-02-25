@@ -22,6 +22,7 @@ import (
 	"github.com/weaveworks/weave-gitops-enterprise/pkg/helm"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -90,6 +91,11 @@ func (s *server) ListTemplates(ctx context.Context, msg *capiv1_proto.ListTempla
 	includeGitopsTemplates := msg.TemplateKind == "" || msg.TemplateKind == gapiv1.Kind
 	includeCAPITemplates := msg.TemplateKind == "" || msg.TemplateKind == capiv1.Kind
 
+	c, err := s.clientGetter.Client(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("error getting client: %v", err)
+	}
+
 	if includeGitopsTemplates {
 		namespacedLists, err := s.managementFetcher.Fetch(ctx, gapiv1.Kind, func() client.ObjectList {
 			return &gapiv1.GitOpsTemplateList{}
@@ -107,7 +113,15 @@ func (s *server) ListTemplates(ctx context.Context, msg *capiv1_proto.ListTempla
 			}
 			templatesList := namespacedList.List.(*gapiv1.GitOpsTemplateList)
 			for _, t := range templatesList.Items {
-				templates = append(templates, ToTemplateResponse(&t))
+				res := ToTemplateResponse(&t, c)
+				templates = append(templates, res)
+				if res.Error != "" {
+					errors = append(errors, &capiv1_proto.ListError{
+						Namespace: t.Namespace,
+						Message:   res.Error,
+					})
+					s.log.Error(fmt.Errorf("error reading template %v, %v", t.Name, res.Error), "error reading template")
+				}
 			}
 		}
 	}
@@ -129,7 +143,15 @@ func (s *server) ListTemplates(ctx context.Context, msg *capiv1_proto.ListTempla
 			}
 			templatesList := namespacedList.List.(*capiv1.CAPITemplateList)
 			for _, t := range templatesList.Items {
-				templates = append(templates, ToTemplateResponse(&t))
+				res := ToTemplateResponse(&t, c)
+				templates = append(templates, res)
+				if res.Error != "" {
+					errors = append(errors, &capiv1_proto.ListError{
+						Namespace: t.Namespace,
+						Message:   res.Error,
+					})
+					s.log.Error(fmt.Errorf("error reading template %v, %v", t.Name, res.Error), "error reading template")
+				}
 			}
 		}
 	}
@@ -160,7 +182,13 @@ func (s *server) GetTemplate(ctx context.Context, msg *capiv1_proto.GetTemplateR
 	if err != nil {
 		return nil, fmt.Errorf("error looking up template %v: %v", msg.Name, err)
 	}
-	t := ToTemplateResponse(tm)
+
+	c, err := s.clientGetter.Client(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("error getting client: %v", err)
+	}
+
+	t := ToTemplateResponse(tm, c)
 	if t.Error != "" {
 		return nil, fmt.Errorf("error reading template %v, %v", msg.Name, t.Error)
 	}
@@ -176,7 +204,13 @@ func (s *server) ListTemplateParams(ctx context.Context, msg *capiv1_proto.ListT
 	if err != nil {
 		return nil, fmt.Errorf("error looking up template %v: %v", msg.Name, err)
 	}
-	t := ToTemplateResponse(tm)
+
+	c, err := s.clientGetter.Client(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("error getting client: %v", err)
+	}
+
+	t := ToTemplateResponse(tm, c)
 	if t.Error != "" {
 		return nil, fmt.Errorf("error looking up template params for %v, %v", msg.Name, t.Error)
 	}
@@ -193,7 +227,13 @@ func (s *server) ListTemplateProfiles(ctx context.Context, msg *capiv1_proto.Lis
 	if err != nil {
 		return nil, fmt.Errorf("error looking up template %v: %v", msg.Name, err)
 	}
-	t := ToTemplateResponse(tm)
+
+	c, err := s.clientGetter.Client(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("error getting client: %v", err)
+	}
+
+	t := ToTemplateResponse(tm, c)
 	if t.Error != "" {
 		return nil, fmt.Errorf("error looking up template annotations for %v, %v", msg.Name, t.Error)
 	}
@@ -267,6 +307,115 @@ func (s *server) RenderTemplate(ctx context.Context, msg *capiv1_proto.RenderTem
 	return &capiv1_proto.RenderTemplateResponse{RenderedTemplates: renderedTemplateFiles, ProfileFiles: profileFiles, KustomizationFiles: kustomizationFiles, CostEstimate: files.CostEstimate, ExternalSecretsFiles: externalSecretFiles}, err
 }
 
+// GetExtraFields is a helper function to get expand on the available parameter
+// fields for use in templates.
+//
+// By default, it will include the following fields:
+//
+// - MANAGEMENT_CLUSTER
+// - REPOSITORY_PATH
+// - REPOSITORY_CLUSTERS_PATH
+// - BASE_BRANCH
+//
+// It will also include any extra fields defined in the `capi-extra-replacement-fields`
+// configuration option.
+//
+// The extra fields are expected to be in the format:
+//
+// - type:name[:field[:label-or-annotation]]
+//
+// In this format, type is expected to be a valid Kubernetes resource type,
+// such as `ConfigMap`, `Secret`, `Service`, etc. The name is the name of the
+// resource, and the field is the field to extract from the resource.
+//
+// If type is not in the `v1` api group, then you must specify the full GVK
+// such as `kind.group/version`.
+//
+// for example : `deployment.apps/v1:my-deployment:name`
+//
+// Only the following fields are supported:
+//
+// - name
+// - namespace
+// - label(s)
+// - annotation(s)
+//
+// To target a specific namespace, prefix the name with the namespace, such as
+// `namespace/name`.
+func GetExtraFields(client client.Client, log logr.Logger, msg *GetFilesRequest) error {
+	log.Info("checking for extra fields")
+	(*msg).ParameterValues["MANAGEMENT_CLUSTER"] = viper.GetString("cluster-name")
+	(*msg).ParameterValues["REPOSITORY_PATH"] = viper.GetString("capi-repository-path")
+	(*msg).ParameterValues["REPOSITORY_CLUSTERS_PATH"] = viper.GetString("capi-repository-clusters-path")
+	(*msg).ParameterValues["BASE_BRANCH"] = viper.GetString("capi-base-branch")
+
+	fields := viper.GetStringMapString("capi-extra-replacement-fields")
+	for k, v := range fields {
+		var (
+			err            error
+			object         unstructured.Unstructured
+			namespacedName types.NamespacedName
+		)
+
+		v, err = renderTemplateStringWithValues(v, msg.ParameterValues)
+		if err != nil {
+			log.Error(err, "failed to render extra field", "field", k, "value", v)
+			continue
+		}
+
+		values := strings.Split(v, ":")
+
+		switch len(values) {
+		case 1:
+			(*msg).ParameterValues[k] = v
+		// type:name
+		// type:name:field[:label-or-annotation]
+		// type:namespace/name:field[:label-or-annotation]
+		default:
+			gvk, err := parseGvk(values[0])
+			if err != nil {
+				return fmt.Errorf("failed to parse gvk: %w", err)
+			}
+
+			object.SetGroupVersionKind(*gvk)
+			apiVersion := gvk.GroupVersion().String()
+			object.SetAPIVersion(apiVersion)
+
+			nsn := strings.Split(values[1], "/")
+			if len(nsn) == 1 {
+				namespacedName = types.NamespacedName{
+					Namespace: msg.ClusterNamespace,
+					Name:      nsn[0],
+				}
+			} else {
+				namespacedName = types.NamespacedName{
+					Namespace: nsn[0],
+					Name:      nsn[1],
+				}
+			}
+		}
+
+		err = client.Get(context.Background(), namespacedName, &object)
+		if err != nil {
+			return err
+		}
+
+		switch values[2] {
+		case "label", "labels":
+			(*msg).ParameterValues[k] = object.GetLabels()[values[3]]
+		case "annotation", "annotations":
+			(*msg).ParameterValues[k] = object.GetAnnotations()[values[3]]
+		default:
+			if object.Object[values[2]] == "name" {
+				(*msg).ParameterValues[k] = object.GetName()
+			} else if object.Object[values[2]] == "namespace" {
+				(*msg).ParameterValues[k] = object.GetNamespace()
+			}
+		}
+	}
+	return nil
+}
+
 func GetFiles(
 	ctx context.Context,
 	client client.Client,
@@ -281,6 +430,11 @@ func GetFiles(
 	createRequestMessage *capiv1_proto.CreatePullRequestRequest) (*GetFilesReturn, error) {
 
 	resourcesNamespace := getClusterNamespace(msg.ParameterValues["NAMESPACE"])
+
+	err := GetExtraFields(client, log, &msg)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get extra fields: %w", err)
+	}
 
 	renderedTemplates, err := renderTemplateWithValues(tmpl, msg.TemplateName, resourcesNamespace, msg.ParameterValues, mapper)
 	if err != nil {
@@ -316,6 +470,11 @@ func GetFiles(
 			path, err = getDefaultPath(resourcesNamespace, msg)
 			if err != nil {
 				return nil, fmt.Errorf("failed to get default path: %w", err)
+			}
+
+			path, err = renderTemplateStringWithValues(path, msg.ParameterValues)
+			if err != nil {
+				return nil, fmt.Errorf("failed to render default path: %w", err)
 			}
 		}
 
