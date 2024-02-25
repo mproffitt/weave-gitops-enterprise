@@ -161,6 +161,10 @@ func (s *applicationServer) Authenticate(_ context.Context, msg *pb.Authenticate
 }
 
 func (s *applicationServer) ParseRepoURL(ctx context.Context, msg *pb.ParseRepoURLRequest) (*pb.ParseRepoURLResponse, error) {
+	if msg.Url == "" {
+		return nil, nil
+	}
+
 	u, err := gp.NewRepoURL(msg.Url)
 	if err != nil {
 		return nil, grpcStatus.Errorf(codes.InvalidArgument, "could not parse url: %s", err.Error())
