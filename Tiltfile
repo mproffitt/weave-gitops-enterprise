@@ -57,14 +57,14 @@ if 'cluster-reflector-controller' in to_edit:
    docker_build('ghcr.io/weaveworks/cluster-reflector-controller', '../cluster-reflector-controller/')
    cluster_reflector_controller_labels = ["local"]
 
-# --- rename chart resources to human readable 
+# --- rename chart resources to human readable
 
 k8s_resource('chart-mccp-cluster-service', new_name='cluster-service', labels=["local"], port_forwards='8000')
 k8s_resource('chart-pipeline-controller', new_name='pipeline-controller', labels=["remote-images"])
 k8s_resource('cluster-bootstrap-controller-manager', new_name='cluster-bootstrap-controller', labels=cluster_bootstrap_controller_labels)
 k8s_resource('cluster-controller-manager', new_name='cluster-controller', labels=cluster_controller_labels)
-k8s_resource('gitopssets-controller-manager', new_name='gitopssets-controller', labels=gitopssets_controller_labels)
-k8s_resource('cluster-reflector-controller-manager', labels=cluster_reflector_controller_labels)
+k8s_resource('chart-gitopssets-controller-controller-manager', new_name='gitopssets-controller', labels=gitopssets_controller_labels)
+k8s_resource('chart-cluster-reflector-controller-controller-manager', labels=cluster_reflector_controller_labels)
 k8s_resource('policy-agent', labels=["remote-images"])
 
 # Install resources I couldn't find elsewhere
