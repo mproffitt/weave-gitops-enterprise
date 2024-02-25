@@ -12,13 +12,13 @@ dependencies:
   repository: file://../../../pipeline-controller/charts/pipeline-controller
   version: 0.22.0
 - name: gitopssets-controller
-  repository: oci://ghcr.io/weaveworks/charts
-  version: 0.16.5
+  repository: file://../gitopssets-controller
+  version: 0.1.0
 - name: cluster-reflector-controller
   repository: file://../../../cluster-reflector-controller/charts/cluster-reflector-controller
   version: 0.1.0
 - name: cluster-bootstrap-controller
   repository: file://../../../cluster-bootstrap-controller/charts/cluster-bootstrap-controller
   version: 0.1.0
-digest: sha256:3875d39b961523c53b275f7537ca4c3abaa10dd7e44a9d5df447de933a6cdef0
-generated: "2024-02-19T12:21:38.695030773+01:00"
+digest: sha256:4c81bb2c460eec3140022ee742fcafe7058f4c05615094dbebf07b321a14b718
+generated: "2024-02-23T18:44:15.045997757+01:00"

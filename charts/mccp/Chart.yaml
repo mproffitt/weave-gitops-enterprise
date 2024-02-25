@@ -34,20 +34,17 @@ dependencies:
     condition: policy-agent.enabled
   - name: pipeline-controller
     version: "0.22.0"
-      #repository: "oci://ghcr.io/weaveworks/charts"
     repository: file://../../../pipeline-controller/charts/pipeline-controller
     condition: enablePipelines
   - name: gitopssets-controller
-    version: "0.16.5"
-    repository: "oci://ghcr.io/weaveworks/charts"
+    version: "0.1.0"
+    repository: file://../gitopssets-controller
     condition: gitopssets-controller.enabled
   - name: cluster-reflector-controller
     version: "0.1.0"
     repository: file://../../../cluster-reflector-controller/charts/cluster-reflector-controller
-      #repository: "oci://ghcr.io/weaveworks/charts"
     condition: cluster-reflector-controller.enabled
   - name: cluster-bootstrap-controller
     version: "0.1.0"
-      #repository: "oci://ghcr.io/weaveworks/charts"
     repository: file://../../../cluster-bootstrap-controller/charts/cluster-bootstrap-controller
     condition: cluster-bootstrap-controller.enabled

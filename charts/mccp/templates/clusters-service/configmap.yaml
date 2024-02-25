@@ -16,6 +16,7 @@ data:
   CAPI_REPOSITORY_CLUSTERS_PATH: {{ .Values.config.capi.repositoryClustersPath | quote }}
   CAPI_TEMPLATES_REPOSITORY_API_URL: {{ .Values.config.capi.repositoryApiURL | quote }}
   CAPI_TEMPLATES_REPOSITORY_BASE_BRANCH: {{ .Values.config.capi.baseBranch | quote }}
+  CAPI_EXTRA_REPLACEMENT_FIELDS: {{ .Values.config.capi.extraReplacementFields | toJson | quote }}
   {{- $estimationFilter := (.Values.config.costEstimation).estimationFilter }}
   {{- if $estimationFilter }}
   COST_ESTIMATION_FILTERS: {{ $estimationFilter | quote }}
