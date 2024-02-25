@@ -138,34 +138,32 @@ type Params struct {
 	CAPIRepositoryClustersPath        string                    `mapstructure:"capi-repository-clusters-path"`
 	CAPITemplatesRepositoryApiUrl     string                    `mapstructure:"capi-templates-repository-api-url"`
 	CAPITemplatesRepositoryBaseBranch string                    `mapstructure:"capi-templates-repository-base-branch"`
-	CAPIUseGSOrganizationLabel        string                    `mapstructure:"capi-use-gs-organization-label"`
-	// will replace the gs label
-	CAPIExtraReplacementFields       string        `mapstructure:"capi-extra-replacement-fields"`
-	RuntimeNamespace                 string        `mapstructure:"runtime-namespace"`
-	GitProviderToken                 string        `mapstructure:"git-provider-token"`
-	AuthMethods                      []string      `mapstructure:"auth-methods"`
-	TLSCert                          string        `mapstructure:"tls-cert"`
-	TLSKey                           string        `mapstructure:"tls-key"`
-	NoTLS                            bool          `mapstructure:"no-tls"`
-	Cluster                          string        `mapstructure:"cluster-name"`
-	UseK8sCachedClients              bool          `mapstructure:"use-k8s-cached-clients"`
-	UIConfig                         string        `mapstructure:"ui-config"`
-	PipelineControllerAddress        string        `mapstructure:"pipeline-controller-address"`
-	CostEstimationFilters            string        `mapstructure:"cost-estimation-filters"`
-	CostEstimationAPIRegion          string        `mapstructure:"cost-estimation-api-region"`
-	CostEstimationFilename           string        `mapstructure:"cost-estimation-csv-file"`
-	GitProviderCSRFCookieDomain      string        `mapstructure:"git-provider-csrf-cookie-domain"`
-	GitProviderCSRFCookiePath        string        `mapstructure:"git-provider-csrf-cookie-path"`
-	GitProviderCSRFCookieDuration    time.Duration `mapstructure:"git-provider-csrf-cookie-duration"`
-	CollectorServiceAccountName      string        `mapstructure:"collector-serviceaccount-name"`
-	CollectorServiceAccountNamespace string        `mapstructure:"collector-serviceaccount-namespace"`
-	MonitoringEnabled                bool          `mapstructure:"monitoring-enabled"`
-	MonitoringBindAddress            string        `mapstructure:"monitoring-bind-address"`
-	MetricsEnabled                   bool          `mapstructure:"monitoring-metrics-enabled"`
-	ProfilingEnabled                 bool          `mapstructure:"monitoring-profiling-enabled"`
-	ExplorerCleanerDisabled          bool          `mapstructure:"explorer-cleaner-disabled"`
-	NoAuthUser                       string        `mapstructure:"insecure-no-authentication-user"`
-	ExplorerEnabledFor               []string      `mapstructure:"explorer-enabled-for"`
+	CAPIExtraReplacementFields        string                    `mapstructure:"capi-extra-replacement-fields"`
+	RuntimeNamespace                  string                    `mapstructure:"runtime-namespace"`
+	GitProviderToken                  string                    `mapstructure:"git-provider-token"`
+	AuthMethods                       []string                  `mapstructure:"auth-methods"`
+	TLSCert                           string                    `mapstructure:"tls-cert"`
+	TLSKey                            string                    `mapstructure:"tls-key"`
+	NoTLS                             bool                      `mapstructure:"no-tls"`
+	Cluster                           string                    `mapstructure:"cluster-name"`
+	UseK8sCachedClients               bool                      `mapstructure:"use-k8s-cached-clients"`
+	UIConfig                          string                    `mapstructure:"ui-config"`
+	PipelineControllerAddress         string                    `mapstructure:"pipeline-controller-address"`
+	CostEstimationFilters             string                    `mapstructure:"cost-estimation-filters"`
+	CostEstimationAPIRegion           string                    `mapstructure:"cost-estimation-api-region"`
+	CostEstimationFilename            string                    `mapstructure:"cost-estimation-csv-file"`
+	GitProviderCSRFCookieDomain       string                    `mapstructure:"git-provider-csrf-cookie-domain"`
+	GitProviderCSRFCookiePath         string                    `mapstructure:"git-provider-csrf-cookie-path"`
+	GitProviderCSRFCookieDuration     time.Duration             `mapstructure:"git-provider-csrf-cookie-duration"`
+	CollectorServiceAccountName       string                    `mapstructure:"collector-serviceaccount-name"`
+	CollectorServiceAccountNamespace  string                    `mapstructure:"collector-serviceaccount-namespace"`
+	MonitoringEnabled                 bool                      `mapstructure:"monitoring-enabled"`
+	MonitoringBindAddress             string                    `mapstructure:"monitoring-bind-address"`
+	MetricsEnabled                    bool                      `mapstructure:"monitoring-metrics-enabled"`
+	ProfilingEnabled                  bool                      `mapstructure:"monitoring-profiling-enabled"`
+	ExplorerCleanerDisabled           bool                      `mapstructure:"explorer-cleaner-disabled"`
+	NoAuthUser                        string                    `mapstructure:"insecure-no-authentication-user"`
+	ExplorerEnabledFor                []string                  `mapstructure:"explorer-enabled-for"`
 }
 
 type OIDCAuthenticationOptions struct {

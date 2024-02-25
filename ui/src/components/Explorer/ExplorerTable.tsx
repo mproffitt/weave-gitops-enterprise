@@ -1,4 +1,3 @@
-import { Box } from '@material-ui/core';
 import {
   DataTable,
   Flex,
@@ -8,6 +7,7 @@ import {
   V2Routes,
 } from '@choclab/weave-gitops';
 import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
+import { Box } from '@material-ui/core';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { Object } from '../../api/query/query.pb';
@@ -46,8 +46,8 @@ export const defaultExplorerFields: ExplorerField[] = [
         });
       } else if (page === Routes.Templates) {
         url = formatURL(page, {
-          search: o.name + '_',
-          filters: 'namespace: ' + o.namespace + '_',
+          terms: o.name,
+          qfilters: 'namespace: ' + o.namespace,
         });
       } else {
         url = formatURL(page, {
