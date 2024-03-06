@@ -8,9 +8,10 @@ import {
   MenuItem,
   Select as MuiSelect,
   SelectProps as MuiSelectProps,
-} from '@material-ui/core';
-import { InputBaseProps } from '@material-ui/core/InputBase';
-import { Theme, withStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import { InputBaseProps } from '@mui/material/InputBase';
+import { Theme } from '@mui/material/styles';
+import withStyles from '@mui/styles/withStyles';
 import { debounce } from 'lodash';
 import React, { Dispatch, FC, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
@@ -133,7 +134,7 @@ export const Divider: any = withStyles((theme: Theme) => ({
   },
 }))(MuiDivider);
 
-export interface SelectProps extends MuiSelectProps {
+export interface SelectProps {
   label: string;
   items?: string[];
   value: string;
@@ -143,6 +144,12 @@ export interface SelectProps extends MuiSelectProps {
   required?: boolean;
   name?: string;
   error?: boolean;
+  children?: any,
+  input?: any,
+  onChange?: any,
+  variant?: any,
+  defaultValue?: any,
+  placeholder?: any,
 }
 
 export const Select: FC<SelectProps> = ({

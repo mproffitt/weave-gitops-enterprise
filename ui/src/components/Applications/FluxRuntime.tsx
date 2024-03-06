@@ -1,10 +1,12 @@
-import {
+import _ from 'lodash';
+import React, { FC } from 'react';
+/*import {
   FluxRuntime,
   useListFluxCrds,
   useListFluxRuntimeObjects,
-} from '@choclab/weave-gitops';
-import _ from 'lodash';
-import { FC } from 'react';
+} from '../../gitops.d';*/
+import FluxRuntime from '../../weave/components/FluxRuntime';
+import { useListFluxCrds, useListFluxRuntimeObjects } from '../../weave/hooks/flux';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

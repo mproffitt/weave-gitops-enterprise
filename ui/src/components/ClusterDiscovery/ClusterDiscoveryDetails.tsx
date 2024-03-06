@@ -1,5 +1,12 @@
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
+import React, { FC } from 'react';
+import { useResolvedPath } from 'react-router-dom';
+import styled from 'styled-components';
 import {
+  Condition,
+  ObjectRef,
+} from '../../cluster-services/cluster_services.pb';
+/*import {
   AppContext,
   Button,
   Flex,
@@ -23,14 +30,34 @@ import {
   KubeStatusIndicator,
   createYamlCommand,
   Metadata,
-} from '@choclab/weave-gitops';
-import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import styled from 'styled-components';
-import {
-  Condition,
-  ObjectRef,
-} from '../../cluster-services/cluster_services.pb';
+  FluxObject,
+} from '../../gitops.d';*/
+import { AppContext } from '../../weave/contexts/AppContext';
+import Button from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import FluxObjectsTable from '../../weave/components/FluxObjectsTable';
+import { Graph } from '../../weave/components/ReconciliationGraph';
+import InfoList from '../../weave/components/InfoList';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import Page from '../../weave/components/Page';
+import PageStatus from '../../weave/components/PageStatus';
+import RequestStateHandler from '../../weave/components/RequestStateHandler';
+import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
+import YamlView from '../../weave/components/YamlView';
+import { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import { useGetInventory } from '../../weave/hooks/inventory';
+import { useGetObject } from '../../weave/hooks/objects';
+import { useToggleSuspend } from '../../weave/hooks/flux';
+import { ReconciledObjectsAutomation } from '../../weave/components/AutomationDetail';
+import { useSyncFluxObject } from '../../weave/hooks/automations';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import { createYamlCommand } from '../../weave/lib/utils';
+import Metadata from '../../weave/components/Metadata';
+import { FluxObject } from '../../weave/lib/objects';
+
+
+
+
 import { RequestError } from '../../types/custom';
 import { Routes } from '../../utils/nav';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
@@ -57,19 +84,19 @@ function useGetAutomatedClusterDiscovery(
   );
 }
 
-function ClusterDiscoveryDetails({
+const ClusterDiscoveryDetails: FC<Props> = ({
   className,
   name,
   namespace,
   clusterName,
-}: Props) {
+}) => {
   const { data: acd, error } = useGetAutomatedClusterDiscovery(
     name,
     namespace,
     clusterName,
   );
 
-  const { path } = useRouteMatch();
+  const path = useResolvedPath("").pathname;
   const {
     data: invData,
     error: invError,
@@ -96,27 +123,14 @@ function ClusterDiscoveryDetails({
     'object',
   );
 
-  const sync = useSyncFluxObject([
-    {
-      name,
-      namespace,
-      clusterName,
-      kind: 'AutomatedClusterDiscovery',
-    },
-  ]);
-
   const initialFilterState = {
-    ...filterConfig(invData, 'type'),
-    ...filterConfig(invData, 'namespace'),
-    ...filterConfig(invData, 'status', filterByStatusCallback),
+    ...filterConfig(invData?.objects ?? [], 'type'),
+    ...filterConfig(invData?.objects ?? [], 'namespace'),
+    ...filterConfig(invData?.objects ?? [], 'status', filterByStatusCallback),
   };
   const { setDetailModal } = React.useContext(AppContext);
 
-  if (!acd) {
-    return null;
-  }
-
-  const { name: nameRef, namespace: namespaceRef } = acd;
+  const { name: nameRef, namespace: namespaceRef } = acd || {} as FluxObject;
   const objectRef = {
     name: nameRef,
     namespace: namespaceRef,
@@ -124,13 +138,18 @@ function ClusterDiscoveryDetails({
   };
   const reconciledObjectsAutomation: ReconciledObjectsAutomation = {
     source: objectRef || ({} as ObjectRef),
-    name: acd.name || '',
-    namespace: acd.namespace || '',
-    suspended: acd.suspended || false,
-    conditions: acd.conditions || ([] as Condition[]),
-    type: acd.type || 'AutomatedClusterDiscovery',
-    clusterName: acd.clusterName || '',
+    name: acd?.name || '',
+    namespace: acd?.namespace || '',
+    suspended: acd?.suspended || false,
+    conditions: acd?.conditions || ([] as Condition[]),
+    type: acd?.type || 'AutomatedClusterDiscovery',
+    clusterName: acd?.clusterName || '',
   };
+
+  const sync = useSyncFluxObject([objectRef] as ObjectRef[]);
+  if (!acd) {
+    return null;
+  }
 
   return (
     <Page
@@ -174,8 +193,8 @@ function ClusterDiscoveryDetails({
             </Box>
           </Flex>
         </Box>
-        <SubRouterTabs rootPath={`${path}/details`}>
-          <RouterTab name="Details" path={`${path}/details`}>
+        <SubRouterTabs rootPath={`details`}>
+          <RouterTab name="Details" path={`details`}>
             <Box style={{ width: '100%' }}>
               <InfoList
                 data-testid="info-list"
@@ -200,7 +219,7 @@ function ClusterDiscoveryDetails({
               </TableWrapper>
             </Box>
           </RouterTab>
-          <RouterTab name="Events" path={`${path}/events`}>
+          <RouterTab name="Events" path={`events`}>
             <ListEvents
               clusterName={acd?.clusterName}
               involvedObject={{
@@ -210,7 +229,7 @@ function ClusterDiscoveryDetails({
               }}
             />
           </RouterTab>
-          <RouterTab name="Graph" path={`${path}/graph`}>
+          <RouterTab name="Graph" path={`graph`}>
             <RequestStateHandler
               loading={isLoading}
               error={error as RequestError}
@@ -222,7 +241,7 @@ function ClusterDiscoveryDetails({
               />
             </RequestStateHandler>
           </RouterTab>
-          <RouterTab name="Yaml" path={`${path}/yaml`}>
+          <RouterTab name="Yaml" path={`yaml`}>
             <YamlView
               yaml={acd?.yaml}
               header={createYamlCommand(acd?.type, acd?.name, acd?.namespace)}

@@ -9,6 +9,8 @@
 /user-guide/public
 /user-guide/resources/_gen
 
+coverage
+
 # Recovery files from vim
 *.swp
 

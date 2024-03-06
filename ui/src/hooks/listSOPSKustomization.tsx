@@ -1,4 +1,3 @@
-import { ReactQueryOptions } from '@choclab/weave-gitops/ui/lib/types';
 import { useContext } from 'react';
 import { useQuery } from 'react-query';
 import {
@@ -6,7 +5,9 @@ import {
   ListSopsKustomizationsResponse,
 } from '../cluster-services/cluster_services.pb';
 import { useEnterpriseClient } from '../contexts/API';
+//import { ReactQueryOptions } from '../gitops.d';
 import { RequestError } from '../types/custom';
+import { ReactQueryOptions } from '../weave/lib/types';
 
 export function useListKustomizationSOPS(
   req: ListSopsKustomizationsRequest,

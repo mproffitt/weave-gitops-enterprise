@@ -1,14 +1,19 @@
-import {
+import React, { FC } from 'react';
+/*import {
+  HelmRelease,
   HelmReleaseDetail,
   Kind,
   useGetObject,
-} from '@choclab/weave-gitops';
-import { HelmRelease } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+} from '../../gitops.d';*/
+import { HelmRelease } from '../../weave/lib/objects';
+import HelmReleaseDetail from '../../weave/components/HelmReleaseDetail';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { useGetObject } from '../../weave/hooks/objects';
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { EditButton } from '../Templates/Edit/EditButton';
+import { ImageOutlined } from '@mui/icons-material';
 
 type Props = {
   name: string;
@@ -45,7 +50,7 @@ const WGApplicationsHelmRelease: FC<Props> = props => {
         {!error && !isLoading && (
           <HelmReleaseDetail
             helmRelease={helmRelease}
-            customActions={[<EditButton resource={helmRelease} />]}
+            customActions={helmRelease ? [<EditButton resource={helmRelease} />] : []}
             {...props}
           />
         )}

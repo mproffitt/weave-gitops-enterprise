@@ -2,8 +2,11 @@ import {
   Canary,
   CanaryMetricTemplate,
 } from '@choclab/progressive-delivery/api/prog/types.pb';
-import { CopyToClipboard, createYamlCommand } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
+import { createYamlCommand } from '../weave/lib/utils';
+import CopyToClipboard from '../weave/components/CopyToCliboard';
+//import { CopyToClipboard, createYamlCommand } from '../gitops.d';
 
 type Props = {
   className?: string;

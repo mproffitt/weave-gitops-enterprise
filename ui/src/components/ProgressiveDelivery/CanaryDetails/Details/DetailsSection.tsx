@@ -2,7 +2,11 @@ import {
   Automation,
   Canary,
 } from '@choclab/progressive-delivery/api/prog/types.pb';
-import { Flex, Link, formatURL } from '@choclab/weave-gitops';
+import React from 'react';
+//import { Flex, Link, formatURL } from '../../../../gitops.d';
+import Flex from '../../../../weave/components/Flex';
+import Link from '../../../../weave/components/Link';
+import { formatURL } from '../../../../weave/lib/nav';
 import { getKindRoute } from '../../../../utils/nav';
 import { ClusterDashboardLink } from '../../../Clusters/ClusterDashboardLink';
 import RowHeader from '../../../RowHeader';

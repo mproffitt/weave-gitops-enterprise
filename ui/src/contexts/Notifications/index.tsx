@@ -11,6 +11,6 @@ type NotificationContext = {
   setNotifications: Dispatch<React.SetStateAction<NotificationData[] | []>>;
 };
 
-export const Notification = createContext<NotificationContext | null>(null);
+export const Notification = createContext<NotificationContext | null>({} as NotificationContext);
 
 export default () => useContext(Notification) as NotificationContext;

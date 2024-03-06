@@ -1,31 +1,33 @@
 import _ from 'lodash';
 import qs from 'query-string';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { QueryState } from './hooks';
 
 // We split this into an interface to allow for different implmentations in the future.
 // The default implementation is URLQueryStateManager, which reads from the browser URL.
 // That might not be the best to use in all situations, so the explorer is configuragble.
 export interface QueryStateManager {
-  read(): QueryState;
+  read(search: string): QueryState;
   write(state: QueryState): void;
 }
 
 const DEFAULT_LIMIT = 25;
 
 export class URLQueryStateManager implements QueryStateManager {
-  private history: ReturnType<typeof useHistory>;
+  private navigate: ReturnType<typeof useNavigate>;
+  private location: ReturnType<typeof useLocation>;
 
-  constructor(history: ReturnType<typeof useHistory>) {
-    this.history = history;
+  constructor(navigate: ReturnType<typeof useNavigate>, location: ReturnType<typeof useLocation>) {
+    this.navigate = navigate;
+    this.location = location;
 
     this.read = this.read.bind(this);
     this.write = this.write.bind(this);
   }
 
-  read(): QueryState {
+  read(search: string): QueryState {
     const { terms, qFilters, limit, orderBy, descending, offset } = qs.parse(
-      this.history.location.search,
+      search,
       { arrayFormat: 'comma' },
     );
 
@@ -62,6 +64,6 @@ export class URLQueryStateManager implements QueryStateManager {
       { skipNull: true, skipEmptyString: true, arrayFormat: 'comma' },
     );
 
-    this.history.push(`?${q}`);
+    this.navigate({...this.location, search: q}, { replace: true, state: queryState});
   }
 }

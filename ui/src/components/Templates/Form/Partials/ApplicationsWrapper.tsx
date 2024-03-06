@@ -1,6 +1,10 @@
-import { Grid, createStyles, makeStyles } from '@material-ui/core';
-import { Button, Icon, IconType } from '@choclab/weave-gitops';
+import { Grid } from '@mui/material';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { Dispatch, FC } from 'react';
+//import { Button, Icon, IconType } from '../../../../gitops.d';
+import Button from '../../../../weave/components/Button';
+import Icon, { IconType } from '../../../../weave/components/Icon';
 import AppFields from '../../../Applications/Add/form/Partials/AppFields';
 
 const useStyles = makeStyles(() =>

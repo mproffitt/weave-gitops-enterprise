@@ -1,6 +1,5 @@
-import { Badge, Tooltip } from '@material-ui/core';
-import { Link, formatURL } from '@choclab/weave-gitops';
-import { FC } from 'react';
+import { Badge, Tooltip } from '@mui/material';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Azure from '../../assets/img/Azure.svg';
 import Docker from '../../assets/img/docker.svg';
@@ -12,6 +11,9 @@ import Openshift from '../../assets/img/Openshift.svg';
 import Rancher from '../../assets/img/Rancher.svg';
 import VCluster from '../../assets/img/VCluster.svg';
 import Vsphere from '../../assets/img/Vsphere.svg';
+//import { Link, formatURL } from '../../gitops.d';
+import Link from '../../weave/components/Link';
+import { formatURL } from '../../weave/lib/nav';
 import { GitopsClusterEnriched } from '../../types/custom';
 import { Routes } from '../../utils/nav';
 

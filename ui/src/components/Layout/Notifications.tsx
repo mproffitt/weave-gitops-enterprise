@@ -1,12 +1,16 @@
-import { Box, Collapse } from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
-import { Button, Icon, IconType, Text } from '@choclab/weave-gitops';
-import { FC } from 'react';
+import { Box, Collapse } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import useNotifications, {
   NotificationData,
 } from '../../contexts/Notifications';
+//import { Button, Icon, IconType, Text } from '../../gitops.d';
+import Button from '../../weave/components/Button';
+import Icon, { IconType } from '../../weave/components/Icon';
+import Text from '../../weave/components/Text';
 import { ErrorIcon, SuccessIcon, WarningIcon } from '../RemoteSVGIcon';
+import Spacer from '../../weave/components/Spacer';
 
 interface Props {
   isClearable?: boolean;
@@ -105,7 +109,16 @@ const Notifications: FC<Props> = ({ notifications, isClearable = true }) => {
             }
           >
             {getIcon(n?.severity)}
-            <Text color="black">{n?.message.text}</Text> {n?.message.component}
+            <Spacer padding="xs" />
+            {
+              n?.message.text && (
+                <>
+                  <Text color="black">{n?.message.text}</Text>
+                  <Spacer padding="xs" />
+                </>
+              )
+            }
+            {n?.message.component}
           </Alert>
         </Collapse>
       </BoxWrapper>

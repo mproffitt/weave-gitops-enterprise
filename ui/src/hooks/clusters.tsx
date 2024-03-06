@@ -1,4 +1,3 @@
-import { ReactQueryOptions } from '@choclab/weave-gitops/ui/lib/types';
 import fileDownload from 'js-file-download';
 import { useCallback, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
@@ -8,11 +7,13 @@ import {
 } from '../cluster-services/cluster_services.pb';
 import { useEnterpriseClient } from '../contexts/API';
 import useNotifications from '../contexts/Notifications';
+//import { ReactQueryOptions } from '../gitops.d';
 import {
   GitopsClusterEnriched,
   DeleteClustersPRRequestEnriched,
 } from '../types/custom';
 import { rawRequest } from '../utils/request';
+import { ReactQueryOptions } from '../weave/lib/types';
 
 const CLUSTERS_POLL_INTERVAL = 5000;
 

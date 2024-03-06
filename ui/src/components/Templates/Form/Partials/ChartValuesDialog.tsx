@@ -3,11 +3,9 @@ import {
   DialogActions,
   DialogContent,
   TextareaAutosize,
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Alert } from '@material-ui/lab';
-import { Button, Icon, IconType } from '@choclab/weave-gitops';
-import { ChangeEvent, FC, useState } from 'react';
+ Alert } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { useQuery } from 'react-query';
 import {
   ClusterNamespacedName,
@@ -17,6 +15,10 @@ import {
   RepositoryRef,
 } from '../../../../cluster-services/cluster_services.pb';
 import { useEnterpriseClient } from '../../../../contexts/API';
+//import { Button, Icon, IconType } from '../../../../gitops.d';
+import Button from '../../../../weave/components/Button';
+import Icon, { IconType } from '../../../../weave/components/Icon';
+
 import { UpdatedProfile } from '../../../../types/custom';
 import { DEFAULT_PROFILE_REPO } from '../../../../utils/config';
 import { Loader } from '../../../Loader';

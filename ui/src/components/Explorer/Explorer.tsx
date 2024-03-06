@@ -1,13 +1,16 @@
 // @ts-ignore
-import { CircularProgress, IconButton } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import { Flex, Icon, IconType } from '@choclab/weave-gitops';
+import { Alert, CircularProgress } from '@mui/material';
 import _ from 'lodash';
-import { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Facet } from '../../api/query/query.pb';
+//import { Flex, Icon, IconType, ThemeTypes } from '../../gitops.d';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import { ThemeTypes } from '../../weave/contexts/AppContext';
 import { useListFacets, useQueryService } from '../../hooks/query';
+import { IconButton } from '../../weave/components/Button';
 import ExplorerTable, {
   ExplorerField,
   defaultExplorerFields,
@@ -44,14 +47,17 @@ function Explorer({
   manager,
   fields,
 }: Props) {
-  const history = useHistory();
-  if (!manager) {
-    manager = new URLQueryStateManager(history);
-  }
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const search = location.search;
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
   const { data: facetsRes } = useListFacets(category);
-  const queryState = manager.read();
+
+  if (!manager) {
+    manager = new URLQueryStateManager(navigate, location);
+  }
+
+  const queryState = manager.read(search);
   const setQueryState = manager.write;
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -79,6 +85,7 @@ function Explorer({
 
   const filteredFacets = filterFacetsForCategory(facetsRes?.facets, category);
 
+  // Set up the effect for the filter drawer
   useEffect(() => {
     if (!inputRef.current) {
       return;
@@ -99,7 +106,7 @@ function Explorer({
   const tableFields: ExplorerField[] = (fields || defaultExplorerFields).map(
     field => ({
       ...field,
-      defaultSort: queryState.orderBy === field.id,
+      defaultSort: queryState.orderBy ? (queryState.orderBy === field.id) : field.defaultSort,
     }),
   );
 
@@ -116,7 +123,6 @@ function Explorer({
   return (
     <QueryStateProvider manager={manager}>
       <div className={className}>
-        {error && <Alert severity="error">{error.message}</Alert>}
         <Flex align wide>
           <div style={{ marginLeft: '0 auto', width: 80 }}>
             <CircularProgress
@@ -126,9 +132,14 @@ function Explorer({
           </div>
           <Flex align wide end>
             <QueryStateChips />
-            <IconButton onClick={() => setFilterDrawerOpen(!filterDrawerOpen)}>
+            <IconButton
+              onClick={() => setFilterDrawerOpen(!filterDrawerOpen)}
+              size="large"
+              variant={filterDrawerOpen ? 'contained' : 'text'}
+              color="inherit"
+            >
               <Icon
-                size="normal"
+                size="medium"
                 type={IconType.FilterIcon}
                 color="neutral30"
               />
@@ -149,7 +160,7 @@ function Explorer({
             onClose={() => setFilterDrawerOpen(false)}
             open={filterDrawerOpen}
           >
-            <QueryInput innerRef={inputRef} />
+            <QueryInput inputRef={inputRef} />
 
             <Filters
               facets={filteredFacets || []}
@@ -170,13 +181,25 @@ function Explorer({
 
 export default styled(Explorer).attrs({ className: Explorer.name })`
   width: 100%;
-`;
+  //override so filter dialog button stays highlighted, but color is too bright in dark mode
+  .MuiButton-contained {
+    ${(props) =>
+      props.theme.mode === ThemeTypes.Dark
+        ? `background-color: ${props.theme.colors.neutral10};`
+        : null}
+  }
+  .MuiButton-text {
+    &:hover {
+      background-color: ${(props) => props.theme.colors.neutral10};
+    }
+  }
+  `;
 
 // Gray out the table while we are responding to a query. This is a visual indication to the user the explorer is "thinking".
 // This will animate on query changes (including ordering), but not on refretches.
 const ExplorerTableWithBusyAnimation = styled(ExplorerTable)<{ busy: boolean }>`
   table tbody {
-    opacity: ${props => (props.busy ? '0.5' : '1')};
+    opacity: ${(props) => (props.busy ? '0.5' : '1')};
   }
 `;
 

@@ -1,5 +1,7 @@
-import { Flex } from '@choclab/weave-gitops';
+import React from 'react';
 import { useGetPolicyConfigDetails } from '../../../contexts/PolicyConfigs';
+//import { Flex } from '../../../gitops.d';
+import Flex from '../../../weave/components/Flex';
 import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';

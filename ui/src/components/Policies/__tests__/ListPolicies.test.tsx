@@ -1,5 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { CoreClientContextProvider } from '@choclab/weave-gitops';
+import React from 'react';
+//import { CoreClientContextProvider } from '../../../gitops.d';
+import CoreClientContextProvider from '../../../weave/contexts/CoreClientContext';
 import {
   defaultContexts,
   CoreClientMock,
@@ -81,14 +83,18 @@ describe('ListPolicies', () => {
     );
 
     // Next Error
-    const nextError = screen.queryByTestId('nextError');
-    nextError?.click();
+    await act(async () => {
+      const nextError = screen.queryByTestId('nextError');
+      nextError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent('second Error message');
 
     // Prev error
-    const prevError = screen.queryByTestId('prevError');
-    prevError?.click();
+    await act(async () => {
+      const prevError = screen.queryByTestId('prevError');
+      prevError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent(
       'no matches for kind "Policy" in version "pac.weave.works/v2beta1"',

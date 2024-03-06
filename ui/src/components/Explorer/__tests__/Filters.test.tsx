@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
-import { withContext } from '../../../utils/test-utils';
+import React from 'react';
+import { defaultContexts, withContext } from '../../../utils/test-utils';
 import Filters from '../Filters';
 import { QueryState, QueryStateProvider } from '../hooks';
 import { QueryStateManager } from '../QueryStateManager';
@@ -21,7 +22,10 @@ describe('Filters', () => {
       write: jest.fn(),
     };
 
-    wrap = withContext([[QueryStateProvider, { manager }]]);
+    wrap = withContext([
+      ...defaultContexts(),
+      [QueryStateProvider, { manager }]
+    ]);
   });
 
   it('selects filters', () => {

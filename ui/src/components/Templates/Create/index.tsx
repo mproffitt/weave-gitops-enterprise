@@ -1,10 +1,11 @@
+import React, { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 import useTemplates from '../../../hooks/templates';
 import { Page } from '../../Layout/App';
 import { NotificationsWrapper, Title } from '../../Layout/NotificationsWrapper';
 import ResourceForm from '../Form';
 
-const CreateResourcePage = () => {
+const CreateResourcePage : FC = () => {
   const { search } = useLocation();
   const templateName = new URLSearchParams(search).get('name') as string;
   const { getTemplate, isLoading } = useTemplates();

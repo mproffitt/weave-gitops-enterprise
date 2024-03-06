@@ -1,9 +1,11 @@
-import Grid from '@material-ui/core/Grid';
-import { Kind, useGetObject } from '@choclab/weave-gitops';
-import { FC } from 'react';
-import { Redirect } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import React, { FC } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useGetPipeline } from '../../../contexts/Pipelines';
 import { useGetTerraformObjectDetail } from '../../../contexts/Terraform';
+//import { Kind, useGetObject } from '../../../gitops.d';
+import { useGetObject } from '../../../weave/hooks/objects';
+import { Kind } from '../../../weave/lib/api/core/types.pb';
 import useClusters from '../../../hooks/clusters';
 import useTemplates from '../../../hooks/templates';
 import { Routes } from '../../../utils/nav';
@@ -22,22 +24,15 @@ const EditResource: FC<{
 
   if (!templateName) {
     return (
-      <Redirect
-        to={{
-          pathname: Routes.Clusters,
-          state: {
-            notification: [
-              {
-                message: {
-                  text: 'No edit information is available for this resource.',
-                },
-                severity: 'error',
-              },
-            ],
+      <Navigate to={Routes.Clusters}
+        state={{
+          notification: [{ message: {
+            text: 'No edit information is available for this resource.'
           },
+          severity: 'error'}]
         }}
-      />
-    );
+        replace={true} />
+    )
   }
 
   return (

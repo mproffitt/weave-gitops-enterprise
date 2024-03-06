@@ -1,4 +1,5 @@
-import { Size, Table, TableBody } from '@material-ui/core';
+import { Table, TableBody, TableOwnProps } from '@mui/material';
+import React from 'react';
 import styled from 'styled-components';
 import { KeyValueRow } from '../../RowHeader';
 
@@ -8,7 +9,7 @@ const DynamicTable = ({
   classes,
 }: {
   obj: Object;
-  tableSize?: Size;
+  tableSize?: TableOwnProps['size'];
   classes?: string;
 }) => {
   return (

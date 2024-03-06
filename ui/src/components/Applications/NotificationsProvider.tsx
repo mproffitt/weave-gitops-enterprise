@@ -1,11 +1,16 @@
-import {
+import React, { FC } from 'react';
+/*import {
   Kind,
   ProviderDetail,
   useGetObject,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { Provider } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+  Provider,
+} from '../../gitops.d';*/
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import ProviderDetail from '../../weave/components/ProviderDetail';
+import { useGetObject } from '../../weave/hooks/objects';
+import { V2Routes } from '../../weave/lib/types';
+import { Provider } from '../../weave/lib/objects';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

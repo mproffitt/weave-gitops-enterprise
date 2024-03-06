@@ -1,5 +1,7 @@
-import { PolicyTable } from '@choclab/weave-gitops';
+import React from 'react';
 import { useListPolicies } from '../../contexts/PolicyViolations';
+//import { PolicyTable } from '../../gitops.d';
+import { PolicyTable } from '../../weave/components/Policies/PolicyList/PolicyTable';
 import { TableWrapper } from '../Shared';
 import LoadingWrapper from '../Workspaces/WorkspaceDetails/Tabs/WorkspaceTabsWrapper';
 

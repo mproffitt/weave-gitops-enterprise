@@ -1,3 +1,4 @@
+import React from 'react';
 import { useListCanaries } from '../../../contexts/ProgressiveDelivery';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';
 import { CanaryTable } from './Table';

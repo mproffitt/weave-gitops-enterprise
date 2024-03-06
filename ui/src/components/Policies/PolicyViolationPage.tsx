@@ -1,14 +1,23 @@
-import {
+import React from 'react';
+import styled from 'styled-components';
+import { useGetPolicyValidationDetails } from '../../contexts/PolicyViolations';
+/*import {
+  Breadcrumb,
   FluxObject,
   Kind,
+  PolicyValidation,
   V2Routes,
   ViolationDetails,
   formatURL,
-} from '@choclab/weave-gitops';
-import { Breadcrumb } from '@choclab/weave-gitops/ui/components/Breadcrumbs';
-import { PolicyValidation } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
-import styled from 'styled-components';
-import { useGetPolicyValidationDetails } from '../../contexts/PolicyViolations';
+} from '../../gitops.d';*/
+import { Breadcrumb } from '../../weave/components/Breadcrumbs';
+import { FluxObject } from '../../weave/lib/objects';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { PolicyValidation } from '../../weave/lib/api/core/core.pb';
+import { V2Routes } from '../../weave/lib/types';
+import { ViolationDetails } from "../../weave/components/Policies/PolicyViolations/PolicyViolationDetails";
+import { formatURL } from '../../weave/lib/nav';
+
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';

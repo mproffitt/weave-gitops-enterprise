@@ -1,5 +1,6 @@
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid } from '@mui/material';
 import _ from 'lodash';
+import React from 'react';
 import styled from 'styled-components';
 
 export type KeyValuePairs = [string, any][];

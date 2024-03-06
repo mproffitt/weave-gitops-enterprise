@@ -1,10 +1,22 @@
-import { NotificationsTable, useListProviders } from '@choclab/weave-gitops';
-import { Provider } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { NotificationData } from '../../contexts/Notifications';
+/*import {
+  NotificationsTable,
+  useListProviders,
+  Provider
+} from '../../gitops.d';*/
+import NotificationsTable from '../../weave/components/NotificationsTable';
+import { useListProviders } from '../../weave/hooks/notifications';
+import { Provider } from '../../weave/lib/objects';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 
-const WGNotifications: FC = () => {
+type Props = {
+  className?: string;
+  location: { state: { notification: NotificationData[] } };
+};
+
+const WGNotifications: FC<Props> = ({ location, className }) => {
   const { data, isLoading, error } = useListProviders();
 
   return (

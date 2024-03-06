@@ -4,21 +4,8 @@ import { GitProvider } from '../../api/gitauth/gitauth.pb';
 import { useIsAuthenticated } from '../../hooks/gitprovider';
 import { getRepositoryUrl } from '../Templates/Form/utils';
 import { GithubDeviceAuthModal } from './GithubDeviceAuthModal';
-import { RepoInputWithAuth } from './RepoInputWithAuth';
+import { RepoInputWithAuthWrapper } from './RepoInputWithAuth';
 import { getProviderToken } from './utils';
-
-const RepoInputWithAuthWrapper = styled(RepoInputWithAuth)`
-  width: 100%;
-  & .auth-message {
-    padding-right: ${({ theme }) => theme.spacing.medium};
-    button {
-      min-width: 250px;
-    }
-    div {
-      padding-right: ${({ theme }) => theme.spacing.small};
-    }
-  }
-`;
 
 const GitAuth: FC<{
   formData: any;

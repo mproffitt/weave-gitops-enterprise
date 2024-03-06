@@ -1,3 +1,4 @@
+import React from 'react';
 import { useGetCanaryDetails } from '../../../contexts/ProgressiveDelivery';
 import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';

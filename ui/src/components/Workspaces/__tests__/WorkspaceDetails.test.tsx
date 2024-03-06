@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import moment from 'moment';
+import React from 'react';
 import { WorkspaceRoleBindingSubject } from '../../../cluster-services/cluster_services.pb';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
@@ -196,6 +197,7 @@ describe('WorkspaceDetails', () => {
       ListRoles.length,
     );
 
+
     const sortRowsByAge = mappedRoles(
       ListRoles.sort((a, b) => {
         const t1 = new Date(a.timestamp).getTime();
@@ -204,7 +206,7 @@ describe('WorkspaceDetails', () => {
       }),
     );
 
-    filterTable.testSorthTableByColumn('Age', sortRowsByAge);
+    await filterTable.testSorthTableByColumn('Age', sortRowsByAge);
   });
 
   it('renders Role Binding tab', async () => {
@@ -272,6 +274,6 @@ describe('WorkspaceDetails', () => {
       }),
     );
 
-    filterTable.testSorthTableByColumn('Age', sortRowsByAge);
+    await filterTable.testSorthTableByColumn('Age', sortRowsByAge);
   });
 });

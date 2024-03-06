@@ -1,13 +1,18 @@
-import {
+import moment from 'moment';
+import React, { FC } from 'react';
+import { PolicyConfigListItem } from '../../../cluster-services/cluster_services.pb';
+/*import {
   DataTable,
   Link,
   Text,
   filterConfig,
   formatURL
-} from '@choclab/weave-gitops';
-import moment from 'moment';
-import { FC } from 'react';
-import { PolicyConfigListItem } from '../../../cluster-services/cluster_services.pb';
+} from '../../../gitops.d';*/
+import DataTable, { filterConfig } from '../../../weave/components/DataTable';
+import Link from '../../../weave/components/Link';
+import Text from '../../../weave/components/Text';
+import { formatURL } from '../../../weave/lib/nav';
+
 import { Routes } from '../../../utils/nav';
 import {
   PolicyConfigsTableWrapper,
@@ -86,10 +91,7 @@ export const PolicyConfigsTable: FC<Props> = ({ PolicyConfigs }) => {
           {
             label: 'Age',
             value: ({ age }) => moment(age).fromNow(),
-            sortValue: ({ age }) => {
-              const t = age && new Date(age).getTime();
-              return t * -1;
-            },
+            sortValue: ({ age }) => age ? new Date(age).getTime() * -1 : 0,
           },
         ]}
       />

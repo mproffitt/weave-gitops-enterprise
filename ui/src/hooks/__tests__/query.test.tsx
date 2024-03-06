@@ -1,4 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
+import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { APIs, EnterpriseClientContext } from '../../contexts/API';
 import { MockQueryService, newMockQueryService } from '../../utils/test-utils';

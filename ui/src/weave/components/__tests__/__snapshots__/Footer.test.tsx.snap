@@ -1,0 +1,371 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer snapshots default 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.c3 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.c6 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  color: #00b3ec;
+}
+
+.c8 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.c9 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+}
+
+.c10 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  font-style: normal;
+}
+
+.c4 {
+  padding: 4px;
+}
+
+.c5 {
+  text-decoration: none;
+}
+
+.c7 {
+  padding-right: 24px;
+}
+
+.c1 {
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #F6F7F9;
+  color: #737373;
+  padding: 24px;
+  border-radius: 0 0 8px 8px;
+}
+
+<footer
+  class="c0 c1 Footer"
+  role="footer"
+>
+  <div
+    class="c2"
+  >
+    <span
+      class="c3"
+    >
+      Need help? Contact us at
+    </span>
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <a
+      class="c5 Link"
+      href="mailto:sales@weave.works"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <span
+        class="c6"
+        color="primary"
+      >
+        sales@weave.works
+      </span>
+    </a>
+  </div>
+  <div
+    class="c2 c7"
+  >
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <div
+      class="c2 Version"
+    >
+      <span
+        class="c8"
+      >
+        Kubernetes
+        :
+      </span>
+      <div
+        class="c4"
+        padding="xxs"
+      />
+      <span
+        class="c9"
+      >
+        -
+      </span>
+    </div>
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <div
+      class="c2 Version"
+    >
+      <span
+        class="c8"
+      >
+        Weave GitOps
+        :
+      </span>
+      <div
+        class="c4"
+        padding="xxs"
+      />
+      <a
+        class="c5 Link"
+        href="https://github.com/weaveworks/weave-gitops/commit/123abcd"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <span
+          class="c6"
+          color="primary"
+        >
+          <span
+            class="c10"
+          >
+            mybranch-123abcd
+          </span>
+        </span>
+      </a>
+    </div>
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <span
+      class="c3"
+    >
+      © 
+      2024
+       Weaveworks
+    </span>
+  </div>
+</footer>
+`;
+
+exports[`Footer snapshots no api version 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.c3 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.c6 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  color: #00b3ec;
+}
+
+.c8 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.c9 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+}
+
+.c10 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  font-style: normal;
+}
+
+.c4 {
+  padding: 4px;
+}
+
+.c5 {
+  text-decoration: none;
+}
+
+.c7 {
+  padding-right: 24px;
+}
+
+.c1 {
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #F6F7F9;
+  color: #737373;
+  padding: 24px;
+  border-radius: 0 0 8px 8px;
+}
+
+<footer
+  class="c0 c1 Footer"
+  role="footer"
+>
+  <div
+    class="c2"
+  >
+    <span
+      class="c3"
+    >
+      Need help? Contact us at
+    </span>
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <a
+      class="c5 Link"
+      href="mailto:sales@weave.works"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <span
+        class="c6"
+        color="primary"
+      >
+        sales@weave.works
+      </span>
+    </a>
+  </div>
+  <div
+    class="c2 c7"
+  >
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <div
+      class="c2 Version"
+    >
+      <span
+        class="c8"
+      >
+        Kubernetes
+        :
+      </span>
+      <div
+        class="c4"
+        padding="xxs"
+      />
+      <span
+        class="c9"
+      >
+        -
+      </span>
+    </div>
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <div
+      class="c2 Version"
+    >
+      <span
+        class="c8"
+      >
+        Weave GitOps
+        :
+      </span>
+      <div
+        class="c4"
+        padding="xxs"
+      />
+      <a
+        class="c5 Link"
+        href="https://github.com/weaveworks/weave-gitops/releases/tag/v0.1.0"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <span
+          class="c6"
+          color="primary"
+        >
+          <span
+            class="c10"
+          >
+            v0.1.0
+          </span>
+        </span>
+      </a>
+    </div>
+    <div
+      class="c4"
+      padding="xxs"
+    />
+    <span
+      class="c3"
+    >
+      © 
+      2024
+       Weaveworks
+    </span>
+  </div>
+</footer>
+`;

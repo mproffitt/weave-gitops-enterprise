@@ -1,5 +1,5 @@
-import { Theme } from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/styles';
+import { Theme } from '@mui/material';
+import { createStyles, makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 

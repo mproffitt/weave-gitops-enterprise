@@ -1,121 +1,96 @@
-import { MuiThemeProvider } from '@material-ui/core';
 import { act, render, RenderResult, screen } from '@testing-library/react';
-import {
+import React from 'react';
+import Applications from '../';
+/*import {
   AppContextProvider,
   CoreClientContextProvider,
   Kind,
   theme,
   ThemeTypes,
-} from '@choclab/weave-gitops';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { MemoryRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import Applications from '../';
-import { EnterpriseClientProvider } from '../../../contexts/API';
-import NotificationsProvider from '../../../contexts/Notifications/Provider';
-import RequestContextProvider from '../../../contexts/Request';
-import { muiTheme } from '../../../muiTheme';
+} from '../../../gitops.d';*/
+import { ThemeTypes } from '../../../weave/contexts/AppContext';
+import { Kind } from '../../../weave/lib/api/core/types.pb';
+import theme from '../../../weave/lib/theme';
+
 import {
   ApplicationsClientMock,
-  CoreClientMock,
-  EnterpriseClientMock,
+  defaultContexts,
+  MockQueryService,
+  newMockQueryService,
   withContext,
 } from '../../../utils/test-utils';
+import { EnterpriseClientContext } from '../../../contexts/API';
 
 describe('Applications index test', () => {
   let wrap: (el: JSX.Element) => JSX.Element;
-  let api: CoreClientMock;
-  let appsApi: ApplicationsClientMock;
+  let api: MockQueryService;
   const appliedTheme = theme(ThemeTypes.Light);
   beforeEach(() => {
-    window.matchMedia = jest.fn();
-    //@ts-ignore
-    window.matchMedia.mockReturnValue({ matches: false });
-    api = new CoreClientMock();
-    appsApi = new ApplicationsClientMock();
+    api = newMockQueryService();
     wrap = withContext([
-      [ThemeProvider, { theme: appliedTheme }],
-      [
-        MuiThemeProvider,
-        { theme: muiTheme(appliedTheme.colors, ThemeTypes.Light) },
-      ],
-      [AppContextProvider],
-      [
-        RequestContextProvider,
-        { fetch: () => new Promise(accept => accept(null)) },
-      ],
-      [QueryClientProvider, { client: new QueryClient() }],
-      [
-        EnterpriseClientProvider,
-        {
-          enterprise: new EnterpriseClientMock(),
-        },
-      ],
-      [CoreClientContextProvider, { api }],
-      [EnterpriseClientProvider, { gitAuth: appsApi }],
-      [MemoryRouter],
-      [NotificationsProvider],
+      ...defaultContexts(),
+      [EnterpriseClientContext.Provider, { value: { query: api } }],
     ]);
   });
+
   it('renders table rows', async () => {
-    api.ListObjectsReturns = {
-      [Kind.Kustomization]: {
-        errors: [],
-        objects: [
-          {
-            uid: 'uid1',
-            payload: JSON.stringify({
-              // maybe?
-              apiVersion: 'kustomize.toolkit.fluxcd.io/v1beta2',
-              kind: 'Kustomization',
-              metadata: {
-                namespace: 'my-ns',
-                name: 'my-kustomization',
-                uid: 'uid1',
-              },
-              spec: {
-                path: './',
-                interval: {},
-                sourceRef: {},
-              },
-              status: {
-                conditions: [],
-                lastAppliedRevision: '',
-                lastAttemptedRevision: '',
-                inventory: [],
-              },
-            }),
-            clusterName: 'my-cluster',
-          },
-        ],
+
+    const objects = [
+      {
+        kind: Kind.Kustomization,
+        name: 'my-kustomization',
+        namespace: 'my-ns',
+        status: 'Ready',
       },
+    ];
+
+    api.DoQueryReturns = {
+      objects,
     };
 
+    let result: RenderResult;
     await act(async () => {
       const c = wrap(<Applications />);
-      render(c);
+      result = render(c);
     });
 
-    expect(await screen.findByText('my-kustomization')).toBeTruthy();
+    // @ts-ignore
+    expect(result.container).toHaveTextContent('my-kustomization');
   });
 
   describe('snapshots', () => {
     it('loading', async () => {
-      await act(async () => {
-        const c = wrap(<Applications />);
-        const result = render(c);
-
-        expect(result.container).toMatchSnapshot();
-      });
-    });
-    it('success', async () => {
       let result: RenderResult;
       await act(async () => {
         const c = wrap(<Applications />);
-        result = await render(c);
+        result = render(c);
+
       });
 
-      //   @ts-ignore
+      // @ts-ignore
+      expect(result.container).toMatchSnapshot();
+    });
+
+    it('success', async () => {
+      const objects = [
+        {
+          kind: Kind.Kustomization,
+          name: 'my-kustomization',
+          namespace: 'my-ns',
+          status: 'Ready',
+        },
+      ];
+      api.DoQueryReturns = {
+        objects,
+      };
+
+      let result: RenderResult;
+      await act(async () => {
+        const c = wrap(<Applications />);
+        result = render(c);
+      });
+
+      // @ts-ignore
       expect(result.container).toMatchSnapshot();
     });
   });

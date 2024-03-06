@@ -1,7 +1,9 @@
-import { MenuItem } from '@material-ui/core';
-import { Flex, Text } from '@choclab/weave-gitops';
-import { Dispatch } from 'react';
+import { MenuItem } from '@mui/material';
+import React, { Dispatch } from 'react';
 import { PolicyConfigApplicationMatch } from '../../../../../cluster-services/cluster_services.pb';
+//import { Flex, Text } from '../../../../../gitops.d';
+import Flex from '../../../../../weave/components/Flex';
+import Text from '../../../../../weave/components/Text';
 import { Select } from '../../../../../utils/form';
 import { ListApplications } from './ListApplications';
 import { ListWorkSpaces } from './ListWorkSpaces';
@@ -73,13 +75,13 @@ export const SelectMatchType = ({
           required
           label=""
           value={matchType || ''}
-          onChange={e => handleFormData('matchType', e.target.value)}
+          onChange={(e: { target: { value: any; }; }) => handleFormData('matchType', e.target.value)}
           error={formError === 'matchType' && !matchType}
         >
           {matchTypeList?.map((option, index: number) => {
             return (
               <MenuItem key={index} value={option}>
-                <Text size="base" capitalize>
+                <Text size="medium" capitalize>
                   {option}
                 </Text>
               </MenuItem>

@@ -1,4 +1,9 @@
-import { Button, Flex, MessageBox, Text } from '@choclab/weave-gitops';
+import React from 'react';
+//import { Button, Flex, MessageBox, Text } from '../../gitops.d';
+import Button from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import MessageBox from '../../weave/components/MessageBox';
+import Text from '../../weave/components/Text';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { LinkTag } from '../Shared';
 

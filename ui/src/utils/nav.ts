@@ -1,4 +1,7 @@
-import { Kind, V2Routes } from '@choclab/weave-gitops';
+//import { Kind, V2Routes } from '../gitops.d';
+
+import { Kind } from "../weave/lib/api/core/types.pb";
+import { V2Routes } from "../weave/lib/types";
 
 export enum Routes {
   Applications = '/applications',

@@ -1,11 +1,17 @@
-import {
+import React, { FC } from 'react';
+/*import {
+  GitRepository,
   GitRepositoryDetail,
   Kind,
   useGetObject,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { GitRepository } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+} from '../../gitops.d';*/
+import { GitRepository } from '../../weave/lib/objects';
+import GitRepositoryDetail from '../../weave/components/GitRepositoryDetail';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { useGetObject } from '../../weave/hooks/objects';
+import { V2Routes } from '../../weave/lib/types';
+
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { EditButton } from '../Templates/Edit/EditButton';
@@ -19,7 +25,7 @@ type Props = {
 const WGApplicationsGitRepository: FC<Props> = props => {
   const { name, namespace, clusterName } = props;
   const {
-    data: gitRepository,
+    data: gitRepository = {} as GitRepository,
     isLoading,
     error,
   } = useGetObject<GitRepository>(

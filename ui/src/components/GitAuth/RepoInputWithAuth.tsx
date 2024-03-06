@@ -1,16 +1,22 @@
-import { MenuItem } from '@material-ui/core';
-import {
-  Button,
-  Flex,
-  Icon,
-  IconType,
-  useListSources,
-} from '@choclab/weave-gitops';
+import { MenuItem } from '@mui/material';
 import * as React from 'react';
 import styled from 'styled-components';
 import { GitProvider } from '../../api/gitauth/gitauth.pb';
 import { useEnterpriseClient } from '../../contexts/API';
 import { useParseRepoUrl } from '../../contexts/GitAuth';
+/*import {
+  Button,
+  Flex,
+  Icon,
+  IconType,
+  useListSources,
+} from '../../gitops.d';*/
+
+import Button from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import { useListSources } from '../../weave/hooks/sources';
+
 import { Select, SelectProps } from '../../utils/form';
 import { getGitRepos } from '../Clusters';
 import { getRepositoryUrl } from '../Templates/Form/utils';
@@ -33,6 +39,7 @@ type Props = SelectProps & {
   enableGitRepoSelection?: boolean;
   value: string;
   loading: boolean;
+  id?: string;
 };
 
 export function RepoInputWithAuth({
@@ -148,3 +155,17 @@ export function RepoInputWithAuth({
     </GitAuthForm>
   );
 }
+
+export const RepoInputWithAuthWrapper = styled(RepoInputWithAuth)`
+  width: 100%;
+  & .auth-message {
+    padding-right: ${({ theme }) => theme.spacing.medium};
+    button {
+      min-width: 250px;
+    }
+    div {
+      padding-right: ${({ theme }) => theme.spacing.small};
+    }
+  }
+`;
+

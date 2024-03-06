@@ -1,16 +1,20 @@
-import { Button, Flex, Icon, IconType } from '@choclab/weave-gitops';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Workspace } from '../../../cluster-services/cluster_services.pb';
+//import { Button, Flex, Icon, IconType } from '../../../gitops.d';
 import { toFilterQueryString } from '../../../utils/FilterQueryString';
 import RowHeader from '../../RowHeader';
+import Flex from '../../../weave/components/Flex';
+import Button from '../../../weave/components/Button';
+import Icon, { IconType } from '../../../weave/components/Icon';
 
 const Header = styled(Flex)`
   margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
 function WorkspaceHeaderSection({ name, namespaces, clusterName }: Workspace) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Flex column gap="16">
@@ -21,7 +25,7 @@ function WorkspaceHeaderSection({ name, namespaces, clusterName }: Workspace) {
             { key: 'tenant', value: name || '' },
             { key: 'clusterName', value: clusterName || '' },
           ]);
-          history.push(`/applications?filters=${filtersValues}`);
+          navigate(`/applications?filters=${filtersValues}`);
         }}
       >
         GO TO TENANT APPLICATIONS

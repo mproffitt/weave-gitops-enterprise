@@ -1,6 +1,6 @@
-import { createStyles, Grid, makeStyles } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import { Button } from '@choclab/weave-gitops';
+import { Grid , Alert } from '@mui/material';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React, { Dispatch, FC, useCallback, useEffect, useState } from 'react';
 import {
   Kustomization,
@@ -8,6 +8,8 @@ import {
   Credential,
 } from '../../../../cluster-services/cluster_services.pb';
 import useNotifications from '../../../../contexts/Notifications';
+//import { Button } from '../../../../gitops.d';
+import Button from '../../../../weave/components/Button';
 import useTemplates from '../../../../hooks/templates';
 import { TemplateEnriched } from '../../../../types/custom';
 import { validateFormData } from '../../../../utils/form';

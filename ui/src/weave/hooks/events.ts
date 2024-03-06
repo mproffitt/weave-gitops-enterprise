@@ -1,0 +1,26 @@
+import { useContext } from "react";
+import { useQuery } from "react-query";
+import { CoreClientContext, CoreClientContextType } from "../contexts/CoreClientContext";
+import { ListEventsResponse } from "../lib/api/core/core.pb";
+import { ObjectRef } from "../lib/api/core/types.pb";
+import { ReactQueryOptions, RequestError } from "../lib/types";
+
+export function useListEvents(
+  obj: ObjectRef,
+  opts: ReactQueryOptions<ListEventsResponse, RequestError> = {
+    retry: false,
+    refetchOnWindowFocus: false,
+    refetchInterval: 5000,
+  }
+) {
+  const { api } = useContext(CoreClientContext) as CoreClientContextType;
+
+  return useQuery<ListEventsResponse, RequestError>(
+    ["events", obj],
+    () =>
+      api.ListEvents({
+        involvedObject: obj,
+      }),
+    opts
+  );
+}

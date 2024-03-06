@@ -1,0 +1,458 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Metadata snapshots renders nothing without data 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+}
+
+.c1 {
+  margin: 12px 0;
+}
+
+<div
+  className="c0 c1 Metadata"
+/>
+`;
+
+exports[`Metadata snapshots renders with data 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+}
+
+.c4 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+  width: 100%;
+}
+
+.c5 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.c10 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 4px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.c3 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  color: #737373;
+}
+
+.c6 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  font-style: normal;
+  color: #737373;
+  min-width: 150px;
+}
+
+.c7 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  color: #1a1a1a;
+}
+
+.c9 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+  color: #00b3ec;
+}
+
+.c11 {
+  font-family: 'proxima-nova',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  font-style: normal;
+}
+
+.c8 {
+  text-decoration: none;
+}
+
+.c12 {
+  padding: 8px 12px;
+  border-radius: 15px;
+  white-space: nowrap;
+  background-color: #F6F7F9;
+}
+
+.c1 {
+  margin: 12px 0;
+}
+
+<div
+  className="c0 c1 Metadata"
+>
+  <div
+    className="c2"
+  >
+    <span
+      className="c3"
+      color="neutral30"
+      size="large"
+    >
+      Metadata
+    </span>
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        data-testid="Created By"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Created By
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          Value 2
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="CreatedBy"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          CreatedBy
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          Value 3
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="CreatedBy"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          CreatedBy
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          Value 4
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Description"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Description
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          Value 1
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Html"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Html
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          &lt;p&gt;&lt;b&gt;html&lt;/b&gt;&lt;/p&gt;
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Link To Google"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Link To Google
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          <a
+            className="c8 Link"
+            href="https://google.com"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <span
+              className="c9"
+              color="primary"
+              size="medium"
+            >
+              https://google.com
+            </span>
+          </a>
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Multi Lines"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Multi Lines
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          This is first line
+This is second line
+
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Version"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Version
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          some version
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    <span
+      className="c3"
+      color="neutral30"
+      size="large"
+    >
+      Artifact Metadata
+    </span>
+    <div
+      className="c4"
+    >
+      <div
+        className="c5"
+        data-testid="Description"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Description
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          Value 1
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Html"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Html
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          &lt;p&gt;&lt;b&gt;html&lt;/b&gt;&lt;/p&gt;
+        </span>
+      </div>
+      <div
+        className="c5"
+        data-testid="Link To Google"
+      >
+        <span
+          className="c6"
+          color="neutral30"
+          minWidth="150"
+          semiBold={true}
+          size="medium"
+        >
+          Link To Google
+          :
+        </span>
+        <span
+          className="c7"
+          color="neutral40"
+          size="medium"
+        >
+          <a
+            className="c8 Link"
+            href="https://google.com"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <span
+              className="c9"
+              color="primary"
+              size="medium"
+            >
+              https://google.com
+            </span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c2"
+  >
+    <span
+      className="c3"
+      color="neutral30"
+      size="large"
+    >
+      Labels
+    </span>
+    <div
+      className="c10"
+    >
+      <span
+        className="c11 c12"
+        size="medium"
+      >
+        label
+        : 
+        label
+      </span>
+      <span
+        className="c11 c12"
+        size="medium"
+      >
+        goose
+        : 
+        goose
+      </span>
+    </div>
+  </div>
+</div>
+`;

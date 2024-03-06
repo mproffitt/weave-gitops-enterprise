@@ -1,10 +1,21 @@
-import { Button, formatURL, Icon, IconType } from '@choclab/weave-gitops';
-import { Automation, Source } from '@choclab/weave-gitops/ui/lib/objects';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Pipeline } from '../../../api/pipelines/types.pb';
 import { GetTerraformObjectResponse } from '../../../api/terraform/terraform.pb';
+/*import {
+  Automation,
+  Button,
+  formatURL,
+  Icon,
+  IconType,
+  Source,
+} from '../../../gitops.d';*/
+import { Automation, Source } from '../../../weave/lib/objects';
+import Button from '../../../weave/components/Button';
+import { formatURL } from '../../../weave/lib/nav';
+import Icon, { IconType } from '../../../weave/components/Icon';
+
 import { GitopsClusterEnriched } from '../../../types/custom';
 import { Routes } from '../../../utils/nav';
 import { Tooltip } from '../../Shared';

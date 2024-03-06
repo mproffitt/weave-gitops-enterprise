@@ -1,5 +1,7 @@
-import { IconButton } from '@material-ui/core';
-import {
+import { IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { Object } from '../../../api/query/query.pb';
+/*import {
   DataTable,
   Flex,
   Icon,
@@ -11,9 +13,18 @@ import {
   Timestamp,
   V2Routes,
   formatURL,
-} from '@choclab/weave-gitops';
-import { useState } from 'react';
-import { Object } from '../../../api/query/query.pb';
+} from '../../../gitops.d';*/
+import DataTable from '../../../weave/components/DataTable';
+import Flex from '../../../weave/components/Flex';
+import Icon, { IconType } from '../../../weave/components/Icon';
+import Link from '../../../weave/components/Link';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
+import Severity from '../../../weave/components/Policies/Utils/Severity';
+import Text from '../../../weave/components/Text';
+import Timestamp from '../../../weave/components/Timestamp';
+import { V2Routes } from '../../../weave/lib/types';
+import { formatURL } from '../../../weave/lib/nav';
+
 import { useListFacets } from '../../../hooks/query';
 import { RequestError } from '../../../types/custom';
 import FilterDrawer from '../../Explorer/FilterDrawer';
@@ -67,8 +78,8 @@ export const AuditTable = ({
       <Flex wide column>
         <Flex align wide end>
           <QueryStateChips />
-          <IconButton onClick={() => setFilterDrawerOpen(!filterDrawerOpen)}>
-            <Icon size="normal" type={IconType.FilterIcon} color="neutral30" />
+          <IconButton onClick={() => setFilterDrawerOpen(!filterDrawerOpen)} size="large">
+            <Icon size="medium" type={IconType.FilterIcon} color="neutral30" />
           </IconButton>
         </Flex>
         <Flex wide>

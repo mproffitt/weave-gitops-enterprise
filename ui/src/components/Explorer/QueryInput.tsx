@@ -1,20 +1,24 @@
-import { FormControl } from '@material-ui/core';
-import { Flex, Icon, IconType, Input } from '@choclab/weave-gitops';
+import { FormControl } from '@mui/material';
 import _ from 'lodash';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+//import { Flex, Icon, IconType, Input } from '../../gitops.d';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import Input from '../../weave/components/Input';
+
 import { useReadQueryState, useSetQueryState } from './hooks';
 
 type Props = {
   className?: string;
-  innerRef?: React.RefObject<HTMLInputElement>;
+  inputRef?: React.RefObject<HTMLInputElement>;
 };
 
 const debouncedInputHandler = _.debounce((fn, val) => {
   fn(val);
 }, 500);
 
-function QueryInput({ className, innerRef }: Props) {
+function QueryInput({ className, inputRef }: Props) {
   const queryState = useReadQueryState();
   const setQueryState = useSetQueryState();
   const [textInput, setTextInput] = useState(queryState.terms || '');
@@ -35,12 +39,13 @@ function QueryInput({ className, innerRef }: Props) {
   return (
     <Flex className={className} wide>
       <Flex align>
-        <Icon size="normal" type={IconType.SearchIcon} />
+        <Icon size="medium" type={IconType.SearchIcon} />
         <FormControl>
           <Input
+            id="searchinput"
             placeholder="Search"
             value={textInput}
-            inputRef={innerRef}
+            inputRef={inputRef}
             onChange={handleTextInput}
           />
         </FormControl>
@@ -51,4 +56,13 @@ function QueryInput({ className, innerRef }: Props) {
 
 export default styled(QueryInput).attrs({ className: QueryInput.name })`
   position: relative;
+
+  svg {
+    margin-right: 8px;
+  }
+
+  input {
+    padding: 8px 10px;
+    border-bottom: 1px solid ${(props) => props.theme.colors.neutral40};
+  }
 `;

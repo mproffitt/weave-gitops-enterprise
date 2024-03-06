@@ -1,5 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import moment from 'moment';
+import React from 'react';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
   defaultContexts,

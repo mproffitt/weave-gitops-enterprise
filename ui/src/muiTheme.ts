@@ -1,82 +1,103 @@
-import { createTheme } from '@material-ui/core/styles';
-import { muiTheme as coreMuiTheme } from '@choclab/weave-gitops';
-import { ThemeTypes } from '@choclab/weave-gitops/ui/contexts/AppContext';
+import { createTheme } from '@mui/material/styles';
+import { deepmerge } from '@mui/utils';
+import { ThemeTypes } from './weave/contexts/AppContext';
+// import { muiTheme as coreMuiTheme, ThemeTypes } from './gitops.d';
+import { muiTheme as coreMuiTheme } from './weave/lib/theme';
 
 const defaultTheme = createTheme();
 
 export const muiTheme = (colors: any, mode: ThemeTypes) => {
   const theme = coreMuiTheme(colors, mode);
-  return createTheme({
+  const overrides = createTheme({
     ...theme,
-    overrides: {
-      ...theme.overrides,
+    components: {
       MuiButton: {
-        ...theme.overrides?.MuiButton,
-        root: {
-          ...theme.overrides?.MuiButton?.root,
-          minWidth: 52,
+        styleOverrides: {
+          root: {
+            minWidth: 52,
+          },
         },
       },
       MuiDialog: {
-        root: {
-          padding: 0,
-        },
-        paper: {
-          padding: 0,
+        styleOverrides: {
+          root: {
+            padding: 0,
+          },
+          paper: {
+            padding: 0,
+          },
         },
       },
       MuiDialogActions: {
-        root: {
-          margin: 0,
-          padding: defaultTheme.spacing(0, 2, 2, 2),
-          justifyContent: 'flex-end',
-        },
+        styleOverrides: {
+          root: {
+            margin: 0,
+            padding: defaultTheme.spacing(0, 2, 2, 2),
+            justifyContent: 'flex-end',
+          },
+        }
       },
       MuiDialogTitle: {
-        root: {
-          padding: defaultTheme.spacing(2, 2, 0, 2),
+        styleOverrides: {
+          root: {
+            padding: defaultTheme.spacing(2, 2, 0, 2),
+          },
         },
       },
       MuiDialogContent: {
-        root: {
-          padding: defaultTheme.spacing(1, 2, 2, 2),
+        styleOverrides: {
+          root: {
+            padding: defaultTheme.spacing(1, 2, 2, 2),
+          },
         },
       },
       MuiInputBase: {
-        root: {
-          flexGrow: 1,
+        styleOverrides: {
+          root: {
+            flexGrow: 1,
+          },
         },
       },
       MuiSelect: {
-        select: {
-          width: '100%',
-        },
-        icon: {
-          color: colors.black,
+        styleOverrides: {
+          select: {
+            width: '100%',
+          },
+          icon: {
+            color: colors.black,
+          },
         },
       },
       MuiTableCell: {
-        head: {
-          color: colors.neutral30,
+        styleOverrides: {
+          head: {
+            color: colors.neutral30,
+          },
         },
       },
       MuiTablePagination: {
-        select: {
-          fontSize: 14,
-        },
-        toolbar: {
-          color: defaultTheme.palette.text.secondary,
-          minHeight: 0,
+        styleOverrides: {
+          select: {
+            fontSize: 14,
+          },
+          toolbar: {
+            color: defaultTheme.palette.text.secondary,
+            minHeight: 0,
+          },
         },
       },
       MuiCardActions: {
-        root: {
-          justifyContent: 'center',
+        styleOverrides: {
+          root: {
+            justifyContent: 'center',
+          },
         },
       },
       MuiInputLabel: {
-        formControl: {
-          transform: 'none',
+        styleOverrides: {
+          formControl: {
+            transform: 'none',
+          },
         },
       },
     },
@@ -84,4 +105,5 @@ export const muiTheme = (colors: any, mode: ThemeTypes) => {
       borderRadius: 2,
     },
   });
+  return createTheme(deepmerge(theme, overrides));
 };

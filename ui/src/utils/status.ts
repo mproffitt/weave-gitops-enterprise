@@ -1,4 +1,5 @@
-import { IconType } from '@choclab/weave-gitops';
+//import { IconType } from '../gitops.d';
+import { IconType } from '../weave/components/Icon';
 
 enum ObjectStatus {
   Success = 'Success',
@@ -42,7 +43,7 @@ export const getIndicatorInfo = (
       return {
         color: 'neutral20',
         type: IconType.RemoveCircleIcon,
-      }; 
+      };
     default:
       return {
         color: 'alertOriginal',

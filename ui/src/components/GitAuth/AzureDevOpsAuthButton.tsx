@@ -1,10 +1,10 @@
-import { Button } from '@choclab/weave-gitops';
 // @ts-ignore
-import { CallbackStateContextType } from '@choclab/weave-gitops/ui/contexts/CallbackStateContext';
 import * as React from 'react';
 import styled from 'styled-components';
 import { useEnterpriseClient } from '../../contexts/API';
-import { CallbackStateContext } from '../../contexts/GitAuth/CallbackStateContext';
+import { CallbackStateContextType, CallbackStateContext } from '../../contexts/GitAuth/CallbackStateContext';
+//import { Button } from '../../gitops.d';
+import Button from '../../weave/components/Button';
 import { azureDevOpsOAuthRedirectURI } from '../../utils/formatters';
 import { navigate, storeCallbackState } from './utils';
 

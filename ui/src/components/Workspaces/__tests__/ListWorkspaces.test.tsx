@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
 import WorkspacesList from '..';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
@@ -73,14 +74,18 @@ describe('ListWorkspaces', () => {
     );
 
     // Next Error
-    const nextError = screen.queryByTestId('nextError');
-    nextError?.click();
+    await act(async () => {
+      const nextError = screen.queryByTestId('nextError');
+      nextError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent('second Error message');
 
     // Prev error
-    const prevError = screen.queryByTestId('prevError');
-    prevError?.click();
+    await act(async () => {
+      const prevError = screen.queryByTestId('prevError');
+      prevError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent(
       'no matches for kind "Workspace" in version "pac.weave.works/v2beta1"',
@@ -112,18 +117,19 @@ describe('ListWorkspaces', () => {
     filterTable.testSearchTableByValue(search, searchedRows);
     filterTable.clearSearchByVal(search);
 
-    const sortRowsByName = mappedWorkspaces(
-      listWorkspacesResponse.workspaces.sort((a, b) =>
-        a.name.localeCompare(b.name),
-      ),
-    );
-    filterTable.testSorthTableByColumn('Name', sortRowsByName);
+      const sortRowsByName = mappedWorkspaces(
+        listWorkspacesResponse.workspaces.sort((a, b) =>
+          a.name.localeCompare(b.name),
+        ),
+      );
 
-    const reverseSortRowsByName = mappedWorkspaces(
-      listWorkspacesResponse.workspaces.sort((a, b) =>
-        b.name.localeCompare(a.name),
-      ),
-    );
-    filterTable.testSorthTableByColumn('Name', reverseSortRowsByName);
+      filterTable.testSorthTableByColumn('Name', sortRowsByName);
+
+      const reverseSortRowsByName = mappedWorkspaces(
+        listWorkspacesResponse.workspaces.sort((a, b) =>
+          b.name.localeCompare(a.name),
+        ),
+      );
+      filterTable.testSorthTableByColumn('Name', reverseSortRowsByName);
   });
 });

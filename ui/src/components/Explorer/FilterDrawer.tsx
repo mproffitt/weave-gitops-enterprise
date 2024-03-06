@@ -1,4 +1,4 @@
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -22,15 +22,15 @@ const SlideContainer = styled.div`
 
   &.open {
     left: 0;
-    width: 360px;
+    width: 375px;
   }
 `;
 
 const SlideContent = styled.div`
   height: 100%;
   width: 100%;
-  border-left: 2px solid ${props => props.theme.colors.neutral20};
-  padding-left: ${props => props.theme.spacing.large};
+  border-left: 2px solid ${(props) => props.theme.colors.neutral20};
+  padding-left: ${(props) => props.theme.spacing.large};
 `;
 
 function FilterDrawer({ className, children, open, onClose }: Props) {

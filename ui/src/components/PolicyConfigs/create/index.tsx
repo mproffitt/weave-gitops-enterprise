@@ -1,15 +1,6 @@
-import { MenuItem } from '@material-ui/core';
-import {
-  Flex,
-  GitRepository,
-  Link,
-  Text,
-  useListSources,
-  ThemeTypes,
-} from '@choclab/weave-gitops';
-import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { MenuItem } from '@mui/material';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   ClusterAutomation,
@@ -20,6 +11,23 @@ import { useEnterpriseClient } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
 import useNotifications from '../../../contexts/Notifications';
 import { useGetClustersList } from '../../../contexts/PolicyConfigs';
+/*import {
+  Flex,
+  GitRepository,
+  Link,
+  PageRoute,
+  Text,
+  useListSources,
+  ThemeTypes,
+} from '../../../gitops.d';*/
+import Flex from '../../../weave/components/Flex';
+import { GitRepository } from '../../../weave/lib/objects';
+import Link from '../../../weave/components/Link';
+import Text from '../../../weave/components/Text';
+import { ThemeTypes } from '../../../weave/contexts/AppContext';
+import { useListSources } from "../../../weave/hooks/sources";
+import { PageRoute } from '../../../weave/lib/types';
+
 import {
   expiredTokenNotification,
   useIsAuthenticated,
@@ -120,7 +128,7 @@ function getInitialData(
   return { initialFormData };
 }
 const CreatePolicyConfig = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { data: allClusters } = useGetClustersList({});
   const clusters = allClusters?.gitopsClusters
@@ -267,7 +275,7 @@ const CreatePolicyConfig = () => {
             }),
           })
           .then(response => {
-            history.push(Routes.PolicyConfigs);
+            navigate(Routes.PolicyConfigs);
             setNotifications([
               {
                 message: {
@@ -302,9 +310,9 @@ const CreatePolicyConfig = () => {
     clustersService,
     formData,
     getClusterAutomations,
-    history,
     setNotifications,
     validateToken,
+    navigate,
   ]);
 
   return (

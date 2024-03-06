@@ -1,4 +1,6 @@
-import { isAllowedLink } from '@choclab/weave-gitops';
+//import { isAllowedLink } from '../gitops.d';
+
+import { isAllowedLink } from "../weave/lib/utils";
 
 export const openLinkHandler = (url: string) => {
   if (!isAllowedLink(url)) {

@@ -1,4 +1,5 @@
-import { Alert } from '@material-ui/lab';
+import { Alert } from '@mui/material';
+import React from 'react';
 import { useIsFlaggerAvailable } from '../../contexts/ProgressiveDelivery';
 import { Page } from '../Layout/App';
 import CanariesList from './ListCanaries/CanariesList';

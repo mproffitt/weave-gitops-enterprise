@@ -1,7 +1,8 @@
-import { List, ListItem } from '@material-ui/core';
-import { Link } from '@choclab/weave-gitops';
-import { FC } from 'react';
+import { List, ListItem } from '@mui/material';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+//import { Link } from '../../gitops.d';
+import Link from '../../weave/components/Link';
 import useClusters from '../../hooks/clusters';
 import { GitopsClusterEnriched } from '../../types/custom';
 

@@ -1,6 +1,11 @@
-import { Box, IconButton } from '@material-ui/core';
-import { Flex, Icon, IconType, ThemeTypes } from '@choclab/weave-gitops';
+import { Box, IconButton } from '@mui/material';
+import React from 'react';
 import styled from 'styled-components';
+//import { Flex, Icon, IconType, ThemeTypes } from '../../gitops.d';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import { ThemeTypes } from '../../weave/contexts/AppContext';
+
 import { QueryState } from './hooks';
 
 type Props = {
@@ -33,14 +38,14 @@ function PaginationControls({
   return (
     <Flex className={className} wide center>
       <Box p={2}>
-        <IconButton disabled={queryState.offset === 0} onClick={handlePageBack}>
-          <Icon size={24} type={IconType.NavigateBeforeIcon} />
+        <IconButton disabled={queryState.offset === 0} onClick={handlePageBack} size="large">
+          <Icon size="base" type={IconType.NavigateBeforeIcon} />
         </IconButton>
         <IconButton
           disabled={count < queryState.limit}
           onClick={handlePageForward}
-        >
-          <Icon size={24} type={IconType.NavigateNextIcon} />
+          size="large">
+          <Icon size="base" type={IconType.NavigateNextIcon} />
         </IconButton>
       </Box>
     </Flex>
@@ -51,7 +56,7 @@ export default styled(PaginationControls).attrs({
   className: PaginationControls.name,
 })`
   ${Icon} .MuiSvgIcon-root {
-    color: ${props =>
+    color: ${(props) =>
       props.theme.mode === ThemeTypes.Dark
         ? props.theme.colors.white
         : 'unset'};

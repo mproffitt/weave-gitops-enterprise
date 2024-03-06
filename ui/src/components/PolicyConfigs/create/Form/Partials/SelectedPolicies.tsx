@@ -7,15 +7,24 @@ import {
   Radio,
   RadioGroup,
   TextField,
-} from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
-import { Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
-import {
+  Autocomplete
+} from '@mui/material';
+
+import React, { Dispatch, useState } from 'react';
+import { useListPolicies } from '../../../../../contexts/PolicyViolations';
+/*import {
+  Flex,
+  Icon,
+  IconType,
+  Text,
   PolicyObj,
   PolicyParam,
-} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
-import { Dispatch, useState } from 'react';
-import { useListPolicies } from '../../../../../contexts/PolicyViolations';
+} from '../../../../../gitops.d';*/
+import Flex from '../../../../../weave/components/Flex';
+import Icon, {IconType} from '../../../../../weave/components/Icon';
+import Text from '../../../../../weave/components/Text';
+import { PolicyObj, PolicyParam } from '../../../../../weave/lib/api/core/core.pb';
+
 import { Input } from '../../../../../utils/form';
 import { ErrorIcon } from '../../../../RemoteSVGIcon';
 import {

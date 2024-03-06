@@ -1,5 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import moment from 'moment';
+import React from 'react';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
   SecretsClientMock,
@@ -9,8 +10,8 @@ import {
 import SecretDetails from '../SecretDetails';
 
 const MockSecretResponse = {
-  secretName: 'secret Name',
-  externalSecretName: 'external Secret Name',
+  secretName: 'Secret Name',
+  externalSecretName: 'This is an External Secret Name',
   clusterName: 'management',
   namespace: 'flux-system',
   secretStore: 'secret Store name',
@@ -48,7 +49,7 @@ describe('SecretDetails', () => {
       render(c);
     });
     //check Tabs
-    expect(screen.getByTitle(secret.externalSecretName)).toBeTruthy();
+    expect(screen.getByLabelText(secret.externalSecretName)).toBeTruthy();
     const tabs = screen.getAllByRole('tab');
     expect(secret.clusterName).toBeDefined();
     expect(tabs).toHaveLength(3);

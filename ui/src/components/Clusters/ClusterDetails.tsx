@@ -1,5 +1,8 @@
-import { CircularProgress } from '@material-ui/core';
-import {
+import { CircularProgress } from '@mui/material';
+import React, { FC, useEffect, useState } from 'react';
+import { useNavigate, useResolvedPath } from 'react-router-dom';
+import { EnabledComponent } from '../../api/query/query.pb';
+/*import {
   Button as WeaveButton,
   Flex,
   Icon,
@@ -7,10 +10,12 @@ import {
   RouterTab,
   SubRouterTabs,
   useListSources,
-} from '@choclab/weave-gitops';
-import { useEffect, useState } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
-import { EnabledComponent } from '../../api/query/query.pb';
+} from '../../gitops.d';*/
+import WeaveButton from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import SubRouterTabs, {RouterTab } from '../../weave/components/SubRouterTabs';
+import { useListSources } from '../../weave/hooks/sources';
 import useClusters from '../../hooks/clusters';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { GitopsClusterEnriched } from '../../types/custom';
@@ -31,9 +36,9 @@ type Props = {
   clusterName: string;
 };
 
-const ClusterDetails = ({ clusterName, namespace }: Props) => {
-  const { path } = useRouteMatch();
-  const history = useHistory();
+const ClusterDetails: FC<Props> = ({ clusterName, namespace }) => {
+  const path = useResolvedPath("").pathname;
+  const navigate = useNavigate();
   const { isLoading, getCluster, getDashboardAnnotations } = useClusters();
   const [currentCluster, setCurrentCluster] =
     useState<GitopsClusterEnriched | null>(null);
@@ -63,7 +68,7 @@ const ClusterDetails = ({ clusterName, namespace }: Props) => {
             <Flex gap="12">
               <WeaveButton
                 id="cluster-application"
-                startIcon={<Icon type={IconType.FilterIcon} size="base" />}
+                startIcon={<Icon type={IconType.FilterIcon} size="medium" />}
                 onClick={() => {
                   const clusterName = `${currentCluster?.namespace}/${currentCluster?.name}`;
                   if (isExplorerEnabled) {
@@ -71,7 +76,7 @@ const ClusterDetails = ({ clusterName, namespace }: Props) => {
                       filters: [`Cluster:${clusterName}`],
                     } as QueryState);
 
-                    history.push(s);
+                    navigate(s);
                   } else {
                     const filtersValues = toFilterQueryString([
                       {
@@ -79,7 +84,7 @@ const ClusterDetails = ({ clusterName, namespace }: Props) => {
                         value: `${currentCluster?.namespace}/${currentCluster?.name}`,
                       },
                     ]);
-                    history.push(`/applications?filters=${filtersValues}`);
+                    navigate(`/applications?filters=${filtersValues}`);
                   }
                 }}
               >
@@ -101,7 +106,7 @@ const ClusterDetails = ({ clusterName, namespace }: Props) => {
                         const filtersValues = encodeURIComponent(
                           `${currentCluster?.name}`,
                         );
-                        history.push(
+                        navigate(
                           `/applications/create?clusterName=${filtersValues}`,
                         );
                       }}
@@ -113,8 +118,8 @@ const ClusterDetails = ({ clusterName, namespace }: Props) => {
                 </Tooltip>
               )}
             </Flex>
-            <SubRouterTabs rootPath={`${path}/details`}>
-              <RouterTab name="Details" path={`${path}/details`}>
+            <SubRouterTabs rootPath={`details`}>
+              <RouterTab name="Details" path={`details`}>
                 <ClusterDashboard
                   currentCluster={currentCluster}
                   getDashboardAnnotations={getDashboardAnnotations}

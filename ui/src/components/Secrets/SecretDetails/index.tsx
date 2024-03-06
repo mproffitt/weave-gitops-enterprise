@@ -1,8 +1,11 @@
-import { Button, Flex, SyncControls } from '@choclab/weave-gitops';
 import moment from 'moment';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import useNotifications from '../../../contexts/Notifications';
 import { useGetSecretDetails } from '../../../contexts/Secrets';
+//import { Button, Flex, SyncControls } from '../../../gitops.d';
+import Button from '../../../weave/components/Button';
+import Flex from '../../../weave/components/Flex';
+import SyncControls from '../../../weave/components/Sync/SyncControls';
 import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';

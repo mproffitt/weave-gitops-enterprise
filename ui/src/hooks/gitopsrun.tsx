@@ -1,8 +1,11 @@
-import { coreClient } from '@choclab/weave-gitops';
-import { GetSessionLogsResponse } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import { useQuery } from 'react-query';
 import useNotifications from '../contexts/Notifications';
+//import { coreClient, GetSessionLogsResponse } from '../gitops.d';
 import { formatError } from '../utils/formatters';
+import {
+  Core as coreClient,
+  GetSessionLogsResponse,
+} from '../weave/lib/api/core/core.pb';
 
 type splitReq = { sessionNamespace: string; sessionId: string; token: string };
 export const useGetLogs = (

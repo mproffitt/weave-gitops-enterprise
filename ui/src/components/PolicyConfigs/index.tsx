@@ -1,17 +1,19 @@
-import { Button, Icon, IconType } from '@choclab/weave-gitops';
-import { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useListPolicyConfigs } from '../../contexts/PolicyConfigs';
+//import { Button, Icon, IconType } from '../../gitops.d';
+import Button from '../../weave/components/Button';
+import Icon, { IconType } from '../../weave/components/Icon';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { PolicyConfigsTable } from './Table';
 
 const PolicyConfigsList = () => {
   const { data, isLoading } = useListPolicyConfigs({});
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleCreatePolicyConfig = useCallback(
-    () => history.push(`/policyConfigs/create`),
+    () => navigate(`/policyConfigs/create`),
     [history],
   );
   return (

@@ -1,24 +1,24 @@
-import { MuiThemeProvider } from '@material-ui/core';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 import {
   GetCanaryResponse,
   IsFlaggerAvailableResponse,
   ListCanariesResponse,
   ProgressiveDeliveryService,
 } from '@choclab/progressive-delivery';
-import {
+/*import {
   AppContextProvider,
   CoreClientContextProvider,
-  ThemeTypes,
-  theme,
-} from '@choclab/weave-gitops';
-import {
   GetObjectRequest,
   GetObjectResponse,
+  GetPolicyResponse,
   IsCRDAvailableRequest,
   IsCRDAvailableResponse,
   ListObjectsRequest,
   ListObjectsResponse,
-} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
+  ListPoliciesResponse,
+  ThemeTypes,
+  theme,
+} from '../gitops.d';*/
 import _ from 'lodash';
 import React from 'react';
 import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
@@ -38,10 +38,6 @@ import {
   Pipelines,
 } from '../api/pipelines/pipelines.pb';
 
-import {
-  GetPolicyResponse,
-  ListPoliciesResponse,
-} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
 import {
   GetTerraformObjectPlanResponse,
   GetTerraformObjectResponse,
@@ -86,6 +82,20 @@ import { EnterpriseClientProvider } from '../contexts/API';
 import NotificationProvider from '../contexts/Notifications/Provider';
 import RequestContextProvider from '../contexts/Request';
 import { muiTheme } from '../muiTheme';
+import AppContextProvider, { ThemeTypes } from '../weave/contexts/AppContext';
+import CoreClientContextProvider from '../weave/contexts/CoreClientContext';
+import {
+  ListObjectsResponse,
+  GetObjectResponse,
+  IsCRDAvailableResponse,
+  ListPoliciesResponse,
+  GetPolicyResponse,
+  ListObjectsRequest,
+  GetObjectRequest,
+  IsCRDAvailableRequest
+} from '../weave/lib/api/core/core.pb';
+import theme from '../weave/lib/theme';
+import { act } from 'react-test-renderer';
 
 export type RequestError = Error & {
   code?: number;
@@ -123,9 +133,18 @@ const mockRes = {
 
 export const defaultContexts = () => {
   const appliedTheme = theme(ThemeTypes.Light);
-  window.matchMedia = jest.fn();
-  //@ts-ignore
-  window.matchMedia.mockReturnValue({ matches: false });
+  window.matchMedia = jest.fn().mockImplementation(query => {
+    return {
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    };
+  });
 
   return [
     [ThemeProvider, { theme: appliedTheme }],
@@ -133,6 +152,7 @@ export const defaultContexts = () => {
       MuiThemeProvider,
       { theme: muiTheme(appliedTheme.colors, ThemeTypes.Light) },
     ],
+    [MemoryRouter],
     [AppContextProvider],
     [
       RequestContextProvider,
@@ -168,7 +188,6 @@ export const defaultContexts = () => {
         api: new CoreClientMock(),
       },
     ],
-    [MemoryRouter],
     [NotificationProvider],
     [EnterpriseClientProvider, { api: new ApplicationsClientMock() }],
   ];
@@ -663,7 +682,9 @@ export class TestFilterableTable {
   }
 
   testSorthTableByColumn(columnName: string, rowValues: Array<Array<string>>) {
-    this.sortTableByColumn(columnName);
+    act(() => {
+      this.sortTableByColumn(columnName);
+    });
     const { rows } = this.getTableInfo();
     expect(rows).toHaveLength(rowValues.length);
     rowValues.forEach((row, index) => {

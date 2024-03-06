@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBox snapshots renders 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 10px 50px 3px #0000001a;
+}
+
+.c1 {
+  box-sizing: border-box;
+  width: 560px;
+  padding: 24px 48px 64px;
+  border-radius: 10px;
+  background-color: #F6F7F9;
+  color: #737373;
+}
+
+<div
+  className="c0 c1"
+>
+  Column and items centered.
+</div>
+`;

@@ -1,9 +1,10 @@
-import { IconButton, IconButtonProps } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { IconButton, IconButtonProps } from '@mui/material';
+import { Close } from '@mui/icons-material';
 import styled from 'styled-components';
+import React from 'react';
 
 const CloseIconButton = ({ onClick, className }: IconButtonProps) => (
-  <IconButton onClick={onClick} className={className}>
+  <IconButton onClick={onClick} className={className} size="large">
     <Close />
   </IconButton>
 );

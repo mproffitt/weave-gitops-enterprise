@@ -1,9 +1,12 @@
-import { RouterTab, SubRouterTabs } from '@choclab/weave-gitops';
+import React from 'react';
+//import { RouterTab, SubRouterTabs } from '../../../gitops.d';
+
 import { Routes } from '../../../utils/nav';
 import { PoliciesTab } from './Tabs/Policies';
 import { RoleBindingsTab } from './Tabs/RoleBindings';
 import { RolesTab } from './Tabs/Roles';
 import { ServiceAccountsTab } from './Tabs/ServiceAccounts';
+import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
 
 const TabDetails = ({
   clusterName,
@@ -16,26 +19,26 @@ const TabDetails = ({
 
   return (
     <div style={{ minHeight: 'calc(100vh - 335px)' }}>
-      <SubRouterTabs rootPath={`${path}/serviceAccounts`}>
-        <RouterTab name="Service Accounts" path={`${path}/serviceAccounts`}>
+      <SubRouterTabs rootPath={`serviceAccounts`}>
+        <RouterTab name="Service Accounts" path={`serviceAccounts`}>
           <ServiceAccountsTab
             clusterName={clusterName}
             workspaceName={workspaceName}
           />
         </RouterTab>
 
-        <RouterTab name="Roles" path={`${path}/roles`}>
+        <RouterTab name="Roles" path={`roles`}>
           <RolesTab clusterName={clusterName} workspaceName={workspaceName} />
         </RouterTab>
 
-        <RouterTab name="Role Bindings" path={`${path}/roleBindings`}>
+        <RouterTab name="Role Bindings" path={`roleBindings`}>
           <RoleBindingsTab
             clusterName={clusterName}
             workspaceName={workspaceName}
           />
         </RouterTab>
 
-        <RouterTab name="Policies" path={`${path}/policies`}>
+        <RouterTab name="Policies" path={`policies`}>
           <PoliciesTab
             clusterName={clusterName}
             workspaceName={workspaceName}

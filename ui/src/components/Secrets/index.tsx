@@ -1,7 +1,12 @@
-import { Button, Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
-import { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useListSecrets } from '../../contexts/Secrets';
+//import { Button, Flex, Icon, IconType, Text } from '../../gitops.d';
+import Button from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import Text from '../../weave/components/Text';
+
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
@@ -9,10 +14,10 @@ import { SecretsTable } from './Table';
 
 const SecretsList = () => {
   const { data, isLoading } = useListSecrets({});
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleCreateSecret = useCallback(
-    (url: string) => history.push(url),
+    (url: string) => navigate(url),
     [history],
   );
 

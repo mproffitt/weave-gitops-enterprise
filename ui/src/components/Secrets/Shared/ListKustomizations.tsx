@@ -1,8 +1,10 @@
-import { MenuItem } from '@material-ui/core';
-import { RequestStateHandler } from '@choclab/weave-gitops';
-import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
+import { MenuItem } from '@mui/material';
+import React from 'react';
+//import { RequestStateHandler, RequestError } from '../../../gitops.d';
 import { useListKustomizationSOPS } from '../../../hooks/listSOPSKustomization';
 import { Select } from '../../../utils/form';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
+import { RequestError } from '../../../weave/lib/types';
 
 const ListKustomizations = ({
   value,
@@ -30,7 +32,7 @@ const ListKustomizations = ({
         name="kustomization"
         label="KUSTOMIZATION"
         description="Choose the kustomization that will be used by SOPS to decrypt the secret."
-        onChange={event => handleFormData(event.target.value)}
+        onChange={(event: { target: { value: any; }; }) => handleFormData(event.target.value)}
         value={value}
         error={validateForm && !value}
       >

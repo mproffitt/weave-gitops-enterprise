@@ -1,5 +1,3 @@
-import { ListError } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
-import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import * as React from 'react';
 import { QueryClient, useQuery, useQueryClient } from 'react-query';
 import {
@@ -8,9 +6,12 @@ import {
   ListTerraformObjectsResponse,
 } from '../../api/terraform/terraform.pb';
 import { ObjectRef } from '../../api/terraform/types.pb';
+//import { ListError, RequestError } from '../../gitops.d';
 import { formatError } from '../../utils/formatters';
 import { useEnterpriseClient } from '../API';
 import useNotifications from './../../contexts/Notifications';
+import { ListError } from '../../weave/lib/api/core/core.pb';
+import { RequestError } from '../../weave/lib/types';
 
 function useTerraform() {
   const { terraform } = useEnterpriseClient();

@@ -1,6 +1,10 @@
-import { Flex, Link, Text } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
 import { Pipeline, Strategy } from '../../../api/pipelines/types.pb';
+//import { Flex, Link, Text } from '../../../gitops.d';
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import Text from '../../../weave/components/Text';
 import PromotePipeline from './PromotePipeline';
 import PromotionInfo from './PromotionInfo';
 import { EnvironmentCard } from './styles';
@@ -53,7 +57,7 @@ function Workloads({
         const envStrategy = getEnvStrategy(env.promotion?.strategy);
 
         return (
-          <EnvironmentContainer key={index} tall column gap="16">
+          <EnvironmentContainer key={index} tall column>
             <PromotionInfo targets={status} />
             <EnvironmentCard background={index} column>
               <Flex column gap="8" wide>

@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { GitRepository } from '@choclab/weave-gitops';
+import { renderHook } from '@testing-library/react';
+//import { GitRepository } from '../../../../gitops.d';
+import { GitRepository } from '../../../../weave/lib/objects';
 import { useGetInitialGitRepo, getRepositoryUrl } from '../utils';
 
 describe('getRepositoryUrl', () => {

@@ -1,10 +1,11 @@
 import { GetVersionResponse } from '@choclab/progressive-delivery';
-import { withBasePath } from '@choclab/weave-gitops';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { GetConfigResponse } from '../cluster-services/cluster_services.pb';
 import { useEnterpriseClient } from '../contexts/API';
 import { useRequest } from '../contexts/Request';
+import { withBasePath } from '../weave/lib/utils';
+//import { withBasePath } from '../gitops.d';
 
 export function useListVersion() {
   const { requestWithEntitlementHeader } = useRequest();

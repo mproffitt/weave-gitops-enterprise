@@ -5,14 +5,15 @@ import {
   TableCell,
   TableHead,
   TableRow,
-} from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/styles';
-import { Icon, IconType } from '@choclab/weave-gitops';
+} from '@mui/material';
+import { createStyles, makeStyles } from '@mui/styles';
 import { fromPairs, sortBy } from 'lodash';
 import moment from 'moment';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { GitopsCluster } from '../../cluster-services/cluster_services.pb';
+//import { Icon, IconType } from '../../gitops.d';
+import Icon, { IconType } from '../../weave/components/Icon';
 import { CAPICluster } from '../../types/custom';
 import { sectionTitle } from './ClusterDashboard';
 
@@ -150,7 +151,7 @@ export const ClusterStatus: FC<{
                   <TableRow key={key}>
                     <TableCell
                       className={classes.conditionNameCell}
-                      component="th"
+                      component={'th' as any}
                       scope="row"
                       style={{ borderBottom: 'unset' }}
                     >

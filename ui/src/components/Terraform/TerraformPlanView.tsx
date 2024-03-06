@@ -1,6 +1,12 @@
-import { Flex, Link, MessageBox, Text, Spacer } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
+//import { Flex, Link, MessageBox, Text, Spacer } from '../../gitops.d';
 import CodeView from '../CodeView';
+import Flex from '../../weave/components/Flex';
+import MessageBox from '../../weave/components/MessageBox';
+import Spacer from '../../weave/components/Spacer';
+import Text from '../../weave/components/Text';
+import Link from '../../weave/components/Link';
 
 type Props = {
   plan?: string;
@@ -45,6 +51,4 @@ function TerraformPlanView({ plan, error }: Props) {
   );
 }
 
-export default styled(TerraformPlanView).attrs({
-  className: TerraformPlanView.name,
-})``;
+export default styled(TerraformPlanView)``;//.attrs({className: TerraformPlanView.name})``;

@@ -1,5 +1,7 @@
-import { Page } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
+//import { Page } from '../../gitops.d';
+import Page from '../../weave/components/Page';
 import GenericObjectViewer, { ObjectViewerProps } from './GenericObjectViewer';
 
 function ObjectViewerPage({ className, ...props }: ObjectViewerProps) {

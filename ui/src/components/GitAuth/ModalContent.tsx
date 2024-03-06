@@ -1,13 +1,19 @@
-import {
+import React from 'react';
+import styled from 'styled-components';
+import { GetGithubDeviceCodeResponse } from '../../api/gitauth/gitauth.pb';
+import { useGetGithubAuthStatus } from '../../contexts/GitAuth';
+/*import {
   Button,
   CopyToClipboard,
   Flex,
   Icon,
   IconType,
-} from '@choclab/weave-gitops';
-import styled from 'styled-components';
-import { GetGithubDeviceCodeResponse } from '../../api/gitauth/gitauth.pb';
-import { useGetGithubAuthStatus } from '../../contexts/GitAuth';
+} from '../../gitops.d';*/
+import Button from '../../weave/components/Button';
+
+import CopyToClipboard from "../../weave/components/CopyToCliboard";
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
 
 const Pad = styled(Flex)`
   padding: 8px 0;

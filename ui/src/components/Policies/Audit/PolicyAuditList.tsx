@@ -1,5 +1,6 @@
-import { RequestStateHandler } from '@choclab/weave-gitops';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import { useQueryService } from '../../../hooks/query';
 import { RequestError } from '../../../types/custom';
 import { QueryStateProvider } from '../../Explorer/hooks';
@@ -7,9 +8,11 @@ import { URLQueryStateManager } from '../../Explorer/QueryStateManager';
 import { AuditTable } from './AuditTable';
 
 const PolicyAuditList = () => {
-  const history = useHistory();
-  const manager = new URLQueryStateManager(history);
-  const queryState = manager.read();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const manager = new URLQueryStateManager(navigate, location);
+  const search = location.search;
+  const queryState = manager.read(search);
   const setQueryState = manager.write;
   const { data, error, isLoading } = useQueryService({
     terms: queryState.terms,

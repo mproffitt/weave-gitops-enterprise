@@ -1,5 +1,16 @@
-import { Checkbox } from '@material-ui/core';
-import {
+import { Checkbox } from '@mui/material';
+import _ from 'lodash';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { GitProvider } from '../../api/gitauth/gitauth.pb';
+import { EnabledComponent } from '../../api/query/query.pb';
+import { ClusterNamespacedName } from '../../cluster-services/cluster_services.pb';
+import CallbackStateContextProvider from '../../contexts/GitAuth/CallbackStateContext';
+import { useListConfigContext } from '../../contexts/ListConfig';
+import useNotifications, {
+  NotificationData,
+} from '../../contexts/Notifications';
+/*import {
   Button,
   DataTable,
   Flex,
@@ -9,24 +20,24 @@ import {
   Kind,
   KubeStatusIndicator,
   Link,
+  PageRoute,
+  Source,
   filterByStatusCallback,
   filterConfig,
   statusSortHelper,
   useListSources,
-} from '@choclab/weave-gitops';
-import { Source } from '@choclab/weave-gitops/ui/lib/objects';
-import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
-import _ from 'lodash';
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { GitProvider } from '../../api/gitauth/gitauth.pb';
-import { EnabledComponent } from '../../api/query/query.pb';
-import { ClusterNamespacedName } from '../../cluster-services/cluster_services.pb';
-import CallbackStateContextProvider from '../../contexts/GitAuth/CallbackStateContext';
-import { useListConfigContext } from '../../contexts/ListConfig';
-import useNotifications, {
-  NotificationData,
-} from '../../contexts/Notifications';
+} from '../../gitops.d';*/
+import Button from '../../weave/components/Button';
+import DataTable, { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import Flex from '../../weave/components/Flex';
+import { GitRepository, Source } from '../../weave/lib/objects';
+import Icon, { IconType } from '../../weave/components/Icon';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Link from '../../weave/components/Link';
+import { PageRoute } from '../../weave/lib/types';
+import { statusSortHelper } from '../../weave/lib/utils';
+import { useListSources } from '../../weave/hooks/sources';
 import useClusters from '../../hooks/clusters';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { GitopsClusterEnriched, PRDefaults } from '../../types/custom';
@@ -64,13 +75,12 @@ const ClusterRowCheckbox = ({
     checked={checked}
     color="primary"
     onChange={useCallback(
-      ev => onChange({ name, namespace }, ev),
+      (ev: any) => onChange({ name, namespace }, ev),
       [name, namespace, onChange],
     )}
     name={name}
   />
 );
-
 
 interface FormData {
   repo: GitRepository | null;
@@ -174,7 +184,7 @@ const MCCP: FC<{
     getCreateRequestAnnotation(selectedCapiCluster)?.repository_url;
   const initialGitRepo = useGetInitialGitRepo(initialUrl, gitRepos);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleAddCluster = useCallback(() => {
     if (isExplorerEnabled) {
@@ -182,15 +192,15 @@ const MCCP: FC<{
         filters: [`labels.weave.works/template-type:cluster`],
       } as QueryState);
       // Explorer uses a different query param for filters to avoid conflicts with DataTable
-      history.push(url);
+      navigate(url);
     } else {
       const filtersValues = toFilterQueryString([
         { key: 'templateType', value: 'cluster' },
         { key: 'templateType', value: '' },
       ]);
-      history.push(`/templates?filters=${filtersValues}`);
+      navigate(`/templates?filters=${filtersValues}`);
     }
-  }, [history, isExplorerEnabled]);
+  }, [navigate, isExplorerEnabled]);
 
   const initialFilterState = {
     ...filterConfig(clusters, 'status', filterByStatusCallback),

@@ -1,9 +1,18 @@
-import { CoreClientContext, FluxObject } from '@choclab/weave-gitops';
-import { ListError } from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
-import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import { useContext } from 'react';
 import { QueryClient, useQuery, useQueryClient } from 'react-query';
 import useNotifications from '../contexts/Notifications';
+/*import {
+  CoreClientContext,
+  ListError,
+  RequestError,
+  FluxObject,
+} from '../gitops.d';*/
+
+import { CoreClientContext, CoreClientContextType } from '../weave/contexts/CoreClientContext';
+import { Object } from '../weave/lib/api/core/types.pb';
+import { ListError } from '../weave/lib/api/core/core.pb';
+import { RequestError } from '../weave/lib/types';
+import { FluxObject } from '../weave/lib/objects';
 
 const GITOPSSETS_KEY = 'gitopssets';
 const GITOPSSETS_POLL_INTERVAL = 5000;
@@ -16,7 +25,7 @@ export function useListGitOpsSets(
   },
 ) {
   const { setNotifications } = useNotifications();
-  const { api } = useContext(CoreClientContext);
+  const { api } = useContext(CoreClientContext) as CoreClientContextType;
 
   const onError = (error: Error) =>
     setNotifications([{ message: { text: error.message }, severity: 'error' }]);
@@ -27,7 +36,7 @@ export function useListGitOpsSets(
       const res = await api.ListObjects({ kind: 'GitOpsSet' });
       let objects: FluxObject[] = [];
       if (res.objects) {
-        objects = res.objects.map(obj => new FluxObject(obj));
+        objects = res.objects.map((obj: Object) => new FluxObject(obj));
       }
       return { objects, errors: res.errors || [] };
     },
@@ -52,7 +61,7 @@ export function useGetGitOpsSet({
   clusterName,
 }: DetailParams) {
   const { setNotifications } = useNotifications();
-  const { api } = useContext(CoreClientContext);
+  const { api } = useContext(CoreClientContext) as CoreClientContextType;
   const onError = (error: Error) =>
     setNotifications([{ message: { text: error.message }, severity: 'error' }]);
 
@@ -88,7 +97,7 @@ function invalidate(
 
 export function useSyncGitOpsSet(params: DetailParams) {
   const qc = useQueryClient();
-  const { api } = useContext(CoreClientContext);
+  const { api } = useContext(CoreClientContext) as CoreClientContextType;
 
   return () =>
     api
@@ -101,7 +110,7 @@ export function useSyncGitOpsSet(params: DetailParams) {
 
 export function useToggleSuspendGitOpsSet(params: DetailParams) {
   const qc = useQueryClient();
-  const { api } = useContext(CoreClientContext);
+  const { api } = useContext(CoreClientContext) as CoreClientContextType;
 
   return (suspend: boolean) =>
     api

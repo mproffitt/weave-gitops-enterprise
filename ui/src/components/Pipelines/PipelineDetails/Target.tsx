@@ -1,4 +1,9 @@
-import {
+import _ from 'lodash';
+import React from 'react';
+import styled from 'styled-components';
+import { PipelineTargetStatus } from '../../../api/pipelines/types.pb';
+import { useListConfigContext } from '../../../contexts/ListConfig';
+/*import {
   Flex,
   Icon,
   IconType,
@@ -8,11 +13,15 @@ import {
   V2Routes,
   computeReady,
   formatURL,
-} from '@choclab/weave-gitops';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { PipelineTargetStatus } from '../../../api/pipelines/types.pb';
-import { useListConfigContext } from '../../../contexts/ListConfig';
+} from '../../../gitops.d';*/
+import Flex from '../../../weave/components/Flex';
+import Icon, { IconType } from '../../../weave/components/Icon';
+import KubeStatusIndicator, { computeReady } from '../../../weave/components/KubeStatusIndicator';
+import Link from '../../../weave/components/Link';
+import Text from '../../../weave/components/Text';
+import { V2Routes } from '../../../weave/lib/types';
+import { formatURL } from '../../../weave/lib/nav';
+
 import { ClusterDashboardLink } from '../../Clusters/ClusterDashboardLink';
 import { EnvironmentCard } from './styles';
 
@@ -37,10 +46,10 @@ function Target({ className, target, background }: Props) {
     >
       <Flex column>
         <Flex gap="4" align>
-          <Icon type={IconType.ClustersIcon} size="medium" color="black" />
+          <Icon type={IconType.ClustersIcon} size="medium" color="white" />
           <Text>Cluster:</Text>
+          <ClusterDashboardLink clusterName={clusterName} />
         </Flex>
-        <ClusterDashboardLink clusterName={clusterName} />
       </Flex>
       {_.map(target.workloads, (workload, index) => {
         const { lastAppliedRevision, version } = workload;

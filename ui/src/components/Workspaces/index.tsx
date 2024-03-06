@@ -1,3 +1,4 @@
+import React from 'react';
 import { useListWorkspaces } from '../../contexts/Workspaces';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';

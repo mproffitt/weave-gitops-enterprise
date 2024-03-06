@@ -1,14 +1,15 @@
 import React from 'react';
 import { Terraform } from '../../api/terraform/terraform.pb';
 import { ClustersService } from '../../cluster-services/cluster_services.pb';
-import {
+/*import {
   UnAuthorizedInterceptor,
   setAPIPathPrefix,
-} from '@choclab/weave-gitops';
+} from '../../gitops.d';*/
 import { ProgressiveDeliveryService } from '@choclab/progressive-delivery';
 import { Pipelines } from '../../api/pipelines/pipelines.pb';
 import { Query } from '../../api/query/query.pb';
 import { GitAuth } from '../../api/gitauth/gitauth.pb';
+import { UnAuthorizedInterceptor, setAPIPathPrefix } from '../../weave/contexts/CoreClientContext';
 
 export interface APIs {
   terraform: typeof Terraform;

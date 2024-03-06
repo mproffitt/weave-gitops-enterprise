@@ -1,21 +1,27 @@
-import {
-  DagGraph,
-  Flex,
-  MessageBox,
-  Spacer,
-  Text,
-} from '@choclab/weave-gitops';
-import { FluxObjectNode } from '@choclab/weave-gitops/ui/lib/objects';
 import React from 'react';
 import styled from 'styled-components';
 import { TerraformObject } from '../../api/terraform/types.pb';
 import { useListTerraformObjects } from '../../contexts/Terraform';
+/*import {
+  DagGraph,
+  Flex,
+  FluxObjectNode,
+  MessageBox,
+  Spacer,
+  Text,
+} from '../../gitops.d';*/
+import Text from '../../weave/components/Text';
 import {
   getGraphNodes,
   makeObjectId,
   TerraformNodesMap,
   TerraformObjectNode,
 } from './dependencies';
+import DagGraph from '../../weave/components/DagGraph';
+import Flex from '../../weave/components/Flex';
+import MessageBox from '../../weave/components/MessageBox';
+import Spacer from '../../weave/components/Spacer';
+import { FluxObjectNode } from '../../weave/lib/objects';
 
 type Props = {
   className?: string;

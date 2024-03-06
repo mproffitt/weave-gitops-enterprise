@@ -1,11 +1,16 @@
-import {
+import React, { FC } from 'react';
+/*import {
+  HelmChart,
   HelmChartDetail,
   Kind,
   useGetObject,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { HelmChart } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+} from '../../gitops.d';*/
+import { HelmChart } from '../../weave/lib/objects';
+import HelmChartDetail from '../../weave/components/HelmChartDetail';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { useGetObject } from '../../weave/hooks/objects';
+import { V2Routes } from '../../weave/lib/types';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { EditButton } from '../Templates/Edit/EditButton';
@@ -19,7 +24,7 @@ type Props = {
 const WGApplicationsHelmChart: FC<Props> = props => {
   const { name, namespace, clusterName } = props;
   const {
-    data: helmChart,
+    data: helmChart = {} as HelmChart,
     isLoading,
     error,
   } = useGetObject<HelmChart>(name, namespace, Kind.HelmChart, clusterName);

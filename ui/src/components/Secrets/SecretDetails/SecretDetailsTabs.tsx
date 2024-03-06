@@ -1,4 +1,6 @@
-import {
+import React from 'react';
+import { GetExternalSecretResponse } from '../../../cluster-services/cluster_services.pb';
+/*import {
   DataTable,
   Flex,
   FluxObject,
@@ -7,8 +9,15 @@ import {
   Text,
   YamlView,
   createYamlCommand,
-} from '@choclab/weave-gitops';
-import { GetExternalSecretResponse } from '../../../cluster-services/cluster_services.pb';
+} from '../../../gitops.d';*/
+
+import DataTable from '../../../weave/components/DataTable';
+import Flex from '../../../weave/components/Flex';
+import { FluxObject } from '../../../weave/lib/objects';
+import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
+import Text from '../../../weave/components/Text';
+import YamlView from '../../../weave/components/YamlView';
+import { createYamlCommand } from '../../../weave/lib/utils';
 import { Routes } from '../../../utils/nav';
 import ListEvents from '../../ListEvents';
 import { RowHeaders, SectionRowHeader } from '../../RowHeader';
@@ -71,8 +80,8 @@ const SecretDetailsTabs = ({
       : []),
   ];
   return (
-    <SubRouterTabs rootPath={`${path}/details`}>
-      <RouterTab name="Details" path={`${path}/details`}>
+    <SubRouterTabs rootPath={`details`}>
+      <RouterTab name="Details" path={`details`}>
         <Flex column wide gap="8">
           <RowHeaders rows={secretDetailsHeaders} />
           {secretObj.obj?.spec?.data?.length && (
@@ -98,7 +107,7 @@ const SecretDetailsTabs = ({
           )}
         </Flex>
       </RouterTab>
-      <RouterTab name="Events" path={`${path}/events`}>
+      <RouterTab name="Events" path={`events`}>
         <ListEvents
           involvedObject={{
             name: externalSecretName,
@@ -108,7 +117,7 @@ const SecretDetailsTabs = ({
           clusterName={clusterName}
         />
       </RouterTab>
-      <RouterTab name="Yaml" path={`${path}/yaml`}>
+      <RouterTab name="Yaml" path={`yaml`}>
         <YamlView
           yaml={secretObj.yaml}
           header={createYamlCommand(

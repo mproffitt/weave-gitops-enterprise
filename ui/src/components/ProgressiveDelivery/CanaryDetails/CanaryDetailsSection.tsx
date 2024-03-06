@@ -2,15 +2,21 @@ import {
   Automation,
   Canary,
 } from '@choclab/progressive-delivery/api/prog/types.pb';
-import {
+import React from 'react';
+import styled from 'styled-components';
+/*import {
   Flex,
   RouterTab,
   SubRouterTabs,
   Text,
   YamlView,
   createYamlCommand,
-} from '@choclab/weave-gitops';
-import styled from 'styled-components';
+} from '../../../gitops.d';*/
+import Flex from '../../../weave/components/Flex';
+import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
+import Text from '../../../weave/components/Text';
+import YamlView from '../../../weave/components/YamlView';
+import { createYamlCommand } from '../../../weave/lib/utils';
 
 import { Routes } from '../../../utils/nav';
 import ListEvents from '../../ListEvents';
@@ -47,14 +53,14 @@ function CanaryDetailsSection({
           {canary.status?.conditions![0].message || '--'}
         </Text>
       </Flex>
-      <SubRouterTabs rootPath={`${path}/details`}>
-        <RouterTab name="Details" path={`${path}/details`}>
+      <SubRouterTabs rootPath={`details`}>
+        <RouterTab name="Details" path={`details`}>
           <CanaryDetailsWrapper>
             <DetailsSection canary={canary} automation={automation} />
           </CanaryDetailsWrapper>
         </RouterTab>
 
-        <RouterTab name="Objects" path={`${path}/objects`}>
+        <RouterTab name="Objects" path={`objects`}>
           <CanaryDetailsWrapper>
             <ListManagedObjects
               clusterName={canary.clusterName || ''}
@@ -63,7 +69,7 @@ function CanaryDetailsSection({
             />
           </CanaryDetailsWrapper>
         </RouterTab>
-        <RouterTab name="Events" path={`${path}/events`}>
+        <RouterTab name="Events" path={`events`}>
           <CanaryDetailsWrapper>
             <ListEvents
               clusterName={canary?.clusterName}
@@ -75,14 +81,14 @@ function CanaryDetailsSection({
             />
           </CanaryDetailsWrapper>
         </RouterTab>
-        <RouterTab name="Analysis" path={`${path}/analysis`}>
+        <RouterTab name="Analysis" path={`analysis`}>
           <CanaryDetailsWrapper>
             <CanaryMetricsTable
               metrics={canary.analysis?.metrics || []}
             ></CanaryMetricsTable>
           </CanaryDetailsWrapper>
         </RouterTab>
-        <RouterTab name="yaml" path={`${path}/yaml`}>
+        <RouterTab name="yaml" path={`yaml`}>
           <CanaryDetailsWrapper>
             <YamlView
               yaml={canary.yaml || ''}

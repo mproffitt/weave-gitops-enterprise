@@ -1,11 +1,16 @@
-import {
+import React, { FC } from 'react';
+/*import {
+  HelmRepository,
   HelmRepositoryDetail,
   Kind,
   useGetObject,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { HelmRepository } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+} from '../../gitops.d';*/
+import { HelmRepository } from '../../weave/lib/objects';
+import HelmRepositoryDetail from '../../weave/components/HelmRepositoryDetail';
+import { useGetObject } from '../../weave/hooks/objects';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { V2Routes } from '../../weave/lib/types';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { EditButton } from '../Templates/Edit/EditButton';
@@ -19,7 +24,7 @@ type Props = {
 const WGApplicationsHelmRepository: FC<Props> = props => {
   const { name, namespace, clusterName } = props;
   const {
-    data: helmRepository,
+    data: helmRepository = {} as HelmRepository,
     isLoading,
     error,
   } = useGetObject<HelmRepository>(

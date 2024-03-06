@@ -1,13 +1,17 @@
-import {
+import moment from 'moment';
+import React from 'react';
+import { useGetWorkspaceServiceAccount } from '../../../../contexts/Workspaces';
+/*import {
   DataTable,
   YamlView,
   createYamlCommand,
-} from '@choclab/weave-gitops';
-import moment from 'moment';
-import { useGetWorkspaceServiceAccount } from '../../../../contexts/Workspaces';
+} from '../../../../gitops.d';*/
 import { TableWrapper } from '../../../Shared';
 import WorkspaceModal from '../WorkspaceModal';
 import WorkspaceTabsWrapper from './WorkspaceTabsWrapper';
+import DataTable from '../../../../weave/components/DataTable';
+import YamlView from '../../../../weave/components/YamlView';
+import { createYamlCommand } from '../../../../weave/lib/utils';
 
 export const ServiceAccountsTab = ({
   clusterName,

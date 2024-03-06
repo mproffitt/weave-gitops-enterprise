@@ -1,13 +1,8 @@
-import { CircularProgress } from '@material-ui/core';
-import { Alert, AlertTitle } from '@material-ui/lab';
-import {
-  Flex,
-  useLinkResolver,
-  useRequestState,
-} from '@choclab/weave-gitops';
+import { CircularProgress } from '@mui/material';
+import { Alert, AlertTitle } from '@mui/material';
 import qs from 'query-string';
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   AuthorizeGitlabResponse,
@@ -15,6 +10,15 @@ import {
 } from '../../api/gitauth/gitauth.pb';
 import { useEnterpriseClient } from '../../contexts/API';
 import useNotifications from '../../contexts/Notifications';
+/*import {
+  Flex,
+  useLinkResolver,
+  useRequestState,
+} from '../../gitops.d';*/
+
+import Flex from '../../weave/components/Flex';
+import { useLinkResolver } from '../../weave/contexts/LinkResolverContext';
+import { useRequestState } from '../../weave/hooks/common';
 import {
   azureDevOpsOAuthRedirectURI,
   bitbucketServerOAuthRedirectURI,
@@ -30,6 +34,7 @@ type Props = {
   provider: GitProvider;
   error?: string | null;
   errorDescription?: string | null;
+  className?: string;
 };
 
 const ErrorMessage = ({ title, message }: any) => {
@@ -48,12 +53,13 @@ function OAuthCallback({
   error: paramsError,
   errorDescription,
 }: Props) {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [res, loading, error, req] = useRequestState<AuthorizeGitlabResponse>();
   const linkResolver = useLinkResolver();
   const { setNotifications } = useNotifications();
   const { gitAuth } = useEnterpriseClient();
-  const params = qs.parse(history.location.search);
+  const { search } = useLocation();
+  const params = qs.parse(search);
 
   React.useEffect(() => {
     if (provider === GitProvider.GitLab) {
@@ -99,7 +105,7 @@ function OAuthCallback({
     const state = getCallbackState();
 
     if (state?.page || !params.error) {
-      history.push(linkResolver(state?.page || ''));
+      navigate(linkResolver(state?.page || ''));
       return;
     }
   }, [res, history, linkResolver, params.error, provider]);
@@ -115,7 +121,7 @@ function OAuthCallback({
       <NotificationsWrapper>
         <Flex wide align center>
           {loading && <CircularProgress />}
-          {/* Two possible error sources: OAuth misconfiguration, 
+          {/* Two possible error sources: OAuth misconfiguration,
             or a problem with the code exchange. Handling both here.
           */}
           {error && (

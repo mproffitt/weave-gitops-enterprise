@@ -1,16 +1,23 @@
-import {
+import { Box } from '@mui/material';
+import _ from 'lodash';
+import React from 'react';
+import styled from 'styled-components';
+import { Object } from '../../api/query/query.pb';
+/*import {
   DataTable,
+  Field,
   Flex,
   formatURL,
   Icon,
   Link,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
-import { Box } from '@material-ui/core';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { Object } from '../../api/query/query.pb';
+} from '../../gitops.d';*/
+import DataTable, { Field } from '../../weave/components/DataTable';
+import Flex from '../../weave/components/Flex';
+import { formatURL } from '../../weave/lib/nav';
+import Icon from '../../weave/components/Icon';
+import Link from '../../weave/components/Link';
+import { V2Routes } from '../../weave/lib/types';
 import { getKindRoute, Routes } from '../../utils/nav';
 import { getIndicatorInfo } from '../../utils/status';
 import { QueryState } from './hooks';
@@ -27,12 +34,15 @@ type Props = {
   rows: Object[];
   queryState: QueryState;
   enableBatchSync?: boolean;
+  defaultSort?: string;
 };
 
 export const defaultExplorerFields: ExplorerField[] = [
   {
     id: 'name',
     label: 'Name',
+    defaultSort: true,
+    sortValue: (o: Object) => o.name,
     value: (o: Object) => {
       const page = getKindRoute(o?.kind as string);
 
@@ -64,25 +74,30 @@ export const defaultExplorerFields: ExplorerField[] = [
     id: 'kind',
     label: 'Kind',
     value: 'kind',
+    sortValue: (o: Object) => o.kind,
   },
   {
     id: 'namespace',
     label: 'Namespace',
     value: 'namespace',
+    sortValue: (o: Object) => o.namespace,
   },
   {
     id: 'clusterName',
     label: 'Cluster',
     value: 'clusterName',
+    sortValue: (o: Object) => o.cluster,
   },
   {
     id: 'tenant',
     label: 'Tenant',
     value: 'tenant',
+    sortValue: (o: Object) => o.tenant,
   },
   {
     id: 'status',
     label: 'Status',
+    sortValue: (o: Object) => o.status,
     value: (o: Object) => {
       if (o.status === '-') {
         return '-';
@@ -92,7 +107,7 @@ export const defaultExplorerFields: ExplorerField[] = [
         <Flex align>
           <Box marginRight={1}>
             <Icon
-              size={24}
+              size="medium"
               {...getIndicatorInfo(o?.status)}
             />
           </Box>
@@ -105,6 +120,7 @@ export const defaultExplorerFields: ExplorerField[] = [
     id: 'message',
     label: 'Message',
     value: 'message',
+    sortValue: (o: Object) => o.message,
     maxWidth: 600,
   },
 ];
@@ -130,10 +146,11 @@ export function addFieldsWithIndex(
 
 function ExplorerTable({
   className,
-  rows,
-  enableBatchSync,
   fields,
   onColumnHeaderClick,
+  rows,
+  enableBatchSync,
+  defaultSort,
 }: Props) {
   const r: Object[] = _.map(rows, o => ({
     // Doing some things here to make this work with the DataTable.
@@ -152,7 +169,7 @@ function ExplorerTable({
       hideSearchAndFilters
       onColumnHeaderClick={onColumnHeaderClick}
       hasCheckboxes={enableBatchSync}
-      disableSort
+      defaultSort={defaultSort}
     />
   );
 }

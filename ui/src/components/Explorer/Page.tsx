@@ -1,5 +1,7 @@
-import { RouterTab, SubRouterTabs } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
+//import { RouterTab, SubRouterTabs } from '../../gitops.d';
+import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
@@ -15,11 +17,11 @@ function ExplorerPage({ className }: Props) {
     <Page path={[{ label: 'Explorer' }]}>
       <NotificationsWrapper>
         <div className={className}>
-          <SubRouterTabs rootPath={`${Routes.Explorer}/query`}>
-            <RouterTab name="Query" path={`${Routes.Explorer}/query`}>
+          <SubRouterTabs rootPath={`query`}>
+            <RouterTab name="Query" path={`query`}>
               <Explorer />
             </RouterTab>
-            <RouterTab name="Access Rules" path={`${Routes.Explorer}/access`}>
+            <RouterTab name="Access Rules" path={`access`}>
               <AccessRulesDebugger />
             </RouterTab>
           </SubRouterTabs>

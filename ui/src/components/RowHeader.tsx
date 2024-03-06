@@ -1,6 +1,8 @@
-import { TableCell, TableRow } from '@material-ui/core';
-import { Flex } from '@choclab/weave-gitops';
+import { TableCell, TableRow } from '@mui/material';
+import React from 'react';
 import styled from 'styled-components';
+import Flex from '../weave/components/Flex';
+//import { Flex } from '../gitops.d';
 
 const RowTitle = styled.div`
   font-weight: 600;

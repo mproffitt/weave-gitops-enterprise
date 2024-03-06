@@ -1,3 +1,4 @@
+import React from 'react';
 import { useGetWorkspaceDetails } from '../../../contexts/Workspaces';
 import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';

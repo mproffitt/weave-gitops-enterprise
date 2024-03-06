@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { EnabledComponent } from '../../api/query/query.pb';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import Explorer from '../Explorer/Explorer';

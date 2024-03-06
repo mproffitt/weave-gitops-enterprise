@@ -1,12 +1,17 @@
-import {
+import moment from 'moment';
+import React, { FC } from 'react';
+import { ExternalSecretItem } from '../../../cluster-services/cluster_services.pb';
+/*import {
   DataTable,
   formatURL,
   KubeStatusIndicator,
   Link,
-} from '@choclab/weave-gitops';
-import moment from 'moment';
-import { FC } from 'react';
-import { ExternalSecretItem } from '../../../cluster-services/cluster_services.pb';
+} from '../../../gitops.d';*/
+import DataTable from '../../../weave/components/DataTable';
+import { formatURL } from '../../../weave/lib/nav';
+import KubeStatusIndicator from '../../../weave/components/KubeStatusIndicator';
+import Link from '../../../weave/components/Link';
+
 import { Routes } from '../../../utils/nav';
 import { TableWrapper } from '../../Shared';
 
@@ -24,7 +29,7 @@ export const SecretsTable: FC<Props> = ({ secrets }) => {
           {
             label: 'Name',
             value: (s: ExternalSecretItem) => (
-              <Link 
+              <Link
                 to={formatURL(Routes.SecretDetails, {
                   externalSecretName: s.externalSecretName,
                   clusterName: s.clusterName,

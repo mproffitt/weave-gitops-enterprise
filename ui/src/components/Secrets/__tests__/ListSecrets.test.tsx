@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import moment from 'moment';
+import React from 'react';
 import SecretsList from '..';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
@@ -66,7 +67,7 @@ const mappedSecrets = (secrets: Array<any>) => {
 };
 
 const filterTable = new TestFilterableTable('secrets-list', fireEvent);
-const secrests = ListExternalSecretsResponse.secrets;
+const secrets = ListExternalSecretsResponse.secrets;
 
 describe('ListSecrets', () => {
   let wrap: (el: JSX.Element) => JSX.Element;
@@ -92,14 +93,18 @@ describe('ListSecrets', () => {
     expect(alertMessage).toHaveTextContent('First Error message');
 
     // Next Error
-    const nextError = screen.queryByTestId('nextError');
-    nextError?.click();
+    await act(async () => {
+      const nextError = screen.queryByTestId('nextError');
+      nextError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent('second Error message');
 
     // Prev error
-    const prevError = screen.queryByTestId('prevError');
-    prevError?.click();
+    await act(async () => {
+      const prevError = screen.queryByTestId('prevError');
+      prevError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent('First Error message');
 
@@ -109,27 +114,29 @@ describe('ListSecrets', () => {
   });
 
   it('renders a list of secrets and sort by Name then by age', async () => {
-    const c = wrap(<SecretsList />);
-    render(c);
+    await act(async () => {
+      const c = wrap(<SecretsList />);
+      render(c);
+    });
 
     expect(await screen.findByText('Secrets')).toBeTruthy();
 
     const sortRowsBySecretName = mappedSecrets(
-      secrests.sort((a, b) =>
+      secrets.sort((a, b) =>
         a.externalSecretName.localeCompare(b.externalSecretName),
       ),
     );
     filterTable.testSorthTableByColumn('Name', sortRowsBySecretName);
 
     const reverseSortRowsBySecretName = mappedSecrets(
-      secrests.sort((a, b) =>
+      secrets.sort((a, b) =>
         b.externalSecretName.localeCompare(a.externalSecretName),
       ),
     );
     filterTable.testSorthTableByColumn('Name', reverseSortRowsBySecretName);
 
     const sortRowsByAge = mappedSecrets(
-      secrests.sort((a, b) => {
+      secrets.sort((a, b) => {
         const t1 = new Date(a.timestamp).getTime();
         const t2 = new Date(b.timestamp).getTime();
         return t2 - t1;

@@ -3,16 +3,24 @@ import {
   FormControlLabel,
   ListSubheader,
   MenuItem,
-} from '@material-ui/core';
-import { Flex, Kind, Text, useListSources } from '@choclab/weave-gitops';
-import {
-  GitRepository,
-  HelmRepository,
-} from '@choclab/weave-gitops/ui/lib/objects';
+} from '@mui/material';
 import _ from 'lodash';
 import React, { Dispatch, FC, useCallback, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GitopsCluster } from '../../../../../cluster-services/cluster_services.pb';
+/*import {
+  Flex,
+  Kind,
+  Text,
+  useListSources ,
+  GitRepository,
+  HelmRepository,
+} from '../../../../../gitops.d';*/
+import Flex from '../../../../../weave/components/Flex';
+import { Kind } from '../../../../../weave/lib/api/core/types.pb';
+import Text from '../../../../../weave/components/Text';
+import { useListSources } from '../../../../../weave/hooks/sources';
+import { GitRepository, HelmRepository } from '../../../../../weave/lib/objects';
 import { DEFAULT_FLUX_KUSTOMIZATION_NAMESPACE } from '../../../../../utils/config';
 import { Input, Select } from '../../../../../utils/form';
 import { Tooltip } from '../../../../Shared';
@@ -43,7 +51,7 @@ const AppFields: FC<{
   const { cluster, source, name, namespace, target_namespace, path } =
     formData.clusterAutomations[index];
   const { createNamespace } = automation;
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const clusters: GitopsCluster[] | undefined =
@@ -53,10 +61,10 @@ const AppFields: FC<{
     (cluster: GitopsCluster) => {
       setFormData((formData: any) => {
         const params = new URLSearchParams(`clusterName=${cluster.name}`);
-        history.replace({
+        navigate({
           pathname: location.pathname,
           search: params.toString(),
-        });
+        }, { replace: true });
         const currentAutomation = [...formData.clusterAutomations];
         currentAutomation[index] = {
           ...currentAutomation[index],
@@ -71,7 +79,7 @@ const AppFields: FC<{
         };
       });
     },
-    [index, setFormData, history, location.pathname],
+    [index, setFormData, navigate, location.pathname],
   );
 
   useEffect(() => {

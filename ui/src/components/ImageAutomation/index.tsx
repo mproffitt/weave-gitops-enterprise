@@ -1,9 +1,13 @@
-import { Alert } from '@material-ui/lab';
-import {
+import { Alert } from '@mui/material';
+import React from 'react';
+/*import {
   Flex,
   ImageAutomation,
   useCheckCRDInstalled,
-} from '@choclab/weave-gitops';
+} from '../../gitops.d';*/
+import Flex from '../../weave/components/Flex';
+import ImageAutomation from '../../weave/components/ImageAutomation/ImageAutomation';
+import { useCheckCRDInstalled } from '../../weave/hooks/imageautomation';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import OnboardingImageAutomationMessage from './OnboardingMessage';

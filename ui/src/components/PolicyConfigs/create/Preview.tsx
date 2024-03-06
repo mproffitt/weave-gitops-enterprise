@@ -1,11 +1,12 @@
-import { Button } from '@choclab/weave-gitops';
-import { Dispatch, useCallback, useState } from 'react';
+import React, { Dispatch, useCallback, useState } from 'react';
 import {
   ClusterAutomation,
   RenderAutomationResponse,
 } from '../../../cluster-services/cluster_services.pb';
 import { useEnterpriseClient } from '../../../contexts/API';
 import useNotifications from '../../../contexts/Notifications';
+//import { Button } from '../../../gitops.d';
+import Button from '../../../weave/components/Button';
 import { validateFormData } from '../../../utils/form';
 import PreviewModal from '../../Templates/Form/Partials/PreviewModal';
 

@@ -1,4 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
+import React from 'react';
 import { EnterpriseClientContext } from '../../../../contexts/API';
 import {
   ClustersServiceClientMock,
@@ -75,15 +76,16 @@ describe('PR Preview when creating resources', () => {
     expect(await screen.findByText('PR Preview')).toBeTruthy();
 
     // enabled tabs
-
     const tab1Title = screen.getByRole('tab', {
       name: /Resource Definition/i,
     });
     expect(tab1Title).toBeInTheDocument();
 
-    const tab1Content = screen.getByTestId('tab-content-0');
-    expect(tab1Content.textContent).toEqual(
-      api?.RenderTemplateReturns?.renderedTemplates?.[0].content,
+    // console.log(await screen.findAllByRole('tabpanel'));
+    const tab1Content = screen.getByRole('tabpanel');
+    expect(tab1Content?.textContent).toEqual(
+      prPreview.renderedTemplates[0].path +
+      prPreview.renderedTemplates[0].content
     );
 
     const tab3Title = screen.getByRole('tab', {
@@ -92,11 +94,14 @@ describe('PR Preview when creating resources', () => {
     expect(tab3Title).toBeInTheDocument();
 
     // navigate to the Kustomizations tab
-    tab3Title.click();
+    await act(async () => {
+      tab3Title.click();
+    });
 
-    const tab3Content = screen.getByTestId('tab-content-2');
-    expect(tab3Content.textContent).toEqual(
-      api?.RenderTemplateReturns?.kustomizationFiles?.[0].content,
+    const tab3Content = screen.getByRole('tabpanel');
+    expect(tab3Content?.textContent).toEqual(
+      prPreview.kustomizationFiles[0].path +
+      prPreview.kustomizationFiles[0].content
     );
 
     // disabled tabs

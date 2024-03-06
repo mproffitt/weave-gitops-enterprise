@@ -1,6 +1,9 @@
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import { Button, Icon, IconType } from '@choclab/weave-gitops';
-import { Dispatch } from 'react';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import React, { Dispatch } from 'react';
+//import { Button, Icon, IconType } from '../../../gitops.d';
+import Button from '../../../weave/components/Button';
+import Icon, { IconType } from '../../../weave/components/Icon';
+
 import { InputDebounced } from '../../../utils/form';
 import { ExternalSecret, SOPS } from '../Shared/utils';
 

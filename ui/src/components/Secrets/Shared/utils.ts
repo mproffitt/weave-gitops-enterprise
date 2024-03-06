@@ -1,10 +1,12 @@
-import { GitRepository, withBasePath } from '@choclab/weave-gitops';
 import styled from 'styled-components';
 import {
   ClusterAutomation,
   ClusterNamespacedName,
   EncryptSopsSecretRequest,
 } from '../../../cluster-services/cluster_services.pb';
+//import { GitRepository, withBasePath } from '../../../gitops.d';
+import { GitRepository } from '../../../weave/lib/objects';
+import { withBasePath } from '../../../weave/lib/utils';
 import { FormWrapper } from '../../Templates/Form/utils';
 
 export interface ExternalSecret {

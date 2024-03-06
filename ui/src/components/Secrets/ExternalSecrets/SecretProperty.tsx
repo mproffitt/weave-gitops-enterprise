@@ -1,8 +1,12 @@
-import { Switch } from '@material-ui/core';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import { Button, Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
-import { Dispatch } from 'react';
+import { Switch } from '@mui/material';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import React, { Dispatch } from 'react';
 import styled from 'styled-components';
+//import { Button, Flex, Icon, IconType, Text } from '../../../gitops.d';
+import Button from '../../../weave/components/Button';
+import Flex from '../../../weave/components/Flex';
+import Icon, { IconType } from '../../../weave/components/Icon';
+import Text from '../../../weave/components/Text';
 import { InputDebounced } from '../../../utils/form';
 import { ExternalSecret } from '../Shared/utils';
 

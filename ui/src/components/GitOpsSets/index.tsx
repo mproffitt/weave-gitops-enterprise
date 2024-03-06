@@ -1,4 +1,10 @@
-import {
+//import { Field } from 'gitops/components/DataTable';
+import _ from 'lodash';
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { GitOpsSet } from '../../api/gitopssets/types.pb';
+import { EnabledComponent } from '../../api/query/query.pb';
+/*import {
   DataTable,
   filterByStatusCallback,
   filterConfig,
@@ -6,13 +12,14 @@ import {
   KubeStatusIndicator,
   statusSortHelper,
   Timestamp,
-} from '@choclab/weave-gitops';
-import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
-import _ from 'lodash';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { GitOpsSet } from '../../api/gitopssets/types.pb';
-import { EnabledComponent } from '../../api/query/query.pb';
+  Field,
+} from '../../gitops.d';*/
+import DataTable, { Field, filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import { formatURL } from '../../weave/lib/nav';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Timestamp from '../../weave/components/Timestamp';
+import { statusSortHelper } from '../../weave/lib/utils';
+
 import { useListGitOpsSets } from '../../hooks/gitopssets';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { computeMessage, Condition } from '../../utils/conditions';
@@ -29,7 +36,7 @@ const GitOpsSets: FC = () => {
     enabled: !isExplorerEnabled,
   });
 
-  const gitopssets = data?.objects;
+  const gitopssets = data?.objects || [];
 
   const initialFilterState = {
     ...filterConfig(gitopssets, 'status', filterByStatusCallback),

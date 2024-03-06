@@ -1,20 +1,5 @@
 import '@fortawesome/fontawesome-free/css/all.css';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import {
-  AppContext,
-  AppContextProvider,
-  AuthCheck,
-  AuthContextProvider,
-  coreClient,
-  CoreClientContextProvider,
-  getBasePath,
-  LinkResolverProvider,
-  Pendo,
-  SignIn,
-  theme,
-  ThemeTypes,
-  withBasePath,
-} from '@choclab/weave-gitops';
+import { ThemeProvider as MuiThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import React, { ReactNode } from 'react';
 import {
   QueryCache,
@@ -22,7 +7,7 @@ import {
   QueryClientConfig,
   QueryClientProvider,
 } from 'react-query';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
@@ -36,9 +21,31 @@ import Compose from './components/ProvidersCompose';
 import { EnterpriseClientProvider } from './contexts/API';
 import NotificationsProvider from './contexts/Notifications/Provider';
 import RequestContextProvider from './contexts/Request';
+/*import {
+  AppContext,
+  AppContextProvider,
+  AuthCheck,
+  AuthContextProvider,
+  coreClient,
+  CoreClientContextProvider,
+  getBasePath,
+  LinkResolverProvider,
+  SignIn,
+  theme,
+  ThemeTypes,
+  withBasePath,
+} from './gitops.d';*/
 import { muiTheme } from './muiTheme';
 import { resolver } from './utils/link-resolver';
 import { addTFSupport } from './utils/request';
+import AppContextProvider, { AppContext, ThemeTypes } from './weave/contexts/AppContext';
+import { getBasePath, withBasePath } from './weave/lib/utils';
+import theme from './weave/lib/theme';
+import { Core as coreClient } from './weave/lib/api/core/core.pb';
+import AuthContextProvider, { AuthCheck } from './weave/contexts/AuthContext';
+import CoreClientContextProvider from './weave/contexts/CoreClientContext';
+import { LinkResolverProvider } from './weave/contexts/LinkResolverContext';
+import SignIn from './weave/pages/SignIn';
 
 const GlobalStyle = createGlobalStyle`
   /* https://github.com/weaveworks/wkp-ui/pull/283#discussion_r339958886 */
@@ -124,6 +131,7 @@ interface Error {
   code: number;
   message: string;
 }
+
 export const queryOptions: QueryClientConfig = {
   defaultOptions: {
     queries: {
@@ -152,22 +160,15 @@ const StylesProvider = ({ children }: { children: ReactNode }) => {
   const mode = settings.theme;
   const appliedTheme = theme(mode);
 
-  // Related to: https://github.com/weaveworks/weave-gitops-enterprise/issues/3555
-  // The `<body>` element is set to use `colors.black`. We need to invert it for dark mode.
-  if (mode === ThemeTypes.Dark) {
-    appliedTheme.colors = {
-      ...appliedTheme.colors,
-      black: appliedTheme.colors.white,
-    };
-  }
-
   return (
-    <ThemeProvider theme={appliedTheme}>
-      <MuiThemeProvider theme={muiTheme(appliedTheme.colors, mode)}>
-        <GlobalStyle />
-        {children}
-      </MuiThemeProvider>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={appliedTheme}>
+        <MuiThemeProvider theme={muiTheme(appliedTheme.colors, mode)}>
+          <GlobalStyle />
+          {children}
+        </MuiThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 
@@ -185,25 +186,19 @@ const AppContainer = () => {
                 <EnterpriseClientProvider>
                   <CoreClientContextProvider api={coreClient}>
                     <LinkResolverProvider resolver={resolver}>
-                      <Pendo
-                        defaultTelemetryFlag="true"
-                        tier="enterprise"
-                        version={process.env.REACT_APP_VERSION}
-                      />
                       <Compose components={[NotificationsProvider]}>
-                        <Switch>
+                        <Routes>
                           <Route
-                            component={() => <SignIn />}
-                            exact={true}
+                            Component={() => <SignIn />}
                             path="/sign_in"
                           />
-                          <Route path="*">
-                            {/* Check we've got a logged in user otherwise redirect back to signin */}
+                          {/* Check we've got a logged in user otherwise redirect back to signin */}
+                          <Route path="*" element={
                             <AuthCheck>
                               <App />
                             </AuthCheck>
-                          </Route>
-                        </Switch>
+                            }/>
+                        </Routes>
                         <ToastContainer
                           position="top-center"
                           autoClose={5000}

@@ -1,15 +1,22 @@
-import {
+import React, { Dispatch, FC, SetStateAction, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+/*import {
   getParentNavRouteValue,
   IconType,
   Nav,
   NavItem,
   useFeatureFlags,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
-import { Dispatch, FC, SetStateAction, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+  PageRoute,
+} from '../../gitops.d';*/
+
+import { getParentNavRouteValue } from '../../weave/lib/nav';
+import { IconType } from '../../weave/components/Icon';
+import Nav, { NavItem } from '../../weave/components/Nav';
+import { useFeatureFlags } from '../../weave/hooks/featureflags';
+import { V2Routes, PageRoute } from '../../weave/lib/types';
+
 import { Routes } from '../../utils/nav';
 
 function getParentNavRouteValueExtended(

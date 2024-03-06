@@ -1,5 +1,6 @@
-import { GitRepository } from '@choclab/weave-gitops';
 import { GetConfigResponse } from '../../../cluster-services/cluster_services.pb';
+//import { GitRepository } from '../../../gitops.d';
+import { GitRepository } from '../../../weave/lib/objects';
 import { getPullRequestUrl } from '../OpenedPullRequest';
 
 describe('getPullRequestUrl', () => {

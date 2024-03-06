@@ -1,17 +1,21 @@
-import {
+import React from 'react';
+import { useResolvedPath } from 'react-router-dom';
+/*import {
   PolicyViolationsList,
   RouterTab,
   SubRouterTabs,
   useFeatureFlags,
-} from '@choclab/weave-gitops';
-import { useRouteMatch } from 'react-router-dom';
+} from '../../gitops.d';*/
+import { PolicyViolationsList } from "../../weave/components/Policies/PolicyViolations/Table";
+import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
+import { useFeatureFlags } from '../../weave/hooks/featureflags';
 import WarningMsg from '../Explorer/WarningMsg';
 import { Page } from '../Layout/App';
 import PolicyAuditList from './Audit/PolicyAuditList';
 import { PoliciesTab } from './PoliciesListTab';
 
 const Policies = () => {
-  const { path } = useRouteMatch();
+  const path = useResolvedPath('').pathname;
   const { isFlagEnabled } = useFeatureFlags();
 
   const isQueryServiceExplorerEnabled = isFlagEnabled(
@@ -20,14 +24,14 @@ const Policies = () => {
 
   return (
     <Page path={[{ label: 'Policies' }]}>
-      <SubRouterTabs rootPath={`${path}/list`} clearQuery>
-        <RouterTab name="Policies" path={`${path}/list`}>
+      <SubRouterTabs rootPath={`list`} clearQuery>
+        <RouterTab name="Policies" path={`list`}>
           <PoliciesTab />
         </RouterTab>
-        <RouterTab name="Policy Audit" path={`${path}/audit`}>
+        <RouterTab name="Policy Audit" path={`audit`}>
           {isQueryServiceExplorerEnabled ? <PolicyAuditList /> : <WarningMsg />}
         </RouterTab>
-        <RouterTab name="Enforcement Events" path={`${path}/enforcement`}>
+        <RouterTab name="Enforcement Events" path={`enforcement`}>
           <PolicyViolationsList req={{}} />
         </RouterTab>
       </SubRouterTabs>

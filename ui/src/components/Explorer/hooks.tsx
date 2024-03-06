@@ -1,7 +1,9 @@
-import { Field } from '@choclab/weave-gitops/ui/components/DataTable';
 import _ from 'lodash';
-import { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Object } from '../../api/query/query.pb';
+//import { Field } from '../../gitops.d';
+import { Field } from '../../weave/components/DataTable';
 import { ExplorerField } from './ExplorerTable';
 import { QueryStateManager } from './QueryStateManager';
 
@@ -44,14 +46,13 @@ export function QueryStateProvider({
 
 export function useSetQueryState() {
   const mgr = useContext(QueryStateManagerContext);
-
   return mgr.write;
 }
 
 export function useReadQueryState(): QueryState {
   const mgr = useContext(QueryStateManagerContext);
-
-  return mgr.read();
+  const search = useLocation().search;
+  return mgr.read(search);
 }
 
 // useGetUnstructuredObjects returns a map of object IDs to the unstructured

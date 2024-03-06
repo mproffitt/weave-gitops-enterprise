@@ -1,7 +1,10 @@
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
 
-import { Flex, Icon, IconType } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
+//import { Flex, Icon, IconType } from '../../../gitops.d';
+import Flex from '../../../weave/components/Flex';
+import Icon, { IconType } from '../../../weave/components/Icon';
 
 enum CanaryDeploymentStatus {
   Initializing = 'Initializing',

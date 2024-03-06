@@ -1,5 +1,5 @@
-import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
-import { Dispatch, useEffect } from 'react';
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import React, { Dispatch, useEffect } from 'react';
 import { useListWorkspaces } from '../../../../../contexts/Workspaces';
 import LoadingWrapper from '../../../../Workspaces/WorkspaceDetails/Tabs/WorkspaceTabsWrapper';
 import { CheckList } from '../../../PolicyConfigStyles';

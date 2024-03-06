@@ -1,6 +1,10 @@
 import { CanaryMetric } from '@choclab/progressive-delivery/api/prog/types.pb';
-import { AppContext, DataTable, Text } from '@choclab/weave-gitops';
 import React, { useContext } from 'react';
+//import { AppContext, DataTable, Text } from '../../../../gitops.d';
+import { AppContext } from '../../../../weave/contexts/AppContext';
+import DataTable from '../../../../weave/components/DataTable';
+import Text from '../../../../weave/components/Text';
+
 import { TableWrapper } from '../../../Shared';
 
 export const CanaryMetricsTable = ({

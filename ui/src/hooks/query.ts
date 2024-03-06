@@ -1,4 +1,3 @@
-import { useFeatureFlags } from '@choclab/weave-gitops';
 import _ from 'lodash';
 import { useQuery } from 'react-query';
 import {
@@ -7,6 +6,8 @@ import {
   ListEnabledComponentsResponse,
 } from '../api/query/query.pb';
 import { useEnterpriseClient } from '../contexts/API';
+import { useFeatureFlags } from '../weave/hooks/featureflags';
+//import { useFeatureFlags } from '../gitops.d';
 
 type QueryOpts = {
   terms?: string;

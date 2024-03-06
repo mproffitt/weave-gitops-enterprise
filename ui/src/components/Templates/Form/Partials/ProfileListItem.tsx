@@ -1,5 +1,4 @@
-import { Box, FormControl, Input, MenuItem, Select } from '@material-ui/core';
-import { Button, Flex } from '@choclab/weave-gitops';
+import { Box, FormControl, Input, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import React, {
   ChangeEvent,
   Dispatch,
@@ -12,6 +11,9 @@ import {
   ClusterNamespacedName,
   RepositoryRef,
 } from '../../../../cluster-services/cluster_services.pb';
+//import { Button, Flex } from '../../../../gitops.d';
+import Button from '../../../../weave/components/Button';
+import Flex from '../../../../weave/components/Flex';
 import { ProfilesIndex, UpdatedProfile } from '../../../../types/custom';
 import { DEFAULT_PROFILE_NAMESPACE } from '../../../../utils/config';
 import ChartValuesDialog from './ChartValuesDialog';
@@ -42,7 +44,7 @@ const ProfilesListItem: FC<{
   ];
 
   const handleUpdateProfile = useCallback(
-    profile => {
+    (profile: { name: any; }) => {
       setUpdatedProfiles(sp => ({
         ...sp,
         [profile.name]: profile,
@@ -90,11 +92,11 @@ const ProfilesListItem: FC<{
   };
 
   const handleUpdateProfiles = useCallback(
-    value => {
+    (value: React.SetStateAction<string>) => {
       setYaml(value);
       profile.values.forEach(item => {
         if (item.version === version) {
-          item.yaml = value;
+          item.yaml = value as string;
         }
       });
 
@@ -130,7 +132,9 @@ const ProfilesListItem: FC<{
             <Select
               disabled={profile.required && profile.values.length === 1}
               value={version}
-              onChange={handleSelectVersion}
+              onChange={(event: SelectChangeEvent<string>) => handleSelectVersion(
+                event as ChangeEvent<{ name?: string | undefined; value: unknown }>
+              )}
               autoWidth
               label="Versions"
             >

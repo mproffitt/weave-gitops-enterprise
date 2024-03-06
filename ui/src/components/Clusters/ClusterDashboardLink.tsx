@@ -1,5 +1,8 @@
-import { Text, formatURL } from '@choclab/weave-gitops';
+import React from 'react';
 import { Link } from 'react-router-dom';
+//import { Text, formatURL } from '../../gitops.d';
+import Text from '../../weave/components/Text';
+import { formatURL } from '../../weave/lib/nav';
 import { Routes } from '../../utils/nav';
 
 interface Props {
@@ -13,7 +16,7 @@ export function formatClusterDashboardUrl({ clusterName, namespace }: Props) {
   // Taking in consideration that cluster Name doesn't contain any / separator
 
   if (!clusterName) {
-    // https://github.com/weaveworks/weave-gitops-enterprise/issues/2332
+    // https://github.com/weaveworks/gitops-enterprise/issues/2332
     return '';
   }
   let ns = '';

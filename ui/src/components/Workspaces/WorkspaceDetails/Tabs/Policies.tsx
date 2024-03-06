@@ -1,8 +1,14 @@
-import { DataTable, Link, Severity, V2Routes, formatURL } from '@choclab/weave-gitops';
 import moment from 'moment';
+import React from 'react';
 import { useGetWorkspacePolicies } from '../../../../contexts/Workspaces';
+//import { DataTable, Link, Severity, V2Routes, formatURL } from '../../../../gitops.d';
 import { TableWrapper } from '../../../Shared';
 import WorkspaceTabsWrapper from './WorkspaceTabsWrapper';
+import Link from '../../../../weave/components/Link';
+import DataTable from '../../../../weave/components/DataTable';
+import Severity from '../../../../weave/components/Policies/Utils/Severity';
+import { formatURL } from '../../../../weave/lib/nav';
+import { V2Routes } from '../../../../weave/lib/types';
 
 export const PoliciesTab = ({
   clusterName,

@@ -3,12 +3,14 @@ import {
   Tooltip as Mtooltip,
   TooltipProps,
   Typography,
-} from '@material-ui/core';
-import { Flex, Link } from '@choclab/weave-gitops';
-import { FC } from 'react';
+} from '@mui/material';
+import React, { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import CloseIconButton from '../assets/img/close-icon-button';
+import Link from '../weave/components/Link';
+import Flex from '../weave/components/Flex';
+//import { Flex, Link } from '../gitops.d';
 
 const TooltipStyle = styled.div`
   font-size: 14px;
@@ -20,7 +22,7 @@ export const Tooltip: FC<TooltipProps & { disabled?: boolean }> = ({
   children,
   ...props
 }) => {
-  const styledTitle = <TooltipStyle>{title}</TooltipStyle>;
+  const styledTitle = <TooltipStyle>{title as any}</TooltipStyle>;
   return disabled ? (
     children
   ) : (
@@ -59,7 +61,7 @@ type DialogTitleProps = {
 };
 export const MuiDialogTitle = ({ title, onFinish }: DialogTitleProps) => {
   return (
-    <DialogTitle disableTypography>
+    <DialogTitle>
       <Flex wide align between>
         <Typography variant="h5">{title}</Typography>
         {onFinish ? <CloseIconButton onClick={() => onFinish()} /> : null}

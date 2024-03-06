@@ -1,5 +1,6 @@
-import { Checkbox, FormControlLabel } from '@material-ui/core';
+import { Checkbox, FormControlLabel } from '@mui/material';
 import _ from 'lodash';
+import React from 'react';
 import styled from 'styled-components';
 import { Facet } from '../../api/query/query.pb';
 import { useReadQueryState, useSetQueryState } from './hooks';
@@ -16,7 +17,6 @@ function Filters({ className, facets, humanReadableLabels }: Props) {
 
   const handleFilterChange = (field: string, key: string, value: boolean) => {
     const record = `${field}:${key}`;
-
     const existing = _.find(queryState.filters, f => f === record);
 
     // Reset the offset when filters change.
@@ -43,7 +43,6 @@ function Filters({ className, facets, humanReadableLabels }: Props) {
 
       if (matches) {
         const [, key, value] = matches;
-
         result[`${key.replace('+', '')}:${value}`] = true;
       }
 
@@ -98,11 +97,9 @@ export default styled(Filters).attrs({ className: Filters.name })`
   ul {
     padding: 0px 8px;
   }
-
   h2 {
     margin-top: 0;
   }
-
   h3 {
     margin-bottom: 0;
   }

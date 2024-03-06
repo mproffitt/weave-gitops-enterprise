@@ -1,7 +1,8 @@
-const fs = require('fs');
-const express = require('express');
-const setupProxy = require('../.proxyrc.js');
-
+import console from 'console';
+import { readFile } from 'fs';
+import process from 'process';
+import express from 'express';
+import setupProxy from '../.proxyrc.js';
 const app = express();
 
 // static files
@@ -30,7 +31,7 @@ app.use(
       res.send(result);
       res.end();
     };
-    fs.readFile('build/index.html', writeIndexResponse);
+    readFile('build/index.html', writeIndexResponse);
   },
 );
 

@@ -1,7 +1,8 @@
-import { ButtonProps } from '@material-ui/core';
-import { Button } from '@choclab/weave-gitops';
+import { ButtonProps } from '@mui/material';
 import * as React from 'react';
 import styled from 'styled-components';
+//import { Button } from '../../gitops.d';
+import Button from '../../weave/components/Button';
 
 type Props = ButtonProps;
 

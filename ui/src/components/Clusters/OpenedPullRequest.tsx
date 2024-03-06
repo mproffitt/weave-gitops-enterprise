@@ -1,22 +1,28 @@
-import { createStyles, makeStyles } from '@material-ui/core';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import {
-  Button,
-  GitRepository,
-  Icon,
-  IconType,
-} from '@choclab/weave-gitops';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import Paper from '@mui/material/Paper';
+//import Popper from '@mui/material/Popper';
+import { Popper } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import _ from 'lodash';
 import React, { useMemo } from 'react';
 import { GetConfigResponse } from '../../cluster-services/cluster_services.pb';
 import { useListConfigContext } from '../../contexts/ListConfig';
+/*import {
+  Button,
+  GitRepository,
+  Icon,
+  IconType,
+} from '../../gitops.d';*/
+import Button from '../../weave/components/Button';
+import Icon, { IconType } from '../../weave/components/Icon';
+import { GitRepository } from '../../weave/lib/objects';
+
 import useConfig from '../../hooks/config';
 import { useGitRepos } from '../../hooks/gitrepos';
 import { openLinkHandler } from '../../utils/link-checker';
@@ -106,7 +112,8 @@ export default function OpenedPullRequest() {
     setOpen(prevOpen => !prevOpen);
   };
 
-  const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
+  //const handleClose = (event: React.MouseEvent<Document, MouseEvent>) => {
+  const handleClose = (event: MouseEvent | TouchEvent) => {
     if (
       anchorRef.current &&
       anchorRef.current.contains(event.target as HTMLElement)

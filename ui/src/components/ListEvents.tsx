@@ -1,19 +1,25 @@
-import {
-  DataTable,
-  Icon,
-  IconType,
-  RequestStateHandler,
-  Text,
-  Timestamp,
-} from '@choclab/weave-gitops';
-
-import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
+import React from 'react';
 import styled from 'styled-components';
 import {
   Event,
   ListEventsRequest,
 } from '../cluster-services/cluster_services.pb';
 import { useListEvents } from '../contexts/ProgressiveDelivery';
+import RequestStateHandler from '../weave/components/RequestStateHandler';
+import DataTable from '../weave/components/DataTable';
+import Icon, { IconType } from '../weave/components/Icon';
+import { RequestError } from '../weave/lib/types';
+import Timestamp from '../weave/components/Timestamp';
+import Text from '../weave/components/Text';
+/*import {
+  DataTable,
+  Icon,
+  IconType,
+  RequestStateHandler,
+  RequestError,
+  Text,
+  Timestamp,
+} from '../gitops.d';*/
 
 const Reason = styled.h2`
   display: flex;

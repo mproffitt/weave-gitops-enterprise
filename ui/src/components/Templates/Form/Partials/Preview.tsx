@@ -1,5 +1,4 @@
-import { Button } from '@choclab/weave-gitops';
-import { Dispatch, useCallback, useState } from 'react';
+import React, { Dispatch, useCallback, useState } from 'react';
 import {
   ProfileValues,
   RenderTemplateResponse,
@@ -7,6 +6,8 @@ import {
   Kustomization,
 } from '../../../../cluster-services/cluster_services.pb';
 import useNotifications from '../../../../contexts/Notifications';
+//import { Button } from '../../../../gitops.d';
+import Button from '../../../../weave/components/Button';
 import useTemplates from '../../../../hooks/templates';
 import { TemplateEnriched } from '../../../../types/custom';
 import { validateFormData } from '../../../../utils/form';

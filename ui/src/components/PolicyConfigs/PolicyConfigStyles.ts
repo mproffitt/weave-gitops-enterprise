@@ -1,7 +1,9 @@
-import { RemoveCircleOutline, ReportProblem } from '@material-ui/icons';
-import { Alert } from '@material-ui/lab';
-import { Flex, Text } from '@choclab/weave-gitops';
+import { RemoveCircleOutline, ReportProblem } from '@mui/icons-material';
+import { Alert } from '@mui/material';
 import styled from 'styled-components';
+//import { Flex, Text } from '../../gitops.d';
+import Flex from '../../weave/components/Flex';
+import Text from '../../weave/components/Text';
 import { TableWrapper } from '../Shared';
 
 export const TargetItemKind = styled(Text)`
@@ -131,7 +133,7 @@ export const PolicyDetailsCardWrapper = styled.ul`
 
 export const CheckList = styled.ul`
   display:flex;
-  min-width: 100vh;  
+  min-width: 100vh;
   list-style: none;
   flex-flow: wrap;
   padding-left:   ${props => props.theme.spacing.small};

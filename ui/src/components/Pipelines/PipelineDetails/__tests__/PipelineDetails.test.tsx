@@ -1,10 +1,12 @@
 /* eslint-disable testing-library/no-node-access */
 import { act, render, screen } from '@testing-library/react';
-import { CoreClientContextProvider } from '@choclab/weave-gitops';
+import React from 'react';
 import PipelineDetails from '..';
 import { GetPipelineResponse } from '../../../../api/pipelines/pipelines.pb';
 import { Pipeline } from '../../../../api/pipelines/types.pb';
 import { EnterpriseClientContext } from '../../../../contexts/API';
+//import { CoreClientContextProvider } from '../../../../gitops.d';
+import CoreClientContextProvider from '../../../../weave/contexts/CoreClientContext';
 import {
   CoreClientMock,
   PipelinesClientMock,

@@ -1,4 +1,8 @@
-import {
+import _ from 'lodash';
+import React from 'react';
+import styled from 'styled-components';
+import { TerraformObject } from '../../api/terraform/types.pb';
+/*import {
   DataTable,
   filterByStatusCallback,
   filterConfig,
@@ -8,11 +12,15 @@ import {
   statusSortHelper,
   Timestamp,
   useFeatureFlags,
-} from '@choclab/weave-gitops';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { TerraformObject } from '../../api/terraform/types.pb';
+} from '../../gitops.d';*/
 import { getKindRoute, Routes } from '../../utils/nav';
+import Link from '../../weave/components/Link';
+import DataTable, { filterConfig, filterByStatusCallback } from '../../weave/components/DataTable';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Timestamp from '../../weave/components/Timestamp';
+import { useFeatureFlags } from '../../weave/hooks/featureflags';
+import { formatURL } from '../../weave/lib/nav';
+import { statusSortHelper } from '../../weave/lib/utils';
 
 type Props = {
   className?: string;
@@ -34,6 +42,7 @@ export const getLastApplied = (tf: TerraformObject) => {
 
 function TerraformListTable({ className, rows }: Props) {
   const { isFlagEnabled } = useFeatureFlags();
+  rows = rows || [];
   let filterState = {
     ...filterConfig(rows, 'namespace'),
     ...filterConfig(rows, 'Cluster', tf => tf.clusterName),

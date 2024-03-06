@@ -1,15 +1,21 @@
-import {
+import React from 'react';
+import { useNavigate } from 'react-router';
+import styled from 'styled-components';
+import { Pipeline } from '../../api/pipelines/types.pb';
+import { useListPipelines } from '../../contexts/Pipelines';
+/*import {
   Button,
   DataTable,
   Icon,
   IconType,
   filterConfig,
   formatURL,
-} from '@choclab/weave-gitops';
-import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import { Pipeline } from '../../api/pipelines/types.pb';
-import { useListPipelines } from '../../contexts/Pipelines';
+} from '../../gitops.d';*/
+import Button from '../../weave/components/Button';
+import DataTable, { filterConfig } from '../../weave/components/DataTable';
+import Icon, { IconType } from '../../weave/components/Icon';
+import { formatURL } from '../../weave/lib/nav';
+
 import { toFilterQueryString } from '../../utils/FilterQueryString';
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
@@ -21,9 +27,9 @@ const Pipelines = ({ className }: any) => {
   const { data, isLoading } = useListPipelines();
 
   const initialFilterState = {
-    ...filterConfig(data?.pipelines, 'namespace'),
+    ...filterConfig(data?.pipelines ?? [], 'namespace'),
   };
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Page loading={isLoading} path={[{ label: 'Pipelines' }]}>
@@ -35,7 +41,7 @@ const Pipelines = ({ className }: any) => {
             const filtersValues = toFilterQueryString([
               { key: `templateType`, value: 'pipeline' },
             ]);
-            history.push(`/templates?filters=${filtersValues}`);
+            navigate(`/templates?filters=${filtersValues}`);
           }}
         >
           CREATE A PIPELINE

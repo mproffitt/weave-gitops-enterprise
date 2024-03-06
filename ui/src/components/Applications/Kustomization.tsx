@@ -1,12 +1,18 @@
-import {
+import React, { FC } from 'react';
+/*import {
+  Kustomization,
   formatURL,
   Kind,
   KustomizationDetail,
   LinkResolverProvider,
   useGetObject,
-} from '@choclab/weave-gitops';
-import { Kustomization } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+} from '../../gitops.d';*/
+import { Kustomization } from '../../weave/lib/objects';
+import { formatURL } from '../../weave/lib/nav';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import KustomizationDetail from '../../weave/components/KustomizationDetail';
+import { LinkResolverProvider } from '../../weave/contexts/LinkResolverContext';
+import { useGetObject } from '../../weave/hooks/objects';
 import { Routes } from '../../utils/nav';
 import { formatClusterDashboardUrl } from '../Clusters/ClusterDashboardLink';
 import { Page } from '../Layout/App';
@@ -81,7 +87,7 @@ const WGApplicationsKustomization: FC<Props> = ({
         >
           <KustomizationDetail
             kustomization={kustomization}
-            customActions={[<EditButton resource={kustomization} />]}
+            customActions={kustomization ? [<EditButton resource={kustomization} />] : []}
           />
         </LinkResolverProvider>
       </NotificationsWrapper>

@@ -1,9 +1,13 @@
-import { Flex, GitRepository, Link, Page } from '@choclab/weave-gitops';
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { GitProvider } from '../../../api/gitauth/gitauth.pb';
 import { useEnterpriseClient } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
 import useNotifications from '../../../contexts/Notifications';
+//import { Flex, GitRepository, Link, Page } from '../../../gitops.d';
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import Page from '../../../weave/components/Page';
+import { GitRepository } from '../../../weave/lib/objects';
 import {
   expiredTokenNotification,
   useIsAuthenticated,

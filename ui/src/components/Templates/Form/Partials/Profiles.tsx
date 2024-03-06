@@ -1,5 +1,4 @@
-import { Checkbox } from '@material-ui/core';
-import { DataTable, Flex } from '@choclab/weave-gitops';
+import { Checkbox } from '@mui/material';
 import _ from 'lodash';
 import React, { Dispatch, FC } from 'react';
 import styled from 'styled-components';
@@ -7,6 +6,9 @@ import {
   ClusterNamespacedName,
   RepositoryRef,
 } from '../../../../cluster-services/cluster_services.pb';
+//import { DataTable, Flex } from '../../../../gitops.d';
+import DataTable from '../../../../weave/components/DataTable';
+import Flex from '../../../../weave/components/Flex';
 import { ProfilesIndex, UpdatedProfile } from '../../../../types/custom';
 import { Loader } from '../../../Loader';
 import ProfilesListItem from './ProfileListItem';

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex snapshots align 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+<div
+  className="c0"
+>
+  My Text
+</div>
+`;
+
+exports[`Flex snapshots center 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+}
+
+<div
+  className="c0"
+>
+  My Text
+</div>
+`;
+
+exports[`Flex snapshots wide 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+}
+
+<div
+  className="c0"
+>
+  My Text
+</div>
+`;
+
+exports[`Flex snapshots wide center align 1`] = `
+.c0 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+<div
+  className="c0"
+>
+  My Text
+</div>
+`;

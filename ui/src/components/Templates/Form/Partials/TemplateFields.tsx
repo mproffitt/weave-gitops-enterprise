@@ -1,5 +1,5 @@
 import React, { Dispatch, FC } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { TemplateEnriched } from '../../../../types/custom';
 import { Input, Select } from '../../../../utils/form';
@@ -20,7 +20,7 @@ const TemplateFields: FC<{
   const UNEDITABLE_FIELDS = template.parameters
     ?.filter(param => Boolean(param.editable))
     .map(param => param.name);
-  const { isExact: isEditing } = useRouteMatch(Routes.EditResource) || {};
+  const match = useMatch(Routes.EditResource) || null;
   const parameterValues = formData.parameterValues || {};
   const handleFormData = (
     event:
@@ -52,7 +52,12 @@ const TemplateFields: FC<{
               required={required}
               label={name}
               value={parameterValues[name] || param.default}
-              onChange={event => handleFormData(event, name)}
+
+              onChange={(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | React.ChangeEvent<{
+                name?: string | undefined;
+                value: unknown;
+              }>) => handleFormData(event, name)}
+
               items={options}
               description={param.description}
               error={formError === name && !parameterValues[name]}
@@ -69,7 +74,7 @@ const TemplateFields: FC<{
               placeholder={param.default}
               onChange={handleFormData}
               description={param.description}
-              disabled={isEditing && UNEDITABLE_FIELDS?.includes(name)}
+              disabled={match ? UNEDITABLE_FIELDS?.includes(name) : false}
               error={formError === name && !parameterValues[name]}
             />
           );

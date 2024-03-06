@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import moment from 'moment';
+import React from 'react';
 import PolicyConfigsList from '..';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
@@ -82,14 +83,18 @@ describe('ListPolicyConfigs', () => {
     );
 
     // Next Error
-    const nextError = screen.queryByTestId('nextError');
-    nextError?.click();
+    await act(async () => {
+      const nextError = screen.queryByTestId('nextError');
+      nextError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent('second Error message');
 
     // Prev error
-    const prevError = screen.queryByTestId('prevError');
-    prevError?.click();
+    await act(async () => {
+      const prevError = screen.queryByTestId('prevError');
+      prevError?.click();
+    });
 
     expect(alertMessage).toHaveTextContent(
       'no matches for kind "Policy" in version "pac.weave.works/v2beta1"',
@@ -144,6 +149,7 @@ describe('ListPolicyConfigs', () => {
       policyConfigs.sort((a, b) => a.name.localeCompare(b.name)),
     );
     filterTable.testSorthTableByColumn('Name', sortRowsByName);
+
     const sortRowsByAge = mappedPolicyConfigs(
       policyConfigs.sort((a, b) => {
         const t1 = new Date(a.age).getTime();

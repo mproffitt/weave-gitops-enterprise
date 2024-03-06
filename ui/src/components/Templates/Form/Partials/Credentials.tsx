@@ -1,8 +1,10 @@
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import { Flex } from '@choclab/weave-gitops';
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { FC, useCallback, Dispatch, ChangeEvent, useMemo } from 'react';
+import { styled } from 'styled-components';
+//import { Flex } from '../../../../gitops.d';
+import Flex from '../../../../weave/components/Flex';
 import { useListCredentials } from '../../../../hooks/credentials';
 import { Credential } from '../../../../types/custom';
 
@@ -44,14 +46,17 @@ const Credentials: FC<{
 
   return (
     <Flex align className="credentials">
-      <span>Infrastructure provider credentials:</span>
+      <strong style={{textAlign: "right", marginRight: "15px"}}>Infrastructure provider credentials</strong>
       <FormControl>
         <Select
           style={{ width: '200px' }}
           disabled={isLoading}
           value={infraCredential?.name || 'None'}
-          onChange={handleSelectCredentials}
+          onChange={(event: SelectChangeEvent<string>) => handleSelectCredentials(
+            event as ChangeEvent<{ name?: string | undefined; value: unknown }>
+          )}
           label="Credentials"
+          variant="standard"
         >
           {credentialsItems}
         </Select>
@@ -60,4 +65,4 @@ const Credentials: FC<{
   );
 };
 
-export default Credentials;
+export default styled(Credentials)``;

@@ -1,5 +1,9 @@
-import { Page, PolicyDetails, V2Routes } from '@choclab/weave-gitops';
+import React from 'react';
 import { useGetPolicyDetails } from '../../contexts/PolicyViolations';
+//import { Page, PolicyDetails, V2Routes } from '../../gitops.d';
+import Page from '../../weave/components/Page';
+import PolicyDetails from '../../weave/components/Policies/PolicyDetails/PolicyDetails';
+import { V2Routes } from '../../weave/lib/types';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 
 const PolicyDetailsPage = ({

@@ -1,9 +1,8 @@
-import { Box } from '@material-ui/core';
-import { GitRepository, Link, useListSources } from '@choclab/weave-gitops';
-import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
+import { Box } from '@mui/material';
+//import { PageRoute } from 'gitops/lib/types';
 import _ from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   ClusterAutomation,
   CreateAutomationsPullRequestRequest,
@@ -12,6 +11,16 @@ import {
 import { useEnterpriseClient } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
 import useNotifications from '../../../contexts/Notifications';
+/*import {
+  GitRepository,
+  Link,
+  useListSources,
+  PageRoute
+} from '../../../gitops.d';*/
+import { GitRepository } from '../../../weave/lib/objects';
+import Link from '../../../weave/components/Link';
+import { useListSources } from '../../../weave/hooks/sources';
+import { PageRoute } from '../../../weave/lib/types';
 import {
   expiredTokenNotification,
   useIsAuthenticated,
@@ -113,7 +122,7 @@ const AddApplication = ({ clusterName }: { clusterName?: string }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [showAuthDialog, setShowAuthDialog] = useState(false);
   const { setNotifications } = useNotifications();
-  const history = useHistory();
+  const navigate = useNavigate();
   const authRedirectPage = `/applications/create`;
   const [formError, setFormError] = useState<string>('');
   const { clustersService } = useEnterpriseClient();
@@ -312,7 +321,7 @@ const AddApplication = ({ clusterName }: { clusterName?: string }) => {
             }),
           })
           .then(response => {
-            history.push(Routes.Applications);
+            navigate(Routes.Applications);
             setNotifications([
               {
                 message: {

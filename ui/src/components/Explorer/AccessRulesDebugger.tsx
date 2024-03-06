@@ -1,7 +1,9 @@
-import { DataTable } from '@choclab/weave-gitops';
 import _ from 'lodash';
+import React from 'react';
 import styled from 'styled-components';
 import { AccessRule } from '../../api/query/query.pb';
+//import { DataTable } from '../../gitops.d';
+import DataTable from '../../weave/components/DataTable';
 import { useListAccessRules } from '../../hooks/query';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

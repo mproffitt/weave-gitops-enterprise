@@ -1,5 +1,20 @@
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
+import Button from '../../weave/components/Button';
+import React, { useState } from 'react';
+import { useLocation, useResolvedPath } from 'react-router-dom';
+import styled from 'styled-components';
 import {
+  GetTerraformObjectPlanResponse,
+  GetTerraformObjectResponse,
+} from '../../api/terraform/terraform.pb';
+import {
+  useGetTerraformObjectDetail,
+  useGetTerraformObjectPlan,
+  useReplanTerraformObject,
+  useSyncTerraformObjects,
+  useToggleSuspendTerraformObjects,
+} from '../../contexts/Terraform';
+/*import {
   Button,
   createYamlCommand,
   Flex,
@@ -15,21 +30,7 @@ import {
   SyncControls,
   Timestamp,
   YamlView,
-} from '@choclab/weave-gitops';
-import { useState } from 'react';
-import { useLocation, useRouteMatch } from 'react-router-dom';
-import styled from 'styled-components';
-import {
-  GetTerraformObjectPlanResponse,
-  GetTerraformObjectResponse,
-} from '../../api/terraform/terraform.pb';
-import {
-  useGetTerraformObjectDetail,
-  useGetTerraformObjectPlan,
-  useReplanTerraformObject,
-  useSyncTerraformObjects,
-  useToggleSuspendTerraformObjects,
-} from '../../contexts/Terraform';
+} from '../../gitops.d';*/
 import { getLabels, getMetadata } from '../../utils/formatters';
 import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
@@ -42,6 +43,19 @@ import TerraformDependenciesView from './TerraformDependencyView';
 import TerraformInventoryTable from './TerraformInventoryTable';
 import { getLastApplied } from './TerraformListTable';
 import TerraformPlanView from './TerraformPlanView';
+import Flex from '../../weave/components/Flex';
+import InfoList from '../../weave/components/InfoList';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import LargeInfo from '../../weave/components/LargeInfo';
+import Metadata from '../../weave/components/Metadata';
+import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
+import SyncControls from '../../weave/components/Sync/SyncControls';
+import Timestamp from '../../weave/components/Timestamp';
+import YamlView from '../../weave/components/YamlView';
+import { LinkResolverProvider } from '../../weave/contexts/LinkResolverContext';
+import { formatURL } from '../../weave/lib/nav';
+import { createYamlCommand } from '../../weave/lib/utils';
+import Interval from '../../weave/components/Interval';
 
 type Props = {
   className?: string;
@@ -51,7 +65,7 @@ type Props = {
 };
 
 function TerraformObjectDetail({ className, ...params }: Props) {
-  const { path } = useRouteMatch();
+  const path = useResolvedPath('').pathname;
   const { pathname } = useLocation();
   const [syncing, setSyncing] = useState(false);
   const [suspending, setSuspending] = useState(false);
@@ -217,8 +231,8 @@ function TerraformObjectDetail({ className, ...params }: Props) {
               </Flex>
             </Flex>
           </Box>
-          <SubRouterTabs rootPath={`${path}/details`}>
-            <RouterTab name="Details" path={`${path}/details`}>
+          <SubRouterTabs rootPath={`details`}>
+            <RouterTab name="Details" path={`details`}>
               <Box style={{ width: '100%' }}>
                 <InfoList
                   data-testid="info-list"
@@ -251,7 +265,7 @@ function TerraformObjectDetail({ className, ...params }: Props) {
                 </TableWrapper>
               </Box>
             </RouterTab>
-            <RouterTab name="Events" path={`${path}/events`}>
+            <RouterTab name="Events" path={`events`}>
               <ListEvents
                 clusterName={object?.clusterName}
                 involvedObject={{
@@ -261,12 +275,12 @@ function TerraformObjectDetail({ className, ...params }: Props) {
                 }}
               />
             </RouterTab>
-            <RouterTab name="Dependencies" path={`${path}/dependencies`}>
+            <RouterTab name="Dependencies" path={`dependencies`}>
               <LinkResolverProvider resolver={resolver}>
                 <TerraformDependenciesView object={object || {}} />
               </LinkResolverProvider>
             </RouterTab>
-            <RouterTab name="Yaml" path={`${path}/yaml`}>
+            <RouterTab name="Yaml" path={`yaml`}>
               <YamlView
                 yaml={yaml || ''}
                 header={createYamlCommand(
@@ -276,7 +290,7 @@ function TerraformObjectDetail({ className, ...params }: Props) {
                 )}
               />
             </RouterTab>
-            <RouterTab name="Plan" path={`${path}/plan`}>
+            <RouterTab name="Plan" path={`plan`}>
               <>
                 {!isLoadingPlan && (
                   <TerraformPlanView plan={plan} error={error} />

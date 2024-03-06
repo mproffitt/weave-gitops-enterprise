@@ -1,7 +1,10 @@
-import { Collapse } from '@material-ui/core';
-import { Flex, Icon, IconType, Text } from '@choclab/weave-gitops';
+import { Collapse } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
+//import { Flex, Icon, IconType, Text } from '../../../gitops.d';
+import Flex from '../../../weave/components/Flex';
+import Icon, { IconType } from '../../../weave/components/Icon';
+import Text from '../../../weave/components/Text';
 
 const CollapsibleDiv = styled.div`
   width: 100%;

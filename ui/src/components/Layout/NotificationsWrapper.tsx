@@ -1,14 +1,17 @@
-import {
-  AlertListErrors,
-  Flex
-} from '@choclab/weave-gitops';
-import { FC, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { ListError } from '../../cluster-services/cluster_services.pb';
 import { useVersionContext } from '../../contexts/ListConfig';
 import useNotifications, {
   NotificationData,
 } from '../../contexts/Notifications';
+/*import {
+  AlertListErrors,
+  Flex
+} from '../../gitops.d';*/
+import { AlertListErrors } from '../../weave/components/AlertListErrors';
+import Flex from '../../weave/components/Flex';
+
 import Notifications from './Notifications';
 
 const ENTITLEMENT_ERROR =
@@ -25,6 +28,7 @@ interface Props {
   errors?: ListError[];
   notifications?: NotificationData[];
   warningMsg?: string;
+  children: any;
 }
 
 export const NotificationsWrapper: FC<Props> = ({

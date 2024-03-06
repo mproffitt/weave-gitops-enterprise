@@ -1,8 +1,16 @@
-import { Layout, Logo, Page as WGPage } from '@choclab/weave-gitops';
-import { Breadcrumb } from '@choclab/weave-gitops/ui/components/Breadcrumbs';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ListConfigProvider, VersionProvider } from '../../contexts/ListConfig';
+/*import {
+  Layout,
+  Logo,
+  Page as WGPage,
+  Breadcrumb,
+ } from '../../gitops.d';*/
+import Layout from '../../weave/components/Layout';
+import Logo from '../../weave/components/Logo';
+import WGPage from '../../weave/components/Page';
+import { Breadcrumb } from '../../weave/components/Breadcrumbs';
 import AppRoutes from '../../routes';
 import { Routes } from '../../utils/nav';
 import ErrorBoundary from '../ErrorBoundary';

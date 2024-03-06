@@ -4,16 +4,20 @@ import {
   CanaryStatus as Status,
   CanaryTargetDeployment,
 } from '@choclab/progressive-delivery/api/prog/types.pb';
-import {
-  DataTable,
-  filterConfig,
-  formatURL,
-  Link,
-} from '@choclab/weave-gitops';
 import _ from 'lodash';
 import moment from 'moment';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+/*import {
+  DataTable,
+  filterConfig,
+  formatURL,
+  Link,
+} from '../../../../gitops.d';*/
+import DataTable, { filterConfig } from '../../../../weave/components/DataTable';
+import { formatURL } from '../../../../weave/lib/nav';
+import Link from '../../../../weave/components/Link';
+
 import { Routes } from '../../../../utils/nav';
 import {
   ABIcon,

@@ -1,6 +1,5 @@
-import {
-  IconType,
-} from '@choclab/weave-gitops';
+//import { IconType } from '../../gitops.d';
+import { IconType } from '../../weave/components/Icon';
 import { getIndicatorInfo } from '../status';
 
 describe('getIndicatorInfo', () => {

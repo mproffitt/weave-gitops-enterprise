@@ -1,5 +1,6 @@
-import { act, render, screen } from '@testing-library/react';
 import { CanaryMetric } from '@choclab/progressive-delivery/api/prog/types.pb';
+import { act, render, screen } from '@testing-library/react';
+import React from 'react';
 import { EnterpriseClientContext } from '../../../../contexts/API';
 import {
   defaultContexts,
@@ -40,7 +41,7 @@ describe('CanaryMetricsTable', () => {
             "name": "request-success-rate",
             "thresholdRange": {
               "min": 99,
-              "max": 500        
+              "max": 500
             },
             "interval": "1m"
           }
@@ -107,7 +108,7 @@ describe('CanaryMetricsTable', () => {
               },
               "query": "100 - sum(\\n    rate(\\n        istio_requests_total{\\n          reporter=\\"destination\\",\\n          destination_workload_namespace=\\"{{ namespace }}\\",\\n          destination_workload=\\"{{ target }}\\",\\n          response_code!=\\"404\\"\\n        }[{{ interval }}]\\n    )\\n)\\n/\\nsum(\\n    rate(\\n        istio_requests_total{\\n          reporter=\\"destination\\",\\n          destination_workload_namespace=\\"{{ namespace }}\\",\\n          destination_workload=\\"{{ target }}\\"\\n        }[{{ interval }}]\\n    )\\n) * 100\\n"
             }
-          }       
+          }
         ]
       }
     }`;

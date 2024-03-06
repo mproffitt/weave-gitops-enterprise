@@ -1,7 +1,9 @@
-import { LoadingPage } from '@choclab/weave-gitops';
 import _ from 'lodash';
+import React from 'react';
 import styled from 'styled-components';
 import { Object } from '../../api/query/query.pb';
+//import { LoadingPage } from '../../gitops.d';
+import LoadingPage from '../../weave/components/LoadingPage';
 import { useQueryService } from '../../hooks/query';
 import CodeView from '../CodeView';
 import KeyValueTable from '../KeyValueTable';

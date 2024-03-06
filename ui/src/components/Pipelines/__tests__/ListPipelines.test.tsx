@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
+import React from 'react';
 import Pipelines from '..';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
@@ -9,6 +9,15 @@ import {
   TestFilterableTable,
   withContext,
 } from '../../../utils/test-utils';
+import { Router } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ThemeProvider } from 'styled-components';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material';
+import AppContextProvider, { ThemeTypes } from '../../../weave/contexts/AppContext';
+import theme from '../../../weave/lib/theme';
+import { muiTheme } from '../../../muiTheme';
+import RequestContextProvider from '../../../contexts/Request';
+import NotificationProvider from '../../../contexts/Notifications/Provider';
 
 const pipelines = {
   pipelines: [
@@ -85,6 +94,7 @@ describe('ListPipelines', () => {
       [EnterpriseClientContext.Provider, { value: { pipelines: api } }],
     ]);
   });
+
   it('renders a list of pipelines', async () => {
     const filterTable = new TestFilterableTable('pipelines-list', fireEvent);
 
@@ -130,18 +140,35 @@ describe('ListPipelines', () => {
   it('create pipeline btn', async () => {
     const history = createMemoryHistory();
     api.ListPipelinesReturns = pipelines;
+    const appliedTheme = theme(ThemeTypes.Light);
+
     await act(async () => {
-      const c = wrap(
-        <Router history={history}>
-          <Pipelines />
-        </Router>,
+      const c = (
+        <ThemeProvider theme={appliedTheme}>
+          <MuiThemeProvider theme={muiTheme(appliedTheme.colors, ThemeTypes.Light)}>
+          <Router location={""} navigator={history}>
+            <AppContextProvider footer={<></>}>
+              <QueryClientProvider client={new QueryClient()}>
+                <RequestContextProvider fetch={() => new Promise(accept => accept({} as any))}>
+                  <NotificationProvider>
+                    <Pipelines />
+                  </NotificationProvider>
+                </RequestContextProvider>
+              </QueryClientProvider>
+            </AppContextProvider>
+          </Router>
+          </MuiThemeProvider>
+        </ThemeProvider>
       );
       render(c);
     });
     expect(await screen.findByText('CREATE A PIPELINE')).toBeTruthy();
 
-    const createBtn = await screen.findByTestId('create-pipeline');
-    fireEvent.click(createBtn);
+    await act(async () => {
+      const createBtn = await screen.findByTestId('create-pipeline');
+      fireEvent.click(createBtn);
+    });
+
     const expectedUrl = `${history.location.pathname}${history.location.search}`;
     expect(expectedUrl).toEqual(
       '/templates?filters=templateType%3A%20pipeline',

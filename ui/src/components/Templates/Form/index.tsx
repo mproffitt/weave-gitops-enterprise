@@ -1,17 +1,9 @@
-import { Divider, useMediaQuery } from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import {
-  Flex,
-  GitRepository,
-  Link,
-  useFeatureFlags,
-  useListSources,
-} from '@choclab/weave-gitops';
-import { Automation, Source } from '@choclab/weave-gitops/ui/lib/objects';
-import { PageRoute } from '@choclab/weave-gitops/ui/lib/types';
+import { Divider, useMediaQuery } from '@mui/material';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import _ from 'lodash';
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import remarkGfm from 'remark-gfm';
 import styled from 'styled-components';
 import { Pipeline } from '../../../api/pipelines/types.pb';
@@ -22,6 +14,23 @@ import {
   ProfileValues,
 } from '../../../cluster-services/cluster_services.pb';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
+/*import {
+  Automation,
+  Flex,
+  GitRepository,
+  Link,
+  PageRoute,
+  Source,
+  useFeatureFlags,
+  useListSources,
+} from '../../../gitops.d';*/
+import { Automation, Source, GitRepository } from '../../../weave/lib/objects';
+import { useFeatureFlags } from '../../../weave/hooks/featureflags';
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import { PageRoute } from '../../../weave/lib/types';
+import { useListSources } from '../../../weave/hooks/sources';
+
 import {
   expiredTokenNotification,
   useIsAuthenticated,
@@ -67,28 +76,16 @@ export interface GitRepositoryEnriched extends GitRepository {
   createPRRepo: boolean;
 }
 
-const CredentialsWrapper = styled(Flex)`
-  & .template-title {
-    margin-right: ${props => props.theme.spacing.medium};
+const TemplateDetails = styled(Flex)``;
+
+const TemplateDetailsRow = styled(Flex)`
+  & div {
+    min-width: 200px;
+    text-align: left;
   }
-  & .credentials {
-    span {
-      margin-right: ${props => props.theme.spacing.xs};
-    }
-  }
-  & .dropdown-toggle {
-    border: 1px solid ${props => props.theme.colors.neutral10};
-  }
-  & .dropdown-popover {
-    width: auto;
-    flex-basis: content;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: left;
-    & .template-title {
-      padding-bottom: ${props => props.theme.spacing.base};
-    }
+
+  > div > strong: {
+    font-weight: 600;
   }
 `;
 
@@ -294,7 +291,7 @@ const ResourceForm: FC<ResourceFormProps> = ({ template, resource }) => {
   }, [callbackState?.state?.updatedProfiles, profiles]);
 
   const [showAuthDialog, setShowAuthDialog] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const isLargeScreen = useMediaQuery('(min-width:1632px)');
   const editLink = resource && getLink(resource);
   const authRedirectPage = resource
@@ -311,7 +308,7 @@ const ResourceForm: FC<ResourceFormProps> = ({ template, resource }) => {
     token,
   );
 
-  const handleAddResource = useCallback(() => {
+  const handleAddResource = useCallback(async () => {
     let createReqAnnot;
     if (resource !== undefined) {
       createReqAnnot = getCreateRequestAnnotation(resource);
@@ -330,8 +327,9 @@ const ResourceForm: FC<ResourceFormProps> = ({ template, resource }) => {
     return validateToken()
       .then(() =>
         addResource(payload, getProviderToken(formData.provider))
-          .then(response => {
-            history.push(Routes.Templates);
+          .then(async response => {
+            navigate(Routes.Templates);
+
             setNotifications([
               {
                 message: {
@@ -371,9 +369,9 @@ const ResourceForm: FC<ResourceFormProps> = ({ template, resource }) => {
     template.namespace,
     template.templateKind,
     setNotifications,
-    history,
     resource,
     validateToken,
+    navigate,
   ]);
 
   useEffect(() => {
@@ -414,25 +412,32 @@ const ResourceForm: FC<ResourceFormProps> = ({ template, resource }) => {
             validateFormData(event, handleAddResource, setFormError)
           }
         >
-          <CredentialsWrapper align>
-            <div className="template-title">
-              Template: <span>{template.name}</span>
-            </div>
-            {isCredentialEnabled ? (
-              <Credentials
-                infraCredential={infraCredential}
-                setInfraCredential={setInfraCredential}
-              />
-            ) : null}
-          </CredentialsWrapper>
-          {template.description ? (
-            <Flex column>
-              <div>Description:</div>
-              <Editor remarkPlugins={[remarkGfm]}>
-                {template.description || ''}
-              </Editor>
-            </Flex>
-          ) : null}
+          <TemplateDetails align wide wrap>
+            <TemplateDetailsRow align wide>
+                <Flex column gap="16">
+                  <strong>Template:</strong>
+                </Flex>
+                <Flex column between>
+                  <span>{template.name}</span>
+                </Flex>
+                {isCredentialEnabled ? (
+                  <Flex column>
+                    <Credentials
+                      infraCredential={infraCredential}
+                      setInfraCredential={setInfraCredential}
+                    />
+                  </Flex>
+                ) : null}
+            </TemplateDetailsRow>
+            <TemplateDetailsRow align wide>
+              <Flex column>
+                <strong>Description:</strong>
+              </Flex>
+              <Flex column>
+                <span>{template.description || ''}</span>
+              </Flex>
+            </TemplateDetailsRow>
+          </TemplateDetails>
           <Divider
             className={!isLargeScreen ? classes.divider : classes.largeDivider}
           />
@@ -527,20 +532,17 @@ interface Props {
 const ResourceFormWrapper: FC<Props> = ({ template, resource }) => {
   if (!template) {
     return (
-      <Redirect
-        to={{
-          pathname: '/templates',
-          state: {
-            notification: [
-              {
-                message: {
-                  text: 'No template information is available to create a resource.',
-                },
-                severity: 'error',
-              },
-            ],
-          },
+      <Navigate
+        to='/templates'
+        state={{
+          notification: [{
+            message: {
+              text: 'No template information is available to create a resource.',
+            },
+            severity: 'error',
+          }],
         }}
+        replace={true}
       />
     );
   }

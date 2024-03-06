@@ -1,9 +1,11 @@
-import { DialogContent } from '@material-ui/core';
-import { Button, Text } from '@choclab/weave-gitops';
-import { FC, useState } from 'react';
+import { DialogContent } from '@mui/material';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
+//import { Button, Text } from '../../../gitops.d';
 import { MuiDialogTitle } from '../../Shared';
 import { DialogWrapper } from '../WorkspaceStyles';
+import Text from '../../../weave/components/Text';
+import Button from '../../../weave/components/Button';
 
 interface Props {
   title: string;

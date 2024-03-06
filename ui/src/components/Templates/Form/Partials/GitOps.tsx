@@ -1,6 +1,8 @@
-import { Button, Flex } from '@choclab/weave-gitops';
 import React, { ChangeEvent, Dispatch, FC, useCallback } from 'react';
 import styled from 'styled-components';
+//import { Button, Flex } from '../../../../gitops.d';
+import Button from '../../../../weave/components/Button';
+import Flex from '../../../../weave/components/Flex';
 import { Input } from '../../../../utils/form';
 import GitAuth from '../../../GitAuth';
 
@@ -19,6 +21,7 @@ const GitOps: FC<{
   setShowAuthDialog: Dispatch<React.SetStateAction<boolean>>;
   formError?: string;
   enableGitRepoSelection?: boolean;
+  children?: any;
 }> = ({
   loading,
   isAuthenticated,

@@ -1,6 +1,8 @@
-import { DataTable, filterConfig } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
 import { ResourceRef } from '../../api/terraform/types.pb';
+//import { DataTable, filterConfig } from '../../gitops.d';
+import DataTable, { filterConfig } from '../../weave/components/DataTable';
 
 type Props = {
   className?: string;

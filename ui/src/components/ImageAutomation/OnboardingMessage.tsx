@@ -1,10 +1,16 @@
-import {
+import React from 'react';
+/*import {
   Button,
   Flex,
   MessageBox,
   Spacer,
   Text,
-} from '@choclab/weave-gitops';
+} from '../../gitops.d';*/
+import Button from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import MessageBox from '../../weave/components/MessageBox';
+import Spacer from '../../weave/components/Spacer';
+import Text from '../../weave/components/Text';
 import { LinkTag } from '../Shared';
 
 const OnboardingImageAutomationMessage = () => {

@@ -1,6 +1,10 @@
-import { Flex, Text, computeReady } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
 import { PipelineTargetStatus } from '../../../api/pipelines/types.pb';
+//import { Flex, Text, computeReady } from '../../../gitops.d';
+import Flex from '../../../weave/components/Flex';
+import Text from '../../../weave/components/Text';
+import { computeReady } from '../../../weave/components/KubeStatusIndicator';
 import { EnvironmentCard } from './styles';
 
 type Props = {
@@ -9,8 +13,8 @@ type Props = {
 };
 
 const PromotionInfoContainer = styled(EnvironmentCard)`
-  background: ${props => props.theme.colors.neutralGray};
-  border: 1px solid ${props => props.theme.colors.neutral40};
+  background: ${(props) => props.theme.colors.neutralGray};
+  border: 1px solid ${(props) => props.theme.colors.neutral40};
   border-style: dashed;
 `;
 

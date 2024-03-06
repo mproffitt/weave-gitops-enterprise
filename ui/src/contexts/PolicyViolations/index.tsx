@@ -1,17 +1,27 @@
-import { CoreClientContext } from '@choclab/weave-gitops';
-import {
+import { useContext } from 'react';
+import { useQuery } from 'react-query';
+/*import {
+  CoreClientContext,
   GetPolicyRequest,
   GetPolicyResponse,
   GetPolicyValidationRequest,
   GetPolicyValidationResponse,
   ListPoliciesRequest,
   ListPoliciesResponse,
-} from '@choclab/weave-gitops/ui/lib/api/core/core.pb';
-import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
-import { useContext } from 'react';
-import { useQuery } from 'react-query';
+  RequestError,
+} from '../../gitops.d';*/
 import { formatError } from '../../utils/formatters';
 import useNotifications from './../../contexts/Notifications';
+import { CoreClientContext, CoreClientContextType } from '../../weave/contexts/CoreClientContext';
+import { RequestError } from '../../weave/lib/types';
+import {
+  ListPoliciesRequest,
+  ListPoliciesResponse,
+  GetPolicyRequest,
+  GetPolicyResponse,
+  GetPolicyValidationRequest,
+  GetPolicyValidationResponse
+} from '../../weave/lib/api/core/core.pb';
 
 
 export const useCoreClientContext = () => useContext(CoreClientContext);
@@ -19,7 +29,7 @@ export const useCoreClientContext = () => useContext(CoreClientContext);
 const LIST_POLICIES_QUERY_KEY = 'list-policy';
 
 export function useListPolicies(req: ListPoliciesRequest) {
-  const { api } = useCoreClientContext();
+  const { api } = useCoreClientContext() as CoreClientContextType;
   const { setNotifications } = useNotifications();
   const onError = (error: Error) => setNotifications(formatError(error));
 
@@ -32,7 +42,7 @@ export function useListPolicies(req: ListPoliciesRequest) {
 const GET_POLICY_QUERY_KEY = 'get-policy-details';
 
 export function useGetPolicyDetails(req: GetPolicyRequest) {
-  const { api } = useCoreClientContext();
+  const { api } = useCoreClientContext() as CoreClientContextType;
   const { setNotifications } = useNotifications();
   const onError = (error: Error) => setNotifications(formatError(error));
 
@@ -46,7 +56,7 @@ export function useGetPolicyDetails(req: GetPolicyRequest) {
 const GET_POLICY_VIOLATION_QUERY_KEY = 'get-policy-violation-details';
 
 export function useGetPolicyValidationDetails(req: GetPolicyValidationRequest) {
-  const { api } = useCoreClientContext();
+  const { api } = useCoreClientContext() as CoreClientContextType;
 
   const { setNotifications } = useNotifications();
   const onError = (error: Error) => setNotifications(formatError(error));

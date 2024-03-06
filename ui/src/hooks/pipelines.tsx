@@ -1,5 +1,3 @@
-import { Link } from '@choclab/weave-gitops';
-import { RequestError } from '@choclab/weave-gitops/ui/lib/types';
 import { useMutation } from 'react-query';
 import {
   ApprovePromotionRequest,
@@ -7,7 +5,11 @@ import {
   Pipelines,
 } from '../api/pipelines/pipelines.pb';
 import useNotifications from '../contexts/Notifications';
+//import { Link, RequestError } from '../gitops.d';
 import { formatError } from '../utils/formatters';
+import React from 'react';
+import Link from '../weave/components/Link';
+import { RequestError } from '../types/custom';
 export const useApprove = () => {
   const { setNotifications } = useNotifications();
   const mutation = useMutation<

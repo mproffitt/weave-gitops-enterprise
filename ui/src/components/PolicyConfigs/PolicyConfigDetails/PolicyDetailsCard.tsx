@@ -1,15 +1,22 @@
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent } from '@mui/material';
+import React from 'react';
 import {
+  GetPolicyConfigResponse,
+  PolicyConfigPolicy,
+} from '../../../cluster-services/cluster_services.pb';
+/*import {
   Flex,
   Link,
   Text,
   V2Routes,
   formatURL,
-} from '@choclab/weave-gitops';
-import {
-  GetPolicyConfigResponse,
-  PolicyConfigPolicy,
-} from '../../../cluster-services/cluster_services.pb';
+} from '../../../gitops.d';*/
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import Text from '../../../weave/components/Text';
+import { formatURL } from '../../../weave/lib/nav';
+import { V2Routes } from '../../../weave/lib/types';
+
 import {
   PolicyDetailsCardWrapper,
   WarningIcon,

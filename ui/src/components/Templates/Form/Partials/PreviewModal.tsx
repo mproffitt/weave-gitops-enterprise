@@ -5,18 +5,22 @@ import {
   Tab,
   Tabs,
   Typography,
-} from '@material-ui/core';
-import { Button, Flex } from '@choclab/weave-gitops';
+} from '@mui/material';
 import JSZip from 'jszip';
 import React, { Dispatch, FC, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styled from 'styled-components';
 import {
   CommitFile,
   RenderAutomationResponse,
   RenderTemplateResponse,
 } from '../../../../cluster-services/cluster_services.pb';
+//import { Button, Flex, YamlView, createYamlCommand } from '../../../../gitops.d';
+
+import Button from '../../../../weave/components/Button';
+import Flex from '../../../../weave/components/Flex';
+import YamlView from '../../../../weave/components/YamlView';
+//import { createYamlCommand } from '../../../../weave/lib/utils';
+
 import { MuiDialogTitle, Tooltip } from '../../../Shared';
 
 const DialogWrapper = styled(Dialog)`
@@ -75,8 +79,7 @@ const Preview: FC<{
   sourceType?: string;
   context?: string;
 }> = ({ prPreview, openPreview, setOpenPreview, sourceType, context }) => {
-  const initialIndex =
-    context === 'app' && sourceType === 'HelmRepository' ? 1 : 0;
+  const initialIndex = context === 'app' && sourceType === 'HelmRepository' ? 1 : 0;
 
   const [value, setValue] = useState<number>(initialIndex);
 
@@ -211,15 +214,7 @@ const Preview: FC<{
           <TabPanel value={value} index={index} key={index}>
             {tab.files?.map(file => (
               <div key={file.path}>
-                <Typography variant="h6">{file.path}</Typography>
-                <SyntaxHighlighter
-                  data-testid={`tab-content-${index}`}
-                  language="yaml"
-                  style={darcula}
-                  wrapLongLines
-                >
-                  {file.content}
-                </SyntaxHighlighter>
+                <YamlView header={file.path} yaml={file.content as string} />
               </div>
             ))}
           </TabPanel>

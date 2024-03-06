@@ -1,9 +1,13 @@
-import { Dialog, DialogContent } from '@material-ui/core';
-import { Button, Icon, IconType, Link } from '@choclab/weave-gitops';
+import { Dialog, DialogContent } from '@mui/material';
 import React, { ChangeEvent, Dispatch, FC, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { ClusterNamespacedName } from '../../cluster-services/cluster_services.pb';
 import useNotifications from '../../contexts/Notifications';
+//import { Button, Icon, IconType, Link } from '../../gitops.d';
+import Button from '../../weave/components/Button';
+import Icon, { IconType } from '../../weave/components/Icon';
+import Link from '../../weave/components/Link';
+
 import useClusters from '../../hooks/clusters';
 import {
   expiredTokenNotification,

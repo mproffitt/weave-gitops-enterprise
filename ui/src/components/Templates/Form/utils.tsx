@@ -1,15 +1,9 @@
-import {
-  Automation,
-  GitRepository,
-  Source,
-} from '@choclab/weave-gitops/ui/lib/objects';
 import GitUrlParse from 'git-url-parse';
 import styled from 'styled-components';
 import { SnakeCasedPropertiesDeep } from 'type-fest';
 import URI from 'urijs';
-// Importing this solves a problem with the YAML library not being found.
 // @ts-ignore
-import * as YAML from 'yaml/browser/dist/index.js';
+import { parse as yamlParse } from "yaml";
 import { Pipeline } from '../../../api/pipelines/types.pb';
 import { GetTerraformObjectResponse } from '../../../api/terraform/terraform.pb';
 import {
@@ -17,9 +11,19 @@ import {
   GetConfigResponse,
 } from '../../../cluster-services/cluster_services.pb';
 import { useListConfigContext } from '../../../contexts/ListConfig';
+/*import {
+  Automation,
+  GitRepository,
+  Source,
+} from '../../../gitops.d';*/
 import { GitopsClusterEnriched } from '../../../types/custom';
 import { Resource } from '../Edit/EditButton';
 import { GitRepositoryEnriched } from '.';
+import {
+  Automation,
+  Source,
+  GitRepository,
+} from '../../../weave/lib/objects';
 
 export const maybeParseJSON = (data: string) => {
   try {
@@ -60,7 +64,7 @@ const getAnnotation = (resource: Resource) => {
       ];
     case 'Terraform':
     case 'Pipeline':
-      return YAML.parse(
+      return yamlParse(
         (resource as GetTerraformObjectResponse | Pipeline)?.yaml || '',
       )?.metadata?.annotations?.['templates.weave.works/create-request'];
     default:
@@ -195,6 +199,7 @@ export function getDefaultGitRepo(
 
 export const FormWrapper = styled.form`
   width: 80%;
+  color: ${({ theme }) => theme.colors.neutral40};
   .gitops-cta {
     padding: ${({ theme }) => theme.spacing.medium};
     button:first-of-type {

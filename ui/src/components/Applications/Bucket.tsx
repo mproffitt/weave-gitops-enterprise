@@ -1,14 +1,19 @@
-import {
+import React, { FC } from 'react';
+/*import {
+  Bucket,
   BucketDetail,
   Kind,
   useGetObject,
   V2Routes,
-} from '@choclab/weave-gitops';
-import { Bucket } from '@choclab/weave-gitops/ui/lib/objects';
-import { FC } from 'react';
+} from '../../gitops.d';*/
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { EditButton } from '../Templates/Edit/EditButton';
+import BucketDetail from '../../weave/components/BucketDetail';
+import { useGetObject } from '../../weave/hooks/objects';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { Bucket } from '../../weave/lib/objects';
+import { V2Routes } from '../../weave/lib/types';
 
 type Props = {
   name: string;
@@ -19,7 +24,7 @@ type Props = {
 const WGApplicationsBucket: FC<Props> = props => {
   const { name, namespace, clusterName } = props;
   const {
-    data: bucket,
+    data: bucket = {} as Bucket,
     isLoading,
     error,
   } = useGetObject<Bucket>(name, namespace, Kind.Bucket, clusterName);

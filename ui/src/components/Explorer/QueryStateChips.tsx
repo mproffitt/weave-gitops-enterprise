@@ -1,5 +1,8 @@
-import { ChipGroup } from '@choclab/weave-gitops';
+import React from 'react';
 import styled from 'styled-components';
+//import { ChipGroup } from '../../gitops.d';
+import ChipGroup from '../../weave/components/ChipGroup';
+
 import { useReadQueryState, useSetQueryState } from './hooks';
 
 type Props = {
@@ -42,7 +45,7 @@ function QueryStateChips({ className }: Props) {
   };
 
   return (
-    <div className={className}>
+    chips.length > 0 && <div className={className}>
       <ChipGroup
         chips={chips}
         onChipRemove={handleChipRemove}

@@ -1,13 +1,18 @@
 import { ListError } from '@choclab/progressive-delivery/api/prog/types.pb';
-import {
+import React from 'react';
+import { Pipeline } from '../../../api/pipelines/types.pb';
+import { useGetPipeline } from '../../../contexts/Pipelines';
+/*import {
   Flex,
   RouterTab,
   SubRouterTabs,
   YamlView,
   createYamlCommand,
-} from '@choclab/weave-gitops';
-import { Pipeline } from '../../../api/pipelines/types.pb';
-import { useGetPipeline } from '../../../contexts/Pipelines';
+} from '../../../gitops.d';*/
+import Flex from '../../../weave/components/Flex';
+import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
+import YamlView from '../../../weave/components/YamlView';
+import { createYamlCommand } from '../../../weave/lib/utils';
 import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';
@@ -51,11 +56,11 @@ const PipelineDetails = ({ name, namespace }: Props) => {
         errors={mappedErrors(data?.errors || [], namespace)}
       >
         <Flex column gap="16" wide>
-          <SubRouterTabs rootPath={`${path}/status`}>
-            <RouterTab name="Status" path={`${path}/status`}>
+          <SubRouterTabs rootPath={`status`}>
+            <RouterTab name="Status" path={`status`}>
               <Workloads pipeline={data?.pipeline || ({} as Pipeline)} />
             </RouterTab>
-            <RouterTab name="Yaml" path={`${path}/yaml`}>
+            <RouterTab name="Yaml" path={`yaml`}>
               <YamlView
                 yaml={data?.pipeline?.yaml || ''}
                 header={createYamlCommand(

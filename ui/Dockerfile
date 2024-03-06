@@ -1,18 +1,19 @@
 # syntax = docker/dockerfile:1.2
-FROM node:16-bullseye AS build
+FROM node:18-bullseye AS build
 USER node
 WORKDIR /home/node
 COPY --chown=node:node package.json /home/node
-COPY --chown=node:node .npmrc /home/node
 COPY --chown=node:node yarn.lock /home/node
 COPY --chown=node:node Makefile /home/node
 COPY --chown=node:node tsconfig.json /home/node
+COPY --chown=node:node jslib /home/node/jslib
 
 ARG GITHUB_TOKEN
 RUN --mount=type=cache,target=/home/node/node_modules,uid=1000,gid=1000 make node_modules GITHUB_TOKEN=${GITHUB_TOKEN}
 
 COPY --chown=node:node ui /home/node/ui
 COPY --chown=node:node tools /home/node/tools
+
 ARG version
 # When set to true, Create React App treats warnings as failures in the build.
 # It also makes the test runner non-watching. Most CIs set this flag by default.

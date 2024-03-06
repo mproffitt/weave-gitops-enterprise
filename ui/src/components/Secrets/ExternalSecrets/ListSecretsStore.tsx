@@ -1,6 +1,8 @@
-import { MenuItem } from '@material-ui/core';
-import { RequestStateHandler } from '@choclab/weave-gitops';
+import { MenuItem } from '@mui/material';
+import React from 'react';
 import { useListExternalSecretStores } from '../../../contexts/Secrets';
+//import { RequestStateHandler } from '../../../gitops.d';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import { RequestError } from '../../../types/custom';
 import { Select } from '../../../utils/form';
 
@@ -24,7 +26,7 @@ const ListSecretsStore = ({
         required
         name="secretStoreRef"
         label="SECRET STORE"
-        onChange={event => handleFormData(event.target.value)}
+        onChange={(event: { target: { value: any; }; }) => handleFormData(event.target.value)}
         value={value}
         error={validateForm && !value}
       >

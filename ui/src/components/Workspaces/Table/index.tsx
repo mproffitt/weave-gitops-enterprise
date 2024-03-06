@@ -1,13 +1,16 @@
-import {
+import React, { FC } from 'react';
+import { Workspace } from '../../../cluster-services/cluster_services.pb';
+/*import {
   DataTable,
   filterConfig,
   formatURL,
   Link,
-} from '@choclab/weave-gitops';
-import { FC } from 'react';
-import { Workspace } from '../../../cluster-services/cluster_services.pb';
+} from '../../../gitops.d';*/
 import { Routes } from '../../../utils/nav';
 import { TableWrapper } from '../../Shared';
+import Link from '../../../weave/components/Link';
+import { formatURL } from '../../../weave/lib/nav';
+import DataTable, { filterConfig } from '../../../weave/components/DataTable';
 
 interface Props {
   workspaces: Workspace[];

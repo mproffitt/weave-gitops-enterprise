@@ -1,10 +1,11 @@
-import { withBasePath } from '@choclab/weave-gitops';
 import GitUrlParse from 'git-url-parse';
 import { GitOpsSet } from '../api/gitopssets/types.pb';
 import { TerraformObject } from '../api/terraform/types.pb';
 import { CostEstimate } from '../cluster-services/cluster_services.pb';
 import { NotificationData } from '../contexts/Notifications';
+//import { withBasePath } from '../gitops.d';
 import { Routes } from './nav';
+import { withBasePath } from '../weave/lib/utils';
 
 export const getGitRepoHTTPSURL = (
   repoUrl?: string,

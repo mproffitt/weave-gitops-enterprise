@@ -1,8 +1,10 @@
-import { SourcesTable, useListSources } from '@choclab/weave-gitops';
-import { FC, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { EnabledComponent } from '../../api/query/query.pb';
 import useNotifications from '../../contexts/Notifications';
+//import { SourcesTable, useListSources } from '../../gitops.d';
+import SourcesTable from '../../weave/components/SourcesTable';
+import { useListSources } from '../../weave/hooks/sources';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { formatError } from '../../utils/formatters';
 import Explorer from '../Explorer/Explorer';
@@ -41,11 +43,7 @@ const WGApplicationsSources: FC = ({ className }: any) => {
     >
       <NotificationsWrapper errors={sources?.errors}>
         <div className={className}>
-          {isExplorerEnabled ? (
-            <Explorer enableBatchSync category="source" />
-          ) : (
-            <SourcesTable sources={sources?.result} />
-          )}
+          <Explorer enableBatchSync category="source" />
         </div>
       </NotificationsWrapper>
     </Page>
