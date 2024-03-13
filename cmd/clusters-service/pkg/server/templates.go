@@ -397,14 +397,23 @@ func GetExtraFields(client client.Client, log logr.Logger, msg *GetFilesRequest)
 
 		err = client.Get(context.Background(), namespacedName, &object)
 		if err != nil {
-			return err
+			(*msg).ParameterValues[k] = ""
+			// resource doesn't exist - continue
+			continue
 		}
 
+		var ok bool
 		switch values[2] {
 		case "label", "labels":
-			(*msg).ParameterValues[k] = object.GetLabels()[values[3]]
+			var label string
+			if label, ok = object.GetLabels()[values[3]]; ok {
+				(*msg).ParameterValues[k] = label
+			}
 		case "annotation", "annotations":
-			(*msg).ParameterValues[k] = object.GetAnnotations()[values[3]]
+			var annotation string
+			if annotation, ok = object.GetAnnotations()[values[3]]; ok {
+				(*msg).ParameterValues[k] = annotation
+			}
 		default:
 			if object.Object[values[2]] == "name" {
 				(*msg).ParameterValues[k] = object.GetName()
@@ -436,6 +445,7 @@ func GetFiles(
 		return nil, fmt.Errorf("failed to get extra fields: %w", err)
 	}
 
+	log.Info("rendering template", "template", msg.TemplateName, "values", msg.ParameterValues)
 	renderedTemplates, err := renderTemplateWithValues(tmpl, msg.TemplateName, resourcesNamespace, msg.ParameterValues, mapper)
 	if err != nil {
 		return nil, fmt.Errorf("failed to render template with parameter values: %w", err)
@@ -525,6 +535,12 @@ func GetFiles(
 		if err != nil {
 			return nil, fmt.Errorf("failed to get sops kustomization for %s: %s", msg.ParameterValues, err)
 		}
+
+		sopsKustomization.Path, err = renderTemplateStringWithValues(sopsKustomization.Path, msg.ParameterValues)
+		if err != nil {
+			return nil, fmt.Errorf("failed to render default path: %w", err)
+		}
+
 		kustomizationFiles = append(kustomizationFiles, *sopsKustomization)
 	}
 
@@ -537,6 +553,12 @@ func GetFiles(
 		if err != nil {
 			return nil, fmt.Errorf("failed to get common kustomization for %s: %s", msg.ParameterValues, err)
 		}
+
+		commonKustomization.Path, err = renderTemplateStringWithValues(commonKustomization.Path, msg.ParameterValues)
+		if err != nil {
+			return nil, fmt.Errorf("failed to render default path: %w", err)
+		}
+
 		kustomizationFiles = append(kustomizationFiles, *commonKustomization)
 	}
 
@@ -578,7 +600,13 @@ func GetFiles(
 		if err != nil {
 			return nil, err
 		}
-		profileFiles = append(profileFiles, profilesFiles...)
+		for _, profile := range profilesFiles {
+			profile.Path, err = renderTemplateStringWithValues(profile.Path, msg.ParameterValues)
+			if err != nil {
+				return nil, fmt.Errorf("failed to render default path: %w", err)
+			}
+			profileFiles = append(profileFiles, profile)
+		}
 	}
 
 	if len(msg.Kustomizations) > 0 {
@@ -593,18 +621,31 @@ func GetFiles(
 				if err != nil {
 					return nil, err
 				}
+
+				path, err := renderTemplateStringWithValues(*namespace.Path, msg.ParameterValues)
+				if err != nil {
+					return nil, fmt.Errorf("failed to render default path: %w", err)
+				}
+
 				kustomizationFiles = append(kustomizationFiles, git.CommitFile{
-					Path:    *namespace.Path,
+					Path:    path,
 					Content: namespace.Content,
 				})
 			}
 
-			kustomization, err := generateKustomizationFile(ctx, false, cluster, k, "")
-			if err != nil {
-				return nil, err
-			}
+			{
+				var err error
+				kustomization, err := generateKustomizationFile(ctx, false, cluster, k, "")
+				if err != nil {
+					return nil, err
+				}
 
-			kustomizationFiles = append(kustomizationFiles, kustomization)
+				kustomization.Path, err = renderTemplateStringWithValues(kustomization.Path, msg.ParameterValues)
+				if err != nil {
+					return nil, fmt.Errorf("failed to render default path: %w", err)
+				}
+				kustomizationFiles = append(kustomizationFiles, kustomization)
+			}
 		}
 	}
 
