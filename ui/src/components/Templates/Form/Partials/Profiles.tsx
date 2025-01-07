@@ -7,9 +7,9 @@ import {
   RepositoryRef,
 } from '../../../../cluster-services/cluster_services.pb';
 //import { DataTable, Flex } from '../../../../gitops.d';
+import { ProfilesIndex, UpdatedProfile } from '../../../../types/custom';
 import DataTable from '../../../../weave/components/DataTable';
 import Flex from '../../../../weave/components/Flex';
-import { ProfilesIndex, UpdatedProfile } from '../../../../types/custom';
 import { Loader } from '../../../Loader';
 import ProfilesListItem from './ProfileListItem';
 

@@ -4,8 +4,8 @@ import { TerraformObject } from '../api/terraform/types.pb';
 import { CostEstimate } from '../cluster-services/cluster_services.pb';
 import { NotificationData } from '../contexts/Notifications';
 //import { withBasePath } from '../gitops.d';
-import { Routes } from './nav';
 import { withBasePath } from '../weave/lib/utils';
+import { Routes } from './nav';
 
 export const getGitRepoHTTPSURL = (
   repoUrl?: string,

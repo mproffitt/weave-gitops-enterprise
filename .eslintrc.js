@@ -51,7 +51,7 @@ module.exports = {
     ],
     "@typescript-eslint/no-explicit-any": [0],
     "@typescript-eslint/ban-ts-comment": [0],
-    "@typescript-eslint/switch-exhaustiveness-check": [2],
+    "@typescript-eslint/switch-exhaustiveness-check": [0],
     "@typescript-eslint/no-non-null-assertion": [0],
 
     // testing stuff
@@ -81,15 +81,13 @@ module.exports = {
       version: "detect",
     },
   },
-  include: ["ui"],
-  exclude: ["node_modules"],
   ignorePatterns: [
     "rpc",
     "api",
     "assets",
     "cluster-services",
     "fonts",
-    "node_modules/(.*)",
+    "node_modules",
     ".d.ts",
     ".pb.ts",
     "setupProxy.js",

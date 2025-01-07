@@ -1,10 +1,10 @@
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import React, { Dispatch } from 'react';
 //import { Button, Icon, IconType } from '../../../gitops.d';
+import { InputDebounced } from '../../../utils/form';
 import Button from '../../../weave/components/Button';
 import Icon, { IconType } from '../../../weave/components/Icon';
 
-import { InputDebounced } from '../../../utils/form';
 import { ExternalSecret, SOPS } from '../Shared/utils';
 
 const data = ({

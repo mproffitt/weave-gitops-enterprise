@@ -8,10 +8,10 @@ import styled from 'styled-components';
   KubeStatusIndicator,
 
 } from '../../gitops.d';*/
-import InfoList, { InfoField } from '../../weave/components/InfoList';
-import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
 import { useGetKubeconfig } from '../../hooks/clusters';
 import { GitopsClusterEnriched } from '../../types/custom';
+import InfoList, { InfoField } from '../../weave/components/InfoList';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
 import { ClusterStatus } from './ClusterStatus';
 import { DashboardsList } from './DashboardsList';
 

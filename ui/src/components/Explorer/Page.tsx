@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 //import { RouterTab, SubRouterTabs } from '../../gitops.d';
-import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
 import { Routes } from '../../utils/nav';
+import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import AccessRulesDebugger from './AccessRulesDebugger';

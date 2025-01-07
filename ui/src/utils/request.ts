@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { Terraform } from '../api/terraform/terraform.pb';
 //import { coreClient } from '../gitops.d';
-import { Core as coreClient } from '../weave/lib/api/core/core.pb';
 import { RequestMethod } from '../types/global';
+import { Core as coreClient } from '../weave/lib/api/core/core.pb';
 
 export const processResponse = (res: Response) => {
   // 400s / 500s have res.ok = false

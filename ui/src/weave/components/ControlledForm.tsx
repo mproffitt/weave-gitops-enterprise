@@ -34,7 +34,9 @@ function ControlledForm({
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
-          onSubmit && onSubmit(state.values);
+          if (onSubmit) {
+            onSubmit(state.values);
+          }
         }}
         className={className}
       >

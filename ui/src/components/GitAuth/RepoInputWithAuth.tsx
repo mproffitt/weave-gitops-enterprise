@@ -12,12 +12,12 @@ import { useParseRepoUrl } from '../../contexts/GitAuth';
   useListSources,
 } from '../../gitops.d';*/
 
+import { Select, SelectProps } from '../../utils/form';
 import Button from '../../weave/components/Button';
 import Flex from '../../weave/components/Flex';
 import Icon, { IconType } from '../../weave/components/Icon';
 import { useListSources } from '../../weave/hooks/sources';
 
-import { Select, SelectProps } from '../../utils/form';
 import { getGitRepos } from '../Clusters';
 import { getRepositoryUrl } from '../Templates/Form/utils';
 import AuthButton from './AuthButton';
@@ -69,7 +69,7 @@ export function RepoInputWithAuth({
     }
     setValueForSelect(value);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [gitAuth, value]);
 
   React.useEffect(() => {

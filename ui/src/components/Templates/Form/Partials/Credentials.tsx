@@ -4,9 +4,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { FC, useCallback, Dispatch, ChangeEvent, useMemo } from 'react';
 import { styled } from 'styled-components';
 //import { Flex } from '../../../../gitops.d';
-import Flex from '../../../../weave/components/Flex';
 import { useListCredentials } from '../../../../hooks/credentials';
 import { Credential } from '../../../../types/custom';
+import Flex from '../../../../weave/components/Flex';
 
 const Credentials: FC<{
   infraCredential: Credential | null;

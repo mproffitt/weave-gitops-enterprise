@@ -29,26 +29,6 @@ import useNotifications from '../../contexts/Notifications';
   PageRoute,
 } from '../../gitops.d';*/
 
-import { AppContext } from '../../weave/contexts/AppContext';
-import Button from '../../weave/components/Button';
-import { createYamlCommand } from '../../weave/lib/utils';
-import { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
-import Flex from '../../weave/components/Flex';
-import FluxObjectsTable from '../../weave/components/FluxObjectsTable';
-import { Graph } from '../../weave/components/ReconciliationGraph';
-import { ReconciledObjectsAutomation } from "../../weave/components/AutomationDetail";
-
-import InfoList from '../../weave/components/InfoList';
-import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
-import Metadata from '../../weave/components/Metadata';
-import PageStatus from '../../weave/components/PageStatus';
-import RequestStateHandler from '../../weave/components/RequestStateHandler';
-import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
-import { useGetInventory } from '../../weave/hooks/inventory';
-import SyncControls from '../../weave/components/Sync/SyncControls';
-import YamlView from '../../weave/components/YamlView';
-import { PageRoute } from '../../weave/lib/types';
-
 import {
   useGetGitOpsSet,
   useSyncGitOpsSet,
@@ -57,6 +37,26 @@ import {
 import { RequestError } from '../../types/custom';
 import { useCallbackState } from '../../utils/callback-state';
 import { Routes } from '../../utils/nav';
+import { ReconciledObjectsAutomation } from "../../weave/components/AutomationDetail";
+import Button from '../../weave/components/Button';
+import { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import Flex from '../../weave/components/Flex';
+import FluxObjectsTable from '../../weave/components/FluxObjectsTable';
+
+import InfoList from '../../weave/components/InfoList';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Metadata from '../../weave/components/Metadata';
+import PageStatus from '../../weave/components/PageStatus';
+import { Graph } from '../../weave/components/ReconciliationGraph';
+import RequestStateHandler from '../../weave/components/RequestStateHandler';
+import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
+import SyncControls from '../../weave/components/Sync/SyncControls';
+import YamlView from '../../weave/components/YamlView';
+
+import { AppContext } from '../../weave/contexts/AppContext';
+import { useGetInventory } from '../../weave/hooks/inventory';
+import { PageRoute } from '../../weave/lib/types';
+import { createYamlCommand } from '../../weave/lib/utils';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import ListEvents from '../ListEvents';

@@ -42,7 +42,7 @@ describe("Footer", () => {
         );
       });
 
-      const footer = screen.getByRole("footer");
+      const footer = screen.getByRole("contentinfo");
       expect(footer).toMatchSnapshot();
     });
     it("no api version", async () => {
@@ -59,7 +59,7 @@ describe("Footer", () => {
         );
       });
 
-      const footer = screen.getByRole("footer");
+      const footer = screen.getByRole("contentinfo");
       expect(footer).toMatchSnapshot();
     });
   });

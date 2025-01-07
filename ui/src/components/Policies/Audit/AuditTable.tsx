@@ -14,19 +14,19 @@ import { Object } from '../../../api/query/query.pb';
   V2Routes,
   formatURL,
 } from '../../../gitops.d';*/
+import { useListFacets } from '../../../hooks/query';
+import { RequestError } from '../../../types/custom';
 import DataTable from '../../../weave/components/DataTable';
 import Flex from '../../../weave/components/Flex';
 import Icon, { IconType } from '../../../weave/components/Icon';
 import Link from '../../../weave/components/Link';
-import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import Severity from '../../../weave/components/Policies/Utils/Severity';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import Text from '../../../weave/components/Text';
 import Timestamp from '../../../weave/components/Timestamp';
-import { V2Routes } from '../../../weave/lib/types';
 import { formatURL } from '../../../weave/lib/nav';
+import { V2Routes } from '../../../weave/lib/types';
 
-import { useListFacets } from '../../../hooks/query';
-import { RequestError } from '../../../types/custom';
 import FilterDrawer from '../../Explorer/FilterDrawer';
 import Filters from '../../Explorer/Filters';
 import { QueryState, columnHeaderHandler } from '../../Explorer/hooks';

@@ -263,7 +263,7 @@ const AppRoutes = () => {
         **********************************************************************/}
 
       {/* NOTIFICATION ROUTES */}
-      <Route Component={WGNotifications as React.FunctionComponent<{}>} path={V2Routes.Notifications + "/*"} />
+      <Route Component={WGNotifications as React.FunctionComponent<object>} path={V2Routes.Notifications + "/*"} />
       <Route element={(
         <WithSearchParams component={WGNotificationsProvider} />
       )} path={V2Routes.Provider + "/*"} />

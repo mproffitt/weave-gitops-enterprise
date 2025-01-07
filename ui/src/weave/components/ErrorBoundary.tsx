@@ -56,7 +56,7 @@ function ErrorBoundary({ children }: Props) {
     if (hasError) {
       setHasError(false);
     }
-  }, [location.key]);
+  }, [location.key, hasError]);
 
   return (
     <ErrorBoundaryDetail hasError={hasError} setHasError={setHasError}>

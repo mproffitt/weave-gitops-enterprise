@@ -25,9 +25,9 @@ describe("ChipGroup", () => {
         />
       )
     );
-    expect(screen.queryByText("app")).toBeTruthy();
-    expect(screen.queryByText("app3")).toBeTruthy();
-    expect(screen.queryByText("Clear All")).toBeTruthy();
+    expect(screen.getByText("app")).toBeTruthy();
+    expect(screen.getByText("app3")).toBeTruthy();
+    expect(screen.getByText("Clear All")).toBeTruthy();
   });
   it("adds 'null' to undefined values", () => {
     render(
@@ -39,7 +39,7 @@ describe("ChipGroup", () => {
         />
       )
     );
-    expect(screen.queryByText(`appapp${filterSeparator}null`)).toBeTruthy();
-    expect(screen.queryByText(`app${filterSeparator}app`)).toBeTruthy();
+    expect(screen.getByText(`appapp${filterSeparator}null`)).toBeTruthy();
+    expect(screen.getByText(`app${filterSeparator}app`)).toBeTruthy();
   });
 });

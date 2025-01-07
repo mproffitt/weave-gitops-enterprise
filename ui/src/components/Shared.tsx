@@ -8,8 +8,8 @@ import React, { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import CloseIconButton from '../assets/img/close-icon-button';
-import Link from '../weave/components/Link';
 import Flex from '../weave/components/Flex';
+import Link from '../weave/components/Link';
 //import { Flex, Link } from '../gitops.d';
 
 const TooltipStyle = styled.div`

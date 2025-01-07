@@ -6,10 +6,10 @@ import React, { FC } from 'react';
   useGetObject,
   V2Routes,
 } from '../../gitops.d';*/
-import { OCIRepository } from '../../weave/lib/objects';
 import OCIRepositoryDetail from '../../weave/components/OCIRepositoryDetail';
-import { Kind } from '../../weave/lib/api/core/types.pb';
 import { useGetObject } from '../../weave/hooks/objects';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { OCIRepository } from '../../weave/lib/objects';
 import { V2Routes } from '../../weave/lib/types';
 
 import { Page } from '../Layout/App';

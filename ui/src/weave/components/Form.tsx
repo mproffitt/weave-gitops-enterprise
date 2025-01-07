@@ -45,7 +45,7 @@ function Form({
     if (onChange) {
       onChange(state);
     }
-  }, [state]);
+  }, [state, onChange]);
 
   return (
     <ControlledForm

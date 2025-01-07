@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import { ClusterNamespacedName } from '../../cluster-services/cluster_services.pb';
 import useNotifications from '../../contexts/Notifications';
 //import { Button, Icon, IconType, Link } from '../../gitops.d';
-import Button from '../../weave/components/Button';
-import Icon, { IconType } from '../../weave/components/Icon';
-import Link from '../../weave/components/Link';
 
 import useClusters from '../../hooks/clusters';
 import {
@@ -16,6 +13,9 @@ import {
 import { PRDefaults } from '../../types/custom';
 import { Input } from '../../utils/form';
 import { removeToken } from '../../utils/request';
+import Button from '../../weave/components/Button';
+import Icon, { IconType } from '../../weave/components/Icon';
+import Link from '../../weave/components/Link';
 import GitAuth from '../GitAuth';
 import { clearCallbackState, getProviderToken } from '../GitAuth/utils';
 import { Loader } from '../Loader';

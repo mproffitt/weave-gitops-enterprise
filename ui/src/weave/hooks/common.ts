@@ -38,16 +38,18 @@ export function useRequestState<T>(): ReturnType<T> {
 
 // Copied and TS-ified from https://usehooks.com/useDebounce/
 export function useDebounce<T>(value: T, delay: number) {
-  if (process.env.NODE_ENV === "test") {
-    return value;
-  }
-
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
+    if (process.env.NODE_ENV === "test") {
+      setDebouncedValue(value);
+      return;
+    }
+
     const handler = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
+
     return () => {
       clearTimeout(handler);
     };

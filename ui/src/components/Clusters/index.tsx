@@ -27,17 +27,6 @@ import useNotifications, {
   statusSortHelper,
   useListSources,
 } from '../../gitops.d';*/
-import Button from '../../weave/components/Button';
-import DataTable, { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
-import Flex from '../../weave/components/Flex';
-import { GitRepository, Source } from '../../weave/lib/objects';
-import Icon, { IconType } from '../../weave/components/Icon';
-import { Kind } from '../../weave/lib/api/core/types.pb';
-import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
-import Link from '../../weave/components/Link';
-import { PageRoute } from '../../weave/lib/types';
-import { statusSortHelper } from '../../weave/lib/utils';
-import { useListSources } from '../../weave/hooks/sources';
 import useClusters from '../../hooks/clusters';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { GitopsClusterEnriched, PRDefaults } from '../../types/custom';
@@ -45,6 +34,17 @@ import { useCallbackState } from '../../utils/callback-state';
 import { computeMessage } from '../../utils/conditions';
 import { toFilterQueryString } from '../../utils/FilterQueryString';
 import { Routes } from '../../utils/nav';
+import Button from '../../weave/components/Button';
+import DataTable, { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Link from '../../weave/components/Link';
+import { useListSources } from '../../weave/hooks/sources';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { GitRepository, Source } from '../../weave/lib/objects';
+import { PageRoute } from '../../weave/lib/types';
+import { statusSortHelper } from '../../weave/lib/utils';
 import { QueryState } from '../Explorer/hooks';
 import { linkToExplorer } from '../Explorer/utils';
 import { Page } from '../Layout/App';

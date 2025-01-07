@@ -20,13 +20,6 @@ import { useGetClustersList } from '../../../contexts/PolicyConfigs';
   useListSources,
   ThemeTypes,
 } from '../../../gitops.d';*/
-import Flex from '../../../weave/components/Flex';
-import { GitRepository } from '../../../weave/lib/objects';
-import Link from '../../../weave/components/Link';
-import Text from '../../../weave/components/Text';
-import { ThemeTypes } from '../../../weave/contexts/AppContext';
-import { useListSources } from "../../../weave/hooks/sources";
-import { PageRoute } from '../../../weave/lib/types';
 
 import {
   expiredTokenNotification,
@@ -36,6 +29,13 @@ import { useCallbackState } from '../../../utils/callback-state';
 import { Input, Select, validateFormData } from '../../../utils/form';
 import { Routes } from '../../../utils/nav';
 import { removeToken } from '../../../utils/request';
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import Text from '../../../weave/components/Text';
+import { ThemeTypes } from '../../../weave/contexts/AppContext';
+import { useListSources } from "../../../weave/hooks/sources";
+import { GitRepository } from '../../../weave/lib/objects';
+import { PageRoute } from '../../../weave/lib/types';
 import { getGitRepos } from '../../Clusters';
 import { clearCallbackState, getProviderToken } from '../../GitAuth/utils';
 import { Page } from '../../Layout/App';

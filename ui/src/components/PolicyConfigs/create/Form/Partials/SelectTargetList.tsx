@@ -2,9 +2,9 @@ import { MenuItem } from '@mui/material';
 import React, { Dispatch } from 'react';
 import { PolicyConfigApplicationMatch } from '../../../../../cluster-services/cluster_services.pb';
 //import { Flex, Text } from '../../../../../gitops.d';
+import { Select } from '../../../../../utils/form';
 import Flex from '../../../../../weave/components/Flex';
 import Text from '../../../../../weave/components/Text';
-import { Select } from '../../../../../utils/form';
 import { ListApplications } from './ListApplications';
 import { ListWorkSpaces } from './ListWorkSpaces';
 

@@ -12,14 +12,14 @@ import { Object } from '../../api/query/query.pb';
   Link,
   V2Routes,
 } from '../../gitops.d';*/
-import DataTable, { Field } from '../../weave/components/DataTable';
-import Flex from '../../weave/components/Flex';
-import { formatURL } from '../../weave/lib/nav';
-import Icon from '../../weave/components/Icon';
-import Link from '../../weave/components/Link';
-import { V2Routes } from '../../weave/lib/types';
 import { getKindRoute, Routes } from '../../utils/nav';
 import { getIndicatorInfo } from '../../utils/status';
+import DataTable, { Field } from '../../weave/components/DataTable';
+import Flex from '../../weave/components/Flex';
+import Icon from '../../weave/components/Icon';
+import Link from '../../weave/components/Link';
+import { formatURL } from '../../weave/lib/nav';
+import { V2Routes } from '../../weave/lib/types';
 import { QueryState } from './hooks';
 
 export type ExplorerField = Field & {

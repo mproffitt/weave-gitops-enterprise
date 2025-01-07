@@ -83,7 +83,7 @@ const Preview: FC<{
 
   const [value, setValue] = useState<number>(initialIndex);
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  const handleChange = (event: React.ChangeEvent<object>, newValue: number) => {
     setValue(newValue);
   };
   const getTabsContent = (context: string) => {

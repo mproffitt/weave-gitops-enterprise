@@ -17,13 +17,13 @@ import { useListConfigContext } from '../../../contexts/ListConfig';
   Source,
 } from '../../../gitops.d';*/
 import { GitopsClusterEnriched } from '../../../types/custom';
-import { Resource } from '../Edit/EditButton';
-import { GitRepositoryEnriched } from '.';
 import {
   Automation,
   Source,
   GitRepository,
 } from '../../../weave/lib/objects';
+import { Resource } from '../Edit/EditButton';
+import { GitRepositoryEnriched } from '.';
 
 export const maybeParseJSON = (data: string) => {
   try {

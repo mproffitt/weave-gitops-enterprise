@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 //import { Text, formatURL } from '../../gitops.d';
+import { Routes } from '../../utils/nav';
 import Text from '../../weave/components/Text';
 import { formatURL } from '../../weave/lib/nav';
-import { Routes } from '../../utils/nav';
 
 interface Props {
   clusterName: string;

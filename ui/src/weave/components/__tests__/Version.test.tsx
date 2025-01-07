@@ -1,9 +1,9 @@
 import "jest-styled-components";
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import { withTheme } from "../../lib/test-utils";
 import Version from "../Version";
-import { MemoryRouter } from "react-router-dom";
 
 const productName = "product name";
 const versionText = "version text";

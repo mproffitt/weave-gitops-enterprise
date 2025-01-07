@@ -12,13 +12,13 @@ import styled from 'styled-components';
   YamlView,
   createYamlCommand,
 } from '../../../gitops.d';*/
+import { Routes } from '../../../utils/nav';
 import Flex from '../../../weave/components/Flex';
 import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
 import Text from '../../../weave/components/Text';
 import YamlView from '../../../weave/components/YamlView';
 import { createYamlCommand } from '../../../weave/lib/utils';
 
-import { Routes } from '../../../utils/nav';
 import ListEvents from '../../ListEvents';
 import { getProgressValue } from '../ListCanaries/Table';
 import CanaryStatus from '../SharedComponent/CanaryStatus';

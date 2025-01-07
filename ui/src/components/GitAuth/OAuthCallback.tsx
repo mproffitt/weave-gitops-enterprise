@@ -1,5 +1,4 @@
-import { CircularProgress } from '@mui/material';
-import { Alert, AlertTitle } from '@mui/material';
+import { CircularProgress , Alert, AlertTitle } from '@mui/material';
 import qs from 'query-string';
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -10,20 +9,15 @@ import {
 } from '../../api/gitauth/gitauth.pb';
 import { useEnterpriseClient } from '../../contexts/API';
 import useNotifications from '../../contexts/Notifications';
-/*import {
-  Flex,
-  useLinkResolver,
-  useRequestState,
-} from '../../gitops.d';*/
 
-import Flex from '../../weave/components/Flex';
-import { useLinkResolver } from '../../weave/contexts/LinkResolverContext';
-import { useRequestState } from '../../weave/hooks/common';
 import {
   azureDevOpsOAuthRedirectURI,
   bitbucketServerOAuthRedirectURI,
   gitlabOAuthRedirectURI,
 } from '../../utils/formatters';
+import Flex from '../../weave/components/Flex';
+import { useLinkResolver } from '../../weave/contexts/LinkResolverContext';
+import { useRequestState } from '../../weave/hooks/common';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { getCallbackState, storeProviderToken } from './utils';
@@ -92,8 +86,7 @@ function OAuthCallback({
         }),
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [code, gitAuth, provider]);
+  }, [code, gitAuth, provider, req, state]);
 
   React.useEffect(() => {
     if (!res) {
@@ -108,7 +101,7 @@ function OAuthCallback({
       navigate(linkResolver(state?.page || ''));
       return;
     }
-  }, [res, history, linkResolver, params.error, provider]);
+  }, [res, linkResolver, params.error, provider, navigate]);
 
   React.useEffect(() => {
     if (error) {

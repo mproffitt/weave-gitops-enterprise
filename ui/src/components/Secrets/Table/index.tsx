@@ -7,12 +7,12 @@ import { ExternalSecretItem } from '../../../cluster-services/cluster_services.p
   KubeStatusIndicator,
   Link,
 } from '../../../gitops.d';*/
+import { Routes } from '../../../utils/nav';
 import DataTable from '../../../weave/components/DataTable';
-import { formatURL } from '../../../weave/lib/nav';
 import KubeStatusIndicator from '../../../weave/components/KubeStatusIndicator';
 import Link from '../../../weave/components/Link';
+import { formatURL } from '../../../weave/lib/nav';
 
-import { Routes } from '../../../utils/nav';
 import { TableWrapper } from '../../Shared';
 
 interface Props {

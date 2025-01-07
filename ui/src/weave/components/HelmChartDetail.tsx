@@ -1,13 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
-import Interval from "./Interval";
-import SourceDetail from "./SourceDetail";
-import Timestamp from "./Timestamp";
 import { useFeatureFlags } from "../hooks/featureflags";
 import { Kind } from "../lib/api/core/types.pb";
 import { HelmChart } from "../lib/objects";
 import ClusterDashboardLink from "./ClusterDashboardLink";
 import { InfoField } from "./InfoList";
+import Interval from "./Interval";
+import SourceDetail from "./SourceDetail";
+import Timestamp from "./Timestamp";
 
 type Props = {
   className?: string;

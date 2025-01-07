@@ -51,6 +51,8 @@ describe("Automations", () => {
     );
     await waitFor(() => {
       expect(screen.getAllByText("Kustomization").length).toBeTruthy();
+    });
+    await waitFor(() => {
       expect(screen.getAllByText("HelmRelease").length).toBeTruthy();
     });
   });
@@ -64,6 +66,6 @@ describe("Automations", () => {
     render(
       withTheme(withContext(<Automations />, "/automations", { api: client2 }))
     );
-    await waitFor(() => expect(screen.getByText("No data")).toBeTruthy());
+    await screen.findByText("No data");
   });
 });

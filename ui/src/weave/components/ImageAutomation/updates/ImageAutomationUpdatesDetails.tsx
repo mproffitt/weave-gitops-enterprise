@@ -20,7 +20,8 @@ type Props = {
 };
 function getInfoList(
   data: ImageUpdateAutomation,
-  clusterName: string
+  clusterName: string,
+  isFlagEnabled: (flag: string) => boolean
 ): RowItem[] {
   const {
     kind,
@@ -28,7 +29,6 @@ function getInfoList(
   } = data.obj;
   const { path } = update;
   const { commit, checkout, push } = git;
-  const { isFlagEnabled } = useFeatureFlags();
 
   return [
     {
@@ -83,6 +83,7 @@ function ImageAutomationUpdatesDetails({
   namespace,
   clusterName,
 }: Props) {
+  const { isFlagEnabled } = useFeatureFlags();
   const { data, isLoading, error } = useGetObject<ImageUpdateAutomation>(
     name,
     namespace,
@@ -108,7 +109,7 @@ function ImageAutomationUpdatesDetails({
         <ImageAutomationDetails
           data={data}
           kind={Kind.ImageUpdateAutomation}
-          infoFields={getInfoList(data, data.clusterName)}
+          infoFields={getInfoList(data, data.clusterName, isFlagEnabled)}
           rootPath={rootPath}
         >
           <Metadata metadata={data.metadata} labels={data.labels} />

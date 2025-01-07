@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render , queryByRole } from "@testing-library/react";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { withTheme } from "../../lib/test-utils";
@@ -13,8 +13,14 @@ describe("Link", () => {
         </MemoryRouter>
       )
     );
-    const a = link.querySelector("a");
-    expect(a).toBe(null);
+    const { getByRole } = render(
+      withTheme(
+        <MemoryRouter>
+          <Link href="oci://ghcr.io/some/chart">Text</Link>
+        </MemoryRouter>
+      )
+    );
+    expect(() => getByRole("link")).toThrow();
     expect(link.textContent).toBe("Text");
   });
   it("creates a link for http links", () => {
@@ -25,10 +31,10 @@ describe("Link", () => {
         </MemoryRouter>
       )
     );
-    const a = link.querySelector("a");
-    expect(a).not.toBe(null);
-    expect(a?.href).toBe("http://google.com/");
-    expect(a?.textContent).toBe("Text");
+    const a = getByRole(link, "link");
+    expect(a).toBeInTheDocument();
+    expect((a as HTMLAnchorElement).href).toBe("http://google.com/");
+    expect(a.textContent).toBe("Text");
   });
   it("creates a link for relative links", () => {
     const { container: link } = render(
@@ -38,10 +44,10 @@ describe("Link", () => {
         </MemoryRouter>
       )
     );
-    const a = link.querySelector("a");
-    expect(a).not.toBe(null);
-    expect(a?.href).toBe("http://localhost/some-page");
-    expect(a?.textContent).toBe("Text");
+    const a = getByRole(link, "link");
+    expect(a).toBeInTheDocument();
+    expect((a as HTMLAnchorElement).href).toBe("http://localhost/some-page");
+    expect(a.textContent).toBe("Text");
   });
   it("creates a router link for to links", () => {
     const { container: link } = render(
@@ -51,9 +57,9 @@ describe("Link", () => {
         </MemoryRouter>
       )
     );
-    const a = link.querySelector("a");
+    const a = getByRole(link, "link");
     expect(a).not.toBe(null);
-    expect(a?.href).toBe("http://localhost/some-page");
+    expect((a as HTMLAnchorElement).href).toBe("http://localhost/some-page");
     expect(a?.textContent).toBe("Text");
   });
   it("makes to links relative when specifying an absolute link", () => {
@@ -64,9 +70,9 @@ describe("Link", () => {
         </MemoryRouter>
       )
     );
-    const a = link.querySelector("a");
-    expect(a).not.toBe(null);
-    expect(a?.href).toBe("http://localhost/http://google.com");
+    const a = getByRole(link, "link");
+    expect(a).toBeInTheDocument();
+    expect((a as HTMLAnchorElement).href).toBe("http://localhost/http://google.com");
     expect(link.textContent).toBe("Text");
   });
   it("makes to links relative when specifying an oic link", () => {
@@ -77,9 +83,18 @@ describe("Link", () => {
         </MemoryRouter>
       )
     );
-    const a = link.querySelector("a");
-    expect(a).not.toBe(null);
-    expect(a?.href).toBe("http://localhost/oci://ghcr.io/some/chart");
+    const a = getByRole(link, "link");
+    expect(a).toBeInTheDocument();
+    expect((a as HTMLAnchorElement).href).toBe("http://localhost/oci://ghcr.io/some/chart");
     expect(link.textContent).toBe("Text");
   });
 });
+
+function getByRole(container: HTMLElement, role: string) {
+  const element = queryByRole(container, role);
+  if (!element) {
+    throw new Error(`No element found with role ${role}`);
+  }
+  return element;
+}
+

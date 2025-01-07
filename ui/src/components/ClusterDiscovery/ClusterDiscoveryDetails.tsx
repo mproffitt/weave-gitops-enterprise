@@ -32,34 +32,34 @@ import {
   Metadata,
   FluxObject,
 } from '../../gitops.d';*/
-import { AppContext } from '../../weave/contexts/AppContext';
+import { RequestError } from '../../types/custom';
+import { Routes } from '../../utils/nav';
+import { ReconciledObjectsAutomation } from '../../weave/components/AutomationDetail';
 import Button from '../../weave/components/Button';
+import { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
 import Flex from '../../weave/components/Flex';
 import FluxObjectsTable from '../../weave/components/FluxObjectsTable';
-import { Graph } from '../../weave/components/ReconciliationGraph';
 import InfoList from '../../weave/components/InfoList';
-import { Kind } from '../../weave/lib/api/core/types.pb';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Metadata from '../../weave/components/Metadata';
 import Page from '../../weave/components/Page';
 import PageStatus from '../../weave/components/PageStatus';
+import { Graph } from '../../weave/components/ReconciliationGraph';
 import RequestStateHandler from '../../weave/components/RequestStateHandler';
 import SubRouterTabs, { RouterTab } from '../../weave/components/SubRouterTabs';
 import YamlView from '../../weave/components/YamlView';
-import { filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import { AppContext } from '../../weave/contexts/AppContext';
+import { useSyncFluxObject } from '../../weave/hooks/automations';
+import { useToggleSuspend } from '../../weave/hooks/flux';
 import { useGetInventory } from '../../weave/hooks/inventory';
 import { useGetObject } from '../../weave/hooks/objects';
-import { useToggleSuspend } from '../../weave/hooks/flux';
-import { ReconciledObjectsAutomation } from '../../weave/components/AutomationDetail';
-import { useSyncFluxObject } from '../../weave/hooks/automations';
-import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
-import { createYamlCommand } from '../../weave/lib/utils';
-import Metadata from '../../weave/components/Metadata';
+import { Kind } from '../../weave/lib/api/core/types.pb';
 import { FluxObject } from '../../weave/lib/objects';
+import { createYamlCommand } from '../../weave/lib/utils';
 
 
 
 
-import { RequestError } from '../../types/custom';
-import { Routes } from '../../utils/nav';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import ListEvents from '../ListEvents';
 import { TableWrapper } from '../Shared';

@@ -6,8 +6,8 @@ import {
 import { useEnterpriseClient } from '../../../contexts/API';
 import useNotifications from '../../../contexts/Notifications';
 //import { Button } from '../../../gitops.d';
-import Button from '../../../weave/components/Button';
 import { validateFormData } from '../../../utils/form';
+import Button from '../../../weave/components/Button';
 import PreviewModal from '../../Templates/Form/Partials/PreviewModal';
 
 export const Preview = ({

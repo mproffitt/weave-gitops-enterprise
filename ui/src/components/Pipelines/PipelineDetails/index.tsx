@@ -9,11 +9,11 @@ import { useGetPipeline } from '../../../contexts/Pipelines';
   YamlView,
   createYamlCommand,
 } from '../../../gitops.d';*/
+import { Routes } from '../../../utils/nav';
 import Flex from '../../../weave/components/Flex';
 import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
 import YamlView from '../../../weave/components/YamlView';
 import { createYamlCommand } from '../../../weave/lib/utils';
-import { Routes } from '../../../utils/nav';
 import { Page } from '../../Layout/App';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';
 import Workloads from './Workloads';

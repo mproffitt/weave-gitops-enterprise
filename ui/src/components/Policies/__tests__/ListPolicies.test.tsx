@@ -1,13 +1,13 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 //import { CoreClientContextProvider } from '../../../gitops.d';
-import CoreClientContextProvider from '../../../weave/contexts/CoreClientContext';
 import {
   defaultContexts,
   CoreClientMock,
   TestFilterableTable,
   withContext,
 } from '../../../utils/test-utils';
+import CoreClientContextProvider from '../../../weave/contexts/CoreClientContext';
 import Policies from '../PoliciesListPage';
 import { PoliciesTab } from '../PoliciesListTab';
 

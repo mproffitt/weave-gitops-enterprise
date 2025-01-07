@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { PipelineTargetStatus } from '../../../api/pipelines/types.pb';
 //import { Flex, Text, computeReady } from '../../../gitops.d';
 import Flex from '../../../weave/components/Flex';
-import Text from '../../../weave/components/Text';
 import { computeReady } from '../../../weave/components/KubeStatusIndicator';
+import Text from '../../../weave/components/Text';
 import { EnvironmentCard } from './styles';
 
 type Props = {

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 //import { Flex, Link, MessageBox, Text, Spacer } from '../../gitops.d';
-import CodeView from '../CodeView';
 import Flex from '../../weave/components/Flex';
+import Link from '../../weave/components/Link';
 import MessageBox from '../../weave/components/MessageBox';
 import Spacer from '../../weave/components/Spacer';
 import Text from '../../weave/components/Text';
-import Link from '../../weave/components/Link';
+import CodeView from '../CodeView';
 
 type Props = {
   plan?: string;

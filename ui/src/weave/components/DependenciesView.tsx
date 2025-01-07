@@ -26,26 +26,29 @@ function DependenciesView({ className, automation }: DependenciesViewProps) {
 
   const automationKind = Kind[automation?.type as keyof typeof Kind ?? ""];
 
-  const {
-    data,
-    isLoading: isLoadingData,
-    error,
-  } = automation
-    ? useListObjects("", automationKind, automation?.clusterName, {})
-    : { data: { objects: [], errors: [] }, error: null, isLoading: false };
+  const { data, isLoading: isLoadingData, error } = useListObjects(
+    "",
+    automationKind,
+    automation?.clusterName ?? "",
+    {}
+  );
+
+  const effectiveData = React.useMemo(() => (automation ? data : { objects: [], errors: [] }), [automation, data]);
+  const effectiveError = React.useMemo(() => (automation ? error : null), [automation, error]);
+  const effectiveIsLoading = React.useMemo(() => (automation ? isLoadingData : false), [automation, isLoadingData]);
 
   React.useEffect(() => {
-    if (isLoadingData) {
+    if (effectiveIsLoading) {
       return;
     }
 
-    if (error || (data?.errors?.length ?? 0) > 0) {
+    if (effectiveError || (effectiveData?.errors?.length ?? 0) > 0) {
       setGraphNodes(graphNodesPlaceholder);
       return;
     }
 
     const allNodes: FluxObjectNodesMap = {};
-    data?.objects.forEach((obj) => {
+    effectiveData?.objects.forEach((obj) => {
       const n = new FluxObjectNode(obj);
       allNodes[n.id] = n;
     });
@@ -59,7 +62,7 @@ function DependenciesView({ className, automation }: DependenciesViewProps) {
     } else {
       setGraphNodes(nodes);
     }
-  }, [isLoadingData, data, error, automation]);
+  }, [effectiveIsLoading, effectiveData, effectiveError, automation]);
 
   const isLoading = isLoadingData && !graphNodes;
 

@@ -8,12 +8,12 @@ import { PolicyConfigListItem } from '../../../cluster-services/cluster_services
   filterConfig,
   formatURL
 } from '../../../gitops.d';*/
+import { Routes } from '../../../utils/nav';
 import DataTable, { filterConfig } from '../../../weave/components/DataTable';
 import Link from '../../../weave/components/Link';
 import Text from '../../../weave/components/Text';
 import { formatURL } from '../../../weave/lib/nav';
 
-import { Routes } from '../../../utils/nav';
 import {
   PolicyConfigsTableWrapper,
   TotalPolicies,

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { formatURL } from "../lib/nav";
 import { PageRoute, V2Routes } from "../lib/types";
 import { Fade } from "../lib/utils";
-// eslint-disable-next-line
+ 
 import { colors } from "../typedefs/styled";
 
 import Flex from "./Flex";
@@ -98,7 +98,7 @@ const CollapseButton = styled(IconButton)`
   }
 `;
 
-// eslint-disable-next-line react/prop-types
+ 
 const LinkTabIcon = ({ iconType, color, collapsed, title }: {
   iconType: IconType | undefined,
   color: string,

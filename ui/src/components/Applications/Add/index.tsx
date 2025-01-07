@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-//import { PageRoute } from 'gitops/lib/types';
 import _ from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,16 +10,6 @@ import {
 import { useEnterpriseClient } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
 import useNotifications from '../../../contexts/Notifications';
-/*import {
-  GitRepository,
-  Link,
-  useListSources,
-  PageRoute
-} from '../../../gitops.d';*/
-import { GitRepository } from '../../../weave/lib/objects';
-import Link from '../../../weave/components/Link';
-import { useListSources } from '../../../weave/hooks/sources';
-import { PageRoute } from '../../../weave/lib/types';
 import {
   expiredTokenNotification,
   useIsAuthenticated,
@@ -32,6 +21,10 @@ import { validateFormData } from '../../../utils/form';
 import { getGitRepoHTTPSURL } from '../../../utils/formatters';
 import { Routes } from '../../../utils/nav';
 import { removeToken } from '../../../utils/request';
+import Link from '../../../weave/components/Link';
+import { useListSources } from '../../../weave/hooks/sources';
+import { GitRepository } from '../../../weave/lib/objects';
+import { PageRoute } from '../../../weave/lib/types';
 import { getGitRepos } from '../../Clusters';
 import { clearCallbackState, getProviderToken } from '../../GitAuth/utils';
 import { Page } from '../../Layout/App';
@@ -352,14 +345,7 @@ const AddApplication = ({ clusterName }: { clusterName?: string }) => {
         setNotifications([expiredTokenNotification]);
       })
       .finally(() => setLoading(false));
-  }, [
-    clustersService,
-    formData,
-    history,
-    getKustomizations,
-    setNotifications,
-    validateToken,
-  ]);
+  }, [formData.branchName, formData.pullRequestTitle, formData.pullRequestDescription, formData.commitMessage, formData.repo, formData.provider, getKustomizations, validateToken, clustersService, navigate, setNotifications]);
 
   return useMemo(() => {
     return (

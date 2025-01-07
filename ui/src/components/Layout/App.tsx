@@ -7,12 +7,12 @@ import { ListConfigProvider, VersionProvider } from '../../contexts/ListConfig';
   Page as WGPage,
   Breadcrumb,
  } from '../../gitops.d';*/
+import AppRoutes from '../../routes';
+import { Routes } from '../../utils/nav';
+import { Breadcrumb } from '../../weave/components/Breadcrumbs';
 import Layout from '../../weave/components/Layout';
 import Logo from '../../weave/components/Logo';
 import WGPage from '../../weave/components/Page';
-import { Breadcrumb } from '../../weave/components/Breadcrumbs';
-import AppRoutes from '../../routes';
-import { Routes } from '../../utils/nav';
 import ErrorBoundary from '../ErrorBoundary';
 import Navigation from './Navigation';
 

@@ -42,7 +42,7 @@ function Footer({ className }: Props) {
     : [];
 
   return (
-    <Flex as="footer" wide between className={className} role="footer">
+    <Flex as="footer" wide between className={className} role="contentinfo">
       <LeftFoot>
         <Text noWrap>Need help? Contact us at</Text>
         <Spacer padding="xxs" />

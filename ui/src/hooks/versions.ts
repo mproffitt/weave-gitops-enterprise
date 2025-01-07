@@ -32,10 +32,11 @@ export function useListConfig() {
   const repositoryURL = queryResponse?.data?.repositoryUrl || '';
   const uiConfig = JSON.parse(queryResponse?.data?.uiConfig || '{}');
   useEffect(() => {
-    repositoryURL &&
+    if (repositoryURL) {
       gitAuth.ParseRepoURL({ url: repositoryURL }).then(res => {
         setProvider(res.provider || '');
       });
+    }
   }, [repositoryURL, gitAuth]);
 
   return {

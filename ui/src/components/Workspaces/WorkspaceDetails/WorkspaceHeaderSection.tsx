@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Workspace } from '../../../cluster-services/cluster_services.pb';
 //import { Button, Flex, Icon, IconType } from '../../../gitops.d';
 import { toFilterQueryString } from '../../../utils/FilterQueryString';
-import RowHeader from '../../RowHeader';
-import Flex from '../../../weave/components/Flex';
 import Button from '../../../weave/components/Button';
+import Flex from '../../../weave/components/Flex';
 import Icon, { IconType } from '../../../weave/components/Icon';
+import RowHeader from '../../RowHeader';
 
 const Header = styled(Flex)`
   margin-bottom: ${props => props.theme.spacing.medium};

@@ -120,7 +120,9 @@ export default function AuthContextProvider({ children }: { children: React.Reac
 
   React.useEffect(() => {
     return () => {
-      getUserInfo && getUserInfo();
+      if (getUserInfo) {
+        getUserInfo();
+      }
     };
   }, [getUserInfo, location]);
 

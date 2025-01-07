@@ -8,10 +8,7 @@ import Applications from '../';
   theme,
   ThemeTypes,
 } from '../../../gitops.d';*/
-import { ThemeTypes } from '../../../weave/contexts/AppContext';
-import { Kind } from '../../../weave/lib/api/core/types.pb';
-import theme from '../../../weave/lib/theme';
-
+import { EnterpriseClientContext } from '../../../contexts/API';
 import {
   ApplicationsClientMock,
   defaultContexts,
@@ -19,7 +16,10 @@ import {
   newMockQueryService,
   withContext,
 } from '../../../utils/test-utils';
-import { EnterpriseClientContext } from '../../../contexts/API';
+import { ThemeTypes } from '../../../weave/contexts/AppContext';
+import { Kind } from '../../../weave/lib/api/core/types.pb';
+import theme from '../../../weave/lib/theme';
+
 
 describe('Applications index test', () => {
   let wrap: (el: JSX.Element) => JSX.Element;

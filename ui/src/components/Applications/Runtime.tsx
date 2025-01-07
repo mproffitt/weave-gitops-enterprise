@@ -6,8 +6,7 @@ import React, { FC } from 'react';
   useListRuntimeObjects,
 } from '../../gitops.d';*/
 import FluxRuntime from '../../weave/components/FluxRuntime';
-import { useListRuntimeCrds } from '../../weave/hooks/flux';
-import { useListRuntimeObjects } from '../../weave/hooks/flux';
+import { useListRuntimeCrds , useListRuntimeObjects } from '../../weave/hooks/flux';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

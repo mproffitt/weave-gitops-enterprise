@@ -14,16 +14,16 @@ import { EnabledComponent } from '../../api/query/query.pb';
   Timestamp,
   Field,
 } from '../../gitops.d';*/
-import DataTable, { Field, filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
-import { formatURL } from '../../weave/lib/nav';
-import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
-import Timestamp from '../../weave/components/Timestamp';
-import { statusSortHelper } from '../../weave/lib/utils';
 
 import { useListGitOpsSets } from '../../hooks/gitopssets';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { computeMessage, Condition } from '../../utils/conditions';
 import { Routes } from '../../utils/nav';
+import DataTable, { Field, filterByStatusCallback, filterConfig } from '../../weave/components/DataTable';
+import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Timestamp from '../../weave/components/Timestamp';
+import { formatURL } from '../../weave/lib/nav';
+import { statusSortHelper } from '../../weave/lib/utils';
 import Explorer from '../Explorer/Explorer';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';

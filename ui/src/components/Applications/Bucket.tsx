@@ -6,14 +6,14 @@ import React, { FC } from 'react';
   useGetObject,
   V2Routes,
 } from '../../gitops.d';*/
-import { Page } from '../Layout/App';
-import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
-import { EditButton } from '../Templates/Edit/EditButton';
 import BucketDetail from '../../weave/components/BucketDetail';
 import { useGetObject } from '../../weave/hooks/objects';
 import { Kind } from '../../weave/lib/api/core/types.pb';
 import { Bucket } from '../../weave/lib/objects';
 import { V2Routes } from '../../weave/lib/types';
+import { Page } from '../Layout/App';
+import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
+import { EditButton } from '../Templates/Edit/EditButton';
 
 type Props = {
   name: string;

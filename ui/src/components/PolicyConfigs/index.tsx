@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useListPolicyConfigs } from '../../contexts/PolicyConfigs';
-//import { Button, Icon, IconType } from '../../gitops.d';
 import Button from '../../weave/components/Button';
 import Icon, { IconType } from '../../weave/components/Icon';
 import { Page } from '../Layout/App';
@@ -14,7 +13,7 @@ const PolicyConfigsList = () => {
 
   const handleCreatePolicyConfig = useCallback(
     () => navigate(`/policyConfigs/create`),
-    [history],
+    [navigate],
   );
   return (
     <Page loading={isLoading} path={[{ label: 'PolicyConfigs' }]}>

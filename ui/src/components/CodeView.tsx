@@ -4,8 +4,8 @@ import {
 } from '@choclab/progressive-delivery/api/prog/types.pb';
 import React from 'react';
 import styled from 'styled-components';
-import { createYamlCommand } from '../weave/lib/utils';
 import CopyToClipboard from '../weave/components/CopyToCliboard';
+import { createYamlCommand } from '../weave/lib/utils';
 //import { CopyToClipboard, createYamlCommand } from '../gitops.d';
 
 type Props = {

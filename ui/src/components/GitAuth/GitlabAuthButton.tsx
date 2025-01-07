@@ -7,8 +7,8 @@ import {
   CallbackStateContextType,
 } from '../../contexts/GitAuth/CallbackStateContext';
 //import { Button } from '../../gitops.d';
-import Button from '../../weave/components/Button';
 import { gitlabOAuthRedirectURI } from '../../utils/formatters';
+import Button from '../../weave/components/Button';
 import { navigate, storeCallbackState } from './utils';
 
 type Props = ButtonProps;

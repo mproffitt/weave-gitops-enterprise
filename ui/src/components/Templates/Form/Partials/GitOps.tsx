@@ -1,9 +1,9 @@
 import React, { ChangeEvent, Dispatch, FC, useCallback } from 'react';
 import styled from 'styled-components';
 //import { Button, Flex } from '../../../../gitops.d';
+import { Input } from '../../../../utils/form';
 import Button from '../../../../weave/components/Button';
 import Flex from '../../../../weave/components/Flex';
-import { Input } from '../../../../utils/form';
 import GitAuth from '../../../GitAuth';
 
 const GitOpsWrapper = styled.div`

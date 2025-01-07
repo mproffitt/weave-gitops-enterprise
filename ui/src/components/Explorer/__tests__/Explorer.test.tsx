@@ -5,6 +5,7 @@ import {
   RenderResult,
 } from '@testing-library/react';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import {
   defaultContexts,
@@ -14,7 +15,6 @@ import {
 } from '../../../utils/test-utils';
 import Explorer from '../Explorer';
 import { addFieldsWithIndex } from '../ExplorerTable';
-import { JSX } from 'react/jsx-runtime';
 
 describe('addExplorerFields', () => {
   const newField = (id: string, index?: number) => ({

@@ -12,10 +12,10 @@ import {
   RepositoryRef,
 } from '../../../../cluster-services/cluster_services.pb';
 //import { Button, Flex } from '../../../../gitops.d';
-import Button from '../../../../weave/components/Button';
-import Flex from '../../../../weave/components/Flex';
 import { ProfilesIndex, UpdatedProfile } from '../../../../types/custom';
 import { DEFAULT_PROFILE_NAMESPACE } from '../../../../utils/config';
+import Button from '../../../../weave/components/Button';
+import Flex from '../../../../weave/components/Flex';
 import ChartValuesDialog from './ChartValuesDialog';
 
 const ProfilesListItem: FC<{

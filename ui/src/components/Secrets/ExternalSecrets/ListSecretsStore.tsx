@@ -2,9 +2,9 @@ import { MenuItem } from '@mui/material';
 import React from 'react';
 import { useListExternalSecretStores } from '../../../contexts/Secrets';
 //import { RequestStateHandler } from '../../../gitops.d';
-import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import { RequestError } from '../../../types/custom';
 import { Select } from '../../../utils/form';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 
 const ListSecretsStore = ({
   value,

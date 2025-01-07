@@ -6,11 +6,11 @@ import React, { FC } from 'react';
   V2Routes,
   Provider,
 } from '../../gitops.d';*/
-import { Kind } from '../../weave/lib/api/core/types.pb';
 import ProviderDetail from '../../weave/components/ProviderDetail';
 import { useGetObject } from '../../weave/hooks/objects';
-import { V2Routes } from '../../weave/lib/types';
+import { Kind } from '../../weave/lib/api/core/types.pb';
 import { Provider } from '../../weave/lib/objects';
+import { V2Routes } from '../../weave/lib/types';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

@@ -11,14 +11,14 @@ import { GetExternalSecretResponse } from '../../../cluster-services/cluster_ser
   createYamlCommand,
 } from '../../../gitops.d';*/
 
+import { Routes } from '../../../utils/nav';
 import DataTable from '../../../weave/components/DataTable';
 import Flex from '../../../weave/components/Flex';
-import { FluxObject } from '../../../weave/lib/objects';
 import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
 import Text from '../../../weave/components/Text';
 import YamlView from '../../../weave/components/YamlView';
+import { FluxObject } from '../../../weave/lib/objects';
 import { createYamlCommand } from '../../../weave/lib/utils';
-import { Routes } from '../../../utils/nav';
 import ListEvents from '../../ListEvents';
 import { RowHeaders, SectionRowHeader } from '../../RowHeader';
 

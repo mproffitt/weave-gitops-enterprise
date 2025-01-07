@@ -10,18 +10,18 @@ import { useListTerraformObjects } from '../../contexts/Terraform';
   Spacer,
   Text,
 } from '../../gitops.d';*/
+import DagGraph from '../../weave/components/DagGraph';
+import Flex from '../../weave/components/Flex';
+import MessageBox from '../../weave/components/MessageBox';
+import Spacer from '../../weave/components/Spacer';
 import Text from '../../weave/components/Text';
+import { FluxObjectNode } from '../../weave/lib/objects';
 import {
   getGraphNodes,
   makeObjectId,
   TerraformNodesMap,
   TerraformObjectNode,
 } from './dependencies';
-import DagGraph from '../../weave/components/DagGraph';
-import Flex from '../../weave/components/Flex';
-import MessageBox from '../../weave/components/MessageBox';
-import Spacer from '../../weave/components/Spacer';
-import { FluxObjectNode } from '../../weave/lib/objects';
 
 type Props = {
   className?: string;

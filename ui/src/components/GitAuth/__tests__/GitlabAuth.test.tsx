@@ -4,8 +4,6 @@ import { GitProvider } from '../../../api/gitauth/gitauth.pb';
 import { EnterpriseClientContext } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
 //import { CoreClientContextProvider, Kind } from '../../../gitops.d';
-import CoreClientContextProvider from '../../../weave/contexts/CoreClientContext';
-import { Kind } from '../../../weave/lib/api/core/types.pb';
 import { gitlabOAuthRedirectURI } from '../../../utils/formatters';
 import { Routes } from '../../../utils/nav';
 import {
@@ -15,6 +13,8 @@ import {
   promisify,
   withContext,
 } from '../../../utils/test-utils';
+import CoreClientContextProvider from '../../../weave/contexts/CoreClientContext';
+import { Kind } from '../../../weave/lib/api/core/types.pb';
 import { RepoInputWithAuth } from '../RepoInputWithAuth';
 
 Object.assign(navigator, {

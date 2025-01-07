@@ -1,15 +1,15 @@
 import _ from "lodash";
 import * as React from "react";
+import { UseMutationResult } from "react-query";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { useSyncFluxObject } from "../../hooks/automations";
 import { useToggleSuspend } from "../../hooks/flux";
+import { ToggleSuspendResourceResponse } from "../../lib/api/core/core.pb";
 import { ObjectRef } from "../../lib/api/core/types.pb";
 import { V2Routes } from "../../lib/types";
 import SuspendMessageModal from "./SuspendMessageModal";
 import SyncControls, { SyncType } from "./SyncControls";
-import { UseMutationResult } from "react-query";
-import { ToggleSuspendResourceResponse } from "../../lib/api/core/core.pb";
 
 export const makeObjects = (checked: string[], rows: any[]): ObjectRef[] => {
   const objects: ObjectRef[] | { kind: any; name: any; namespace: any; clusterName: any; }[] = [];
@@ -39,6 +39,12 @@ function createSuspendHandler(
   suspend: boolean,
   suspendMessage: string
 ) {
+  // TODO this hook is called in a loop with the current item being the input to the function
+  // whilst useToggleSuspend is a hook and should not be wrapped in another function
+  // I don't currently see a better way of writing this to be more correct, therefore
+  // I'm disabling the eslint rule for this line.
+  //
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const result = useToggleSuspend(
     {
       objects: reqObjects,

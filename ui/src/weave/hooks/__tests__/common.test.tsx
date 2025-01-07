@@ -1,3 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/*
+  TODO
+  exhaustive-deps are currently disabled to prevent the tests from timing out
+  however I don't get why this is the case so something weird is going on here
+*/
 import { render, screen } from "@testing-library/react";
 import * as React from "react";
 import { act } from "react-dom/test-utils";

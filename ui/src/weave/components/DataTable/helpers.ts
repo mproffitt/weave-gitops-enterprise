@@ -101,7 +101,7 @@ export function filterText(
   });
 }
 
-export function initialFormState(cfg: FilterConfig, initialSelections?: {} | undefined) {
+export function initialFormState(cfg: FilterConfig, initialSelections?: object | undefined) {
   if (!initialSelections) {
     return {};
   }

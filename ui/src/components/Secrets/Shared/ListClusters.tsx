@@ -1,12 +1,12 @@
 import { MenuItem } from '@mui/material';
 import React from 'react';
 //import { Flex, RequestStateHandler, RequestError, Text } from '../../../gitops.d';
-import Flex from '../../../weave/components/Flex';
-import Text from '../../../weave/components/Text';
-import RequestStateHandler from '../../../weave/components/RequestStateHandler';
-import { RequestError } from '../../../weave/lib/types';
 import { useListCluster } from '../../../hooks/clusters';
 import { Select } from '../../../utils/form';
+import Flex from '../../../weave/components/Flex';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
+import Text from '../../../weave/components/Text';
+import { RequestError } from '../../../weave/lib/types';
 
 const ListClusters = ({
   value,

@@ -38,13 +38,14 @@ function AuthButton({ className, provider, onClick, ...rest }: Props) {
         />
       );
 
-      case GitProvider.AzureDevOps:
-        return (
-          <AzureDevOpsAuthButton
-            {...rest}
-            onClick={() => onClick(GitProvider.AzureDevOps)}
-          />
-        );
+    case GitProvider.AzureDevOps:
+      return (
+        <AzureDevOpsAuthButton
+          {...rest}
+          onClick={() => onClick(GitProvider.AzureDevOps)}
+        />
+      );
+
     default:
       break;
   }

@@ -39,13 +39,13 @@ describe("SignIn", () => {
 
   it("should show user/password fields if CLUSTER_USER_AUTH feature flag is set", async () => {
     renderSignIn({ CLUSTER_USER_AUTH: "true" });
-    expect(screen.queryByPlaceholderText("Username")).toBeTruthy();
-    expect(screen.queryByPlaceholderText("Password")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Username")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Password")).toBeTruthy();
   });
 
   it("should show OIDC button if OIDC_AUTH feature flag is set", async () => {
     renderSignIn({ OIDC_AUTH: "true" });
-    expect(screen.queryByText(defaultButtonLabel)).toBeTruthy();
+    expect(screen.getByText(defaultButtonLabel)).toBeTruthy();
   });
 
   it("should redirect to the oauth2 endpoint with a relative URL to support running under a subpath", async () => {
@@ -91,9 +91,9 @@ describe("SignIn", () => {
       CLUSTER_USER_AUTH: "true",
     });
 
-    expect(screen.queryByText(defaultButtonLabel)).toBeTruthy();
-    expect(screen.queryByPlaceholderText("Username")).toBeTruthy();
-    expect(screen.queryByPlaceholderText("Password")).toBeTruthy();
+    expect(screen.getByText(defaultButtonLabel)).toBeTruthy();
+    expect(screen.getByPlaceholderText("Username")).toBeTruthy();
+    expect(screen.getByPlaceholderText("Password")).toBeTruthy();
   });
 
   it("should show the custom button label if feature flag is set", async () => {
@@ -104,6 +104,6 @@ describe("SignIn", () => {
     });
 
     expect(screen.queryByText(defaultButtonLabel)).toBeNull();
-    expect(screen.queryByText(customLabel)).toBeTruthy();
+    expect(screen.getByText(customLabel)).toBeTruthy();
   });
 });

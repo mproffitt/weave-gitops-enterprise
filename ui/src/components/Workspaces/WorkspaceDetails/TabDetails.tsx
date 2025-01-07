@@ -2,11 +2,11 @@ import React from 'react';
 //import { RouterTab, SubRouterTabs } from '../../../gitops.d';
 
 import { Routes } from '../../../utils/nav';
+import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
 import { PoliciesTab } from './Tabs/Policies';
 import { RoleBindingsTab } from './Tabs/RoleBindings';
 import { RolesTab } from './Tabs/Roles';
 import { ServiceAccountsTab } from './Tabs/ServiceAccounts';
-import SubRouterTabs, { RouterTab } from '../../../weave/components/SubRouterTabs';
 
 const TabDetails = ({
   clusterName,

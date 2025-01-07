@@ -58,17 +58,17 @@ export default function AppContextProvider({ ...props }: AppProps) {
         : ThemeTypes.Light,
   });
 
-  const clearAsyncError = () => {
-    setAppState({
-      ...appState,
+  const clearAsyncError = React.useCallback(() => {
+    setAppState((prevState) => ({
+      ...prevState,
       error: null,
-    });
-  };
+    }));
+  }, []);
 
   React.useEffect(() => {
     // clear the error state on navigation
     clearAsyncError();
-  }, [window.location]);
+  }, [clearAsyncError]);
 
   const doAsyncError = (message: string, detail: string) => {
     console.error(message);

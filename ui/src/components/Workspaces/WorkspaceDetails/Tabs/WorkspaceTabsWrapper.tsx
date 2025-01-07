@@ -1,8 +1,8 @@
 import { Box, CircularProgress } from '@mui/material';
 import React, { FC } from 'react';
-import { ListError } from '../../../../weave/lib/api/core/core.pb';
-import Flex from '../../../../weave/components/Flex';
 import { AlertListErrors } from '../../../../weave/components/AlertListErrors';
+import Flex from '../../../../weave/components/Flex';
+import { ListError } from '../../../../weave/lib/api/core/core.pb';
 //import { AlertListErrors, Flex, ListError } from '../../../../gitops.d';
 
 interface Props {

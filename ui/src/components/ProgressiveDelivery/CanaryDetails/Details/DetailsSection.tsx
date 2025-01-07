@@ -4,10 +4,10 @@ import {
 } from '@choclab/progressive-delivery/api/prog/types.pb';
 import React from 'react';
 //import { Flex, Link, formatURL } from '../../../../gitops.d';
+import { getKindRoute } from '../../../../utils/nav';
 import Flex from '../../../../weave/components/Flex';
 import Link from '../../../../weave/components/Link';
 import { formatURL } from '../../../../weave/lib/nav';
-import { getKindRoute } from '../../../../utils/nav';
 import { ClusterDashboardLink } from '../../../Clusters/ClusterDashboardLink';
 import RowHeader from '../../../RowHeader';
 import { getDeploymentStrategyIcon } from '../../ListCanaries/Table';
@@ -67,7 +67,7 @@ const DetailsSection = ({
       </RowHeader>
       <RowHeader rowkey="Provider" value={canary.provider} />
       <Collapsible title="STATUS">
-        <DynamicTable obj={{ ...restStatus, ...restConditionObj } || {}} />
+        <DynamicTable obj={restStatus && restConditionObj ? { ...restStatus, ...restConditionObj } : {}} />
       </Collapsible>
     </Flex>
   );

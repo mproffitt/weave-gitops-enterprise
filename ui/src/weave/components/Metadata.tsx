@@ -1,11 +1,11 @@
 import * as React from "react";
+import { renderToStaticMarkup } from 'react-dom/server';
 import styled from "styled-components";
 import { formatMetadataKey, isHTTP } from "../lib/utils";
 import Flex from "./Flex";
 import InfoList from "./InfoList";
 import Link from "./Link";
 import Text from "./Text";
-import { renderToStaticMarkup } from 'react-dom/server';
 
 
 type Props = {

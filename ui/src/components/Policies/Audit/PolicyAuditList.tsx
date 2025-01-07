@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import { useQueryService } from '../../../hooks/query';
 import { RequestError } from '../../../types/custom';
+import RequestStateHandler from '../../../weave/components/RequestStateHandler';
 import { QueryStateProvider } from '../../Explorer/hooks';
 import { URLQueryStateManager } from '../../Explorer/QueryStateManager';
 import { AuditTable } from './AuditTable';

@@ -11,13 +11,13 @@ import { GetTerraformObjectResponse } from '../../../api/terraform/terraform.pb'
   IconType,
   Source,
 } from '../../../gitops.d';*/
-import { Automation, Source } from '../../../weave/lib/objects';
-import Button from '../../../weave/components/Button';
-import { formatURL } from '../../../weave/lib/nav';
-import Icon, { IconType } from '../../../weave/components/Icon';
-
 import { GitopsClusterEnriched } from '../../../types/custom';
 import { Routes } from '../../../utils/nav';
+import Button from '../../../weave/components/Button';
+import Icon, { IconType } from '../../../weave/components/Icon';
+import { formatURL } from '../../../weave/lib/nav';
+
+import { Automation, Source } from '../../../weave/lib/objects';
 import { Tooltip } from '../../Shared';
 import { getCreateRequestAnnotation } from '../Form/utils';
 

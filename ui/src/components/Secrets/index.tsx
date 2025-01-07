@@ -1,13 +1,12 @@
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useListSecrets } from '../../contexts/Secrets';
-//import { Button, Flex, Icon, IconType, Text } from '../../gitops.d';
+import { Routes } from '../../utils/nav';
 import Button from '../../weave/components/Button';
 import Flex from '../../weave/components/Flex';
 import Icon, { IconType } from '../../weave/components/Icon';
 import Text from '../../weave/components/Text';
 
-import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { SecretsTable } from './Table';
@@ -18,7 +17,7 @@ const SecretsList = () => {
 
   const handleCreateSecret = useCallback(
     (url: string) => navigate(url),
-    [history],
+    [navigate],
   );
 
   return (

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { ApprovePromotionRequest } from '../../../api/pipelines/pipelines.pb';
 
 //import { Button, Flex } from '../../../gitops.d';
+import { useApprove } from '../../../hooks/pipelines';
 import Button from '../../../weave/components/Button';
 import Flex from '../../../weave/components/Flex';
-import { useApprove } from '../../../hooks/pipelines';
 
 const PromotionButton = styled(Button)`
   &.MuiButton-root {

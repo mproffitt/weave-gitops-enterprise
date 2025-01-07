@@ -193,10 +193,10 @@ describe("DataTableFilters", () => {
       )
     );
 
-    expect(screen.queryAllByText("slick")).toBeTruthy();
-    expect(screen.queryAllByText("cool")).toBeTruthy();
-    expect(screen.queryAllByText("neat")).toBeTruthy();
-    expect(screen.queryAllByText("rad")).toBeTruthy();
+    expect(screen.getAllByText("slick")).toBeTruthy();
+    expect(screen.getAllByText("cool")).toBeTruthy();
+    expect(screen.getAllByText("neat")).toBeTruthy();
+    expect(screen.getAllByText("rad")).toBeTruthy();
   });
   it("should filter on click", () => {
     const initialFilterState = {
@@ -382,7 +382,7 @@ describe("DataTableFilters", () => {
 
     const chip1 = screen.getByText(`type${filterSeparator}foo`);
     expect(chip1).toBeTruthy();
-    expect(screen.queryByText("Clear All")).toBeTruthy();
+    expect(screen.getAllByText("Clear All")).toBeTruthy();
 
     const tableRows1 = document.querySelectorAll("tbody tr");
     expect(tableRows1).toHaveLength(2);

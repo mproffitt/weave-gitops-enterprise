@@ -16,13 +16,13 @@ import { GitopsCluster } from '../../../../../cluster-services/cluster_services.
   GitRepository,
   HelmRepository,
 } from '../../../../../gitops.d';*/
-import Flex from '../../../../../weave/components/Flex';
-import { Kind } from '../../../../../weave/lib/api/core/types.pb';
-import Text from '../../../../../weave/components/Text';
-import { useListSources } from '../../../../../weave/hooks/sources';
-import { GitRepository, HelmRepository } from '../../../../../weave/lib/objects';
 import { DEFAULT_FLUX_KUSTOMIZATION_NAMESPACE } from '../../../../../utils/config';
 import { Input, Select } from '../../../../../utils/form';
+import Flex from '../../../../../weave/components/Flex';
+import Text from '../../../../../weave/components/Text';
+import { useListSources } from '../../../../../weave/hooks/sources';
+import { Kind } from '../../../../../weave/lib/api/core/types.pb';
+import { GitRepository, HelmRepository } from '../../../../../weave/lib/objects';
 import { Tooltip } from '../../../../Shared';
 import { useClustersWithSources } from '../../../utils';
 

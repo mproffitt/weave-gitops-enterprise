@@ -8,7 +8,7 @@ const DynamicTable = ({
   tableSize,
   classes,
 }: {
-  obj: Object;
+  obj: object;
   tableSize?: TableOwnProps['size'];
   classes?: string;
 }) => {

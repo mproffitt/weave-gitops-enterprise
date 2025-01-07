@@ -62,13 +62,11 @@ describe("Sources", () => {
       GetVersion: getVersionMock,
     });
     render(withTheme(withContext(<Sources />, "/sources", { api: client })));
-    await waitFor(() => {
-      expect(screen.getAllByText(Kind.Bucket).length).toBeTruthy();
-      expect(screen.getAllByText(Kind.GitRepository).length).toBeTruthy();
-      expect(screen.getAllByText(Kind.HelmChart).length).toBeTruthy();
-      expect(screen.getAllByText(Kind.HelmRepository).length).toBeTruthy();
-      expect(screen.getAllByText(Kind.OCIRepository).length).toBeTruthy();
-    });
+    await waitFor(() => expect(screen.getAllByText(Kind.Bucket).length).toBeTruthy());
+    await waitFor(() => expect(screen.getAllByText(Kind.GitRepository).length).toBeTruthy());
+    await waitFor(() => expect(screen.getAllByText(Kind.HelmChart).length).toBeTruthy());
+    await waitFor(() => expect(screen.getAllByText(Kind.HelmRepository).length).toBeTruthy());
+    await waitFor(() => expect(screen.getAllByText(Kind.OCIRepository).length).toBeTruthy());
   });
   it("should handle undefined response", async () => {
     const client2 = createCoreMockClient({

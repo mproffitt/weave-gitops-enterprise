@@ -11,9 +11,7 @@ import { useQuery } from 'react-query';
   RequestError,
 } from '../../gitops.d';*/
 import { formatError } from '../../utils/formatters';
-import useNotifications from './../../contexts/Notifications';
 import { CoreClientContext, CoreClientContextType } from '../../weave/contexts/CoreClientContext';
-import { RequestError } from '../../weave/lib/types';
 import {
   ListPoliciesRequest,
   ListPoliciesResponse,
@@ -22,6 +20,8 @@ import {
   GetPolicyValidationRequest,
   GetPolicyValidationResponse
 } from '../../weave/lib/api/core/core.pb';
+import { RequestError } from '../../weave/lib/types';
+import useNotifications from './../../contexts/Notifications';
 
 
 export const useCoreClientContext = () => useContext(CoreClientContext);

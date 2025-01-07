@@ -41,7 +41,7 @@ function Link({
   onMouseLeave,
   ...props
 }: Props) {
-  let location = useLocation();
+  const location = useLocation();
   if ((href && !isAllowedLink(href)) || (!href && !to)) {
     return (
       <Text className={className} {...textProps}>

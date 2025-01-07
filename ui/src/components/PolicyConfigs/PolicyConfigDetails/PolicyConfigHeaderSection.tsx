@@ -2,11 +2,11 @@ import moment from 'moment';
 import React from 'react';
 import { GetPolicyConfigResponse } from '../../../cluster-services/cluster_services.pb';
 //import { Flex, Link, Text, formatURL } from '../../../gitops.d';
+import { Routes, getKindRoute } from '../../../utils/nav';
 import Flex from '../../../weave/components/Flex';
 import Link from '../../../weave/components/Link';
 import Text from '../../../weave/components/Text';
 import { formatURL } from '../../../weave/lib/nav';
-import { Routes, getKindRoute } from '../../../utils/nav';
 import { RowHeaders, SectionRowHeader } from '../../RowHeader';
 import { TargetItemKind } from '../PolicyConfigStyles';
 

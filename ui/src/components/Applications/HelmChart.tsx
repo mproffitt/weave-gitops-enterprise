@@ -6,10 +6,10 @@ import React, { FC } from 'react';
   useGetObject,
   V2Routes,
 } from '../../gitops.d';*/
-import { HelmChart } from '../../weave/lib/objects';
 import HelmChartDetail from '../../weave/components/HelmChartDetail';
-import { Kind } from '../../weave/lib/api/core/types.pb';
 import { useGetObject } from '../../weave/hooks/objects';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { HelmChart } from '../../weave/lib/objects';
 import { V2Routes } from '../../weave/lib/types';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';

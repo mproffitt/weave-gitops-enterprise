@@ -9,10 +9,10 @@ import useNotifications from '../contexts/Notifications';
 } from '../gitops.d';*/
 
 import { CoreClientContext, CoreClientContextType } from '../weave/contexts/CoreClientContext';
-import { Object } from '../weave/lib/api/core/types.pb';
 import { ListError } from '../weave/lib/api/core/core.pb';
-import { RequestError } from '../weave/lib/types';
+import { Object } from '../weave/lib/api/core/types.pb';
 import { FluxObject } from '../weave/lib/objects';
+import { RequestError } from '../weave/lib/types';
 
 const GITOPSSETS_KEY = 'gitopssets';
 const GITOPSSETS_POLL_INTERVAL = 5000;

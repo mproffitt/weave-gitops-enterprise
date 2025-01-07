@@ -1,14 +1,14 @@
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Popper } from '@mui/material';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Paper from '@mui/material/Paper';
+import createStyles from '@mui/styles/createStyles';
+import makeStyles from '@mui/styles/makeStyles';
 //import Popper from '@mui/material/Popper';
-import { Popper } from '@mui/material';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import _ from 'lodash';
 import React, { useMemo } from 'react';
 import { GetConfigResponse } from '../../cluster-services/cluster_services.pb';
@@ -19,13 +19,13 @@ import { useListConfigContext } from '../../contexts/ListConfig';
   Icon,
   IconType,
 } from '../../gitops.d';*/
+import useConfig from '../../hooks/config';
+import { useGitRepos } from '../../hooks/gitrepos';
+import { openLinkHandler } from '../../utils/link-checker';
 import Button from '../../weave/components/Button';
 import Icon, { IconType } from '../../weave/components/Icon';
 import { GitRepository } from '../../weave/lib/objects';
 
-import useConfig from '../../hooks/config';
-import { useGitRepos } from '../../hooks/gitrepos';
-import { openLinkHandler } from '../../utils/link-checker';
 import {
   bitbucketReposToHttpsUrl,
   getDefaultGitRepo,

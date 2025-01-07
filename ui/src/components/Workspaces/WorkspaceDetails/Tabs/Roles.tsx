@@ -7,13 +7,13 @@ import { useGetWorkspaceRoles } from '../../../../contexts/Workspaces';
   YamlView,
   createYamlCommand,
 } from '../../../../gitops.d';*/
+import DataTable from '../../../../weave/components/DataTable';
+import YamlView from '../../../../weave/components/YamlView';
+import { createYamlCommand } from '../../../../weave/lib/utils';
 import { TableWrapper } from '../../../Shared';
 import { RulesListWrapper } from '../../WorkspaceStyles';
 import WorkspaceModal from '../WorkspaceModal';
 import WorkspaceTabsWrapper from './WorkspaceTabsWrapper';
-import DataTable from '../../../../weave/components/DataTable';
-import YamlView from '../../../../weave/components/YamlView';
-import { createYamlCommand } from '../../../../weave/lib/utils';
 
 const RulesList = ({ rules }: { rules: WorkspaceRoleRule[] }) => {
   return (

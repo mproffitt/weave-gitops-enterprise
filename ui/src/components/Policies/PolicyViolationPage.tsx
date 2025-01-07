@@ -10,15 +10,15 @@ import { useGetPolicyValidationDetails } from '../../contexts/PolicyViolations';
   ViolationDetails,
   formatURL,
 } from '../../gitops.d';*/
-import { Breadcrumb } from '../../weave/components/Breadcrumbs';
-import { FluxObject } from '../../weave/lib/objects';
-import { Kind } from '../../weave/lib/api/core/types.pb';
-import { PolicyValidation } from '../../weave/lib/api/core/core.pb';
-import { V2Routes } from '../../weave/lib/types';
-import { ViolationDetails } from "../../weave/components/Policies/PolicyViolations/PolicyViolationDetails";
-import { formatURL } from '../../weave/lib/nav';
-
 import { Routes } from '../../utils/nav';
+import { Breadcrumb } from '../../weave/components/Breadcrumbs';
+import { ViolationDetails } from "../../weave/components/Policies/PolicyViolations/PolicyViolationDetails";
+import { PolicyValidation } from '../../weave/lib/api/core/core.pb';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { formatURL } from '../../weave/lib/nav';
+import { FluxObject } from '../../weave/lib/objects';
+import { V2Routes } from '../../weave/lib/types';
+
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 

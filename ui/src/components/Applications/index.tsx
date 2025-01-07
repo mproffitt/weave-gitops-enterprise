@@ -12,12 +12,12 @@ import { NotificationData } from '../../contexts/Notifications';
   IconType,
   Link,
 } from '../../gitops.d';*/
+import { getKindRoute, Routes } from '../../utils/nav';
 import Button from '../../weave/components/Button';
 import Flex from '../../weave/components/Flex';
-import { formatURL } from '../../weave/lib/nav';
 import Icon, { IconType } from '../../weave/components/Icon';
 import Link from '../../weave/components/Link';
-import { getKindRoute, Routes } from '../../utils/nav';
+import { formatURL } from '../../weave/lib/nav';
 import OpenedPullRequest from '../Clusters/OpenedPullRequest';
 import Explorer from '../Explorer/Explorer';
 import {

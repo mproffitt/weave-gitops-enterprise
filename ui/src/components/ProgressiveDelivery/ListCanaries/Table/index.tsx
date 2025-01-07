@@ -14,11 +14,11 @@ import styled from 'styled-components';
   formatURL,
   Link,
 } from '../../../../gitops.d';*/
-import DataTable, { filterConfig } from '../../../../weave/components/DataTable';
-import { formatURL } from '../../../../weave/lib/nav';
-import Link from '../../../../weave/components/Link';
-
 import { Routes } from '../../../../utils/nav';
+import DataTable, { filterConfig } from '../../../../weave/components/DataTable';
+import Link from '../../../../weave/components/Link';
+import { formatURL } from '../../../../weave/lib/nav';
+
 import {
   ABIcon,
   BlueGreenIcon,

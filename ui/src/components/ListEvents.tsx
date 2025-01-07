@@ -5,12 +5,12 @@ import {
   ListEventsRequest,
 } from '../cluster-services/cluster_services.pb';
 import { useListEvents } from '../contexts/ProgressiveDelivery';
-import RequestStateHandler from '../weave/components/RequestStateHandler';
 import DataTable from '../weave/components/DataTable';
 import Icon, { IconType } from '../weave/components/Icon';
-import { RequestError } from '../weave/lib/types';
-import Timestamp from '../weave/components/Timestamp';
+import RequestStateHandler from '../weave/components/RequestStateHandler';
 import Text from '../weave/components/Text';
+import Timestamp from '../weave/components/Timestamp';
+import { RequestError } from '../weave/lib/types';
 /*import {
   DataTable,
   Icon,

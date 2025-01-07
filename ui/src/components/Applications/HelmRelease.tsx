@@ -1,3 +1,4 @@
+import { ImageOutlined } from '@mui/icons-material';
 import React, { FC } from 'react';
 /*import {
   HelmRelease,
@@ -5,15 +6,14 @@ import React, { FC } from 'react';
   Kind,
   useGetObject,
 } from '../../gitops.d';*/
-import { HelmRelease } from '../../weave/lib/objects';
-import HelmReleaseDetail from '../../weave/components/HelmReleaseDetail';
-import { Kind } from '../../weave/lib/api/core/types.pb';
-import { useGetObject } from '../../weave/hooks/objects';
 import { Routes } from '../../utils/nav';
+import HelmReleaseDetail from '../../weave/components/HelmReleaseDetail';
+import { useGetObject } from '../../weave/hooks/objects';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { HelmRelease } from '../../weave/lib/objects';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { EditButton } from '../Templates/Edit/EditButton';
-import { ImageOutlined } from '@mui/icons-material';
 
 type Props = {
   name: string;

@@ -21,14 +21,12 @@ type Props = {
   loading: boolean;
 };
 
-const defaultInitialState = () => ({
-  name: "",
-  namespace: "",
-  source: "",
-  path: "",
-});
-
-type FormState = ReturnType<typeof defaultInitialState>;
+type FormState = {
+  name: string;
+  namespace: string;
+  source: string;
+  path: string;
+};
 
 function AddKustomizationForm({
   className,

@@ -1,8 +1,8 @@
 import { Checkbox, CheckboxProps } from "@mui/material";
 import * as React from "react";
+import { JSX } from "react/jsx-runtime";
 import styled from "styled-components";
 import FormInput, { FormInputProps } from "./FormInput";
-import { JSX } from "react/jsx-runtime";
 
 type Props = FormInputProps;
 

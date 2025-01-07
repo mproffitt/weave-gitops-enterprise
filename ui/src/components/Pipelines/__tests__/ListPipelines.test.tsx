@@ -1,23 +1,23 @@
+import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Router } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import Pipelines from '..';
 import { EnterpriseClientContext } from '../../../contexts/API';
+import NotificationProvider from '../../../contexts/Notifications/Provider';
+import RequestContextProvider from '../../../contexts/Request';
+import { muiTheme } from '../../../muiTheme';
 import {
   defaultContexts,
   PipelinesClientMock,
   TestFilterableTable,
   withContext,
 } from '../../../utils/test-utils';
-import { Router } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ThemeProvider } from 'styled-components';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material';
 import AppContextProvider, { ThemeTypes } from '../../../weave/contexts/AppContext';
 import theme from '../../../weave/lib/theme';
-import { muiTheme } from '../../../muiTheme';
-import RequestContextProvider from '../../../contexts/Request';
-import NotificationProvider from '../../../contexts/Notifications/Provider';
 
 const pipelines = {
   pipelines: [

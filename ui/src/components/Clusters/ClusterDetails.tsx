@@ -11,16 +11,16 @@ import { EnabledComponent } from '../../api/query/query.pb';
   SubRouterTabs,
   useListSources,
 } from '../../gitops.d';*/
-import WeaveButton from '../../weave/components/Button';
-import Flex from '../../weave/components/Flex';
-import Icon, { IconType } from '../../weave/components/Icon';
-import SubRouterTabs, {RouterTab } from '../../weave/components/SubRouterTabs';
-import { useListSources } from '../../weave/hooks/sources';
 import useClusters from '../../hooks/clusters';
 import { useIsEnabledForComponent } from '../../hooks/query';
 import { GitopsClusterEnriched } from '../../types/custom';
 import { toFilterQueryString } from '../../utils/FilterQueryString';
 import { Routes } from '../../utils/nav';
+import WeaveButton from '../../weave/components/Button';
+import Flex from '../../weave/components/Flex';
+import Icon, { IconType } from '../../weave/components/Icon';
+import SubRouterTabs, {RouterTab } from '../../weave/components/SubRouterTabs';
+import { useListSources } from '../../weave/hooks/sources';
 import { useIsClusterWithSources } from '../Applications/utils';
 import { QueryState } from '../Explorer/hooks';
 import { linkToExplorer } from '../Explorer/utils';

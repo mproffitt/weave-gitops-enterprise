@@ -49,12 +49,8 @@ describe("Parameters", () => {
 
       const value = row?.querySelector(`[data-testid="Value"]`);
       const parsedVal = parseValue(p);
-
-      if (p.value) {
-        expect(value?.textContent).toContain(`${parsedVal}`);
-      } else {
-        expect(value?.textContent).toContain("undefined");
-      }
+      const search = p.value ? parsedVal : "undefined";
+      expect(value?.textContent).toContain(`${search}`);
 
       const policyConfig = row?.querySelector(
         `[data-testid="Policy Config Name"]`
@@ -81,11 +77,8 @@ describe("Parameters", () => {
       const value = row?.querySelector(`[data-testid="Value"]`);
       const parsedVal = parseValue(p);
 
-      if (p.value) {
-        expect(value?.textContent).toContain(`${parsedVal}`);
-      } else {
-        expect(value?.textContent).toContain("undefined");
-      }
+      const search = p.value ? parsedVal : "undefined";
+      expect(value?.textContent).toContain(`${search}`);
 
       const requiredParam = row?.querySelector(`[data-testid="Required"]`);
       expect(requiredParam?.textContent).toEqual(

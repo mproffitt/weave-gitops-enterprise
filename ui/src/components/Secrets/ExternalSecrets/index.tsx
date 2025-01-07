@@ -4,10 +4,6 @@ import { useEnterpriseClient } from '../../../contexts/API';
 import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStateContext';
 import useNotifications from '../../../contexts/Notifications';
 //import { Flex, GitRepository, Link, Page } from '../../../gitops.d';
-import Flex from '../../../weave/components/Flex';
-import Link from '../../../weave/components/Link';
-import Page from '../../../weave/components/Page';
-import { GitRepository } from '../../../weave/lib/objects';
 import {
   expiredTokenNotification,
   useIsAuthenticated,
@@ -16,6 +12,10 @@ import { useCallbackState } from '../../../utils/callback-state';
 import { InputDebounced, validateFormData } from '../../../utils/form';
 import { Routes } from '../../../utils/nav';
 import { removeToken } from '../../../utils/request';
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import Page from '../../../weave/components/Page';
+import { GitRepository } from '../../../weave/lib/objects';
 import { clearCallbackState, getProviderToken } from '../../GitAuth/utils';
 import { NotificationsWrapper } from '../../Layout/NotificationsWrapper';
 import GitOps from '../../Templates/Form/Partials/GitOps';

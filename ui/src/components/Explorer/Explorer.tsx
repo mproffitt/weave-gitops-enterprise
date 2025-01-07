@@ -6,11 +6,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Facet } from '../../api/query/query.pb';
 //import { Flex, Icon, IconType, ThemeTypes } from '../../gitops.d';
+import { useListFacets, useQueryService } from '../../hooks/query';
+import { IconButton } from '../../weave/components/Button';
 import Flex from '../../weave/components/Flex';
 import Icon, { IconType } from '../../weave/components/Icon';
 import { ThemeTypes } from '../../weave/contexts/AppContext';
-import { useListFacets, useQueryService } from '../../hooks/query';
-import { IconButton } from '../../weave/components/Button';
 import ExplorerTable, {
   ExplorerField,
   defaultExplorerFields,

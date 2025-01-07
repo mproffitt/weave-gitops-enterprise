@@ -5,7 +5,7 @@
 import { TextEncoder, TextDecoder } from 'util';
 import '@testing-library/jest-dom';
 import 'jest-styled-components';
-require('jest-canvas-mock');
+import 'jest-canvas-mock';
 
 global.TextEncoder = TextEncoder;
 

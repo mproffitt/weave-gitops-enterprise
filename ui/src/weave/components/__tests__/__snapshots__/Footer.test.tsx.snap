@@ -81,7 +81,7 @@ exports[`Footer snapshots default 1`] = `
 
 <footer
   class="c0 c1 Footer"
-  role="footer"
+  role="contentinfo"
 >
   <div
     class="c2"
@@ -178,7 +178,7 @@ exports[`Footer snapshots default 1`] = `
       class="c3"
     >
       © 
-      2024
+      2025
        Weaveworks
     </span>
   </div>
@@ -266,7 +266,7 @@ exports[`Footer snapshots no api version 1`] = `
 
 <footer
   class="c0 c1 Footer"
-  role="footer"
+  role="contentinfo"
 >
   <div
     class="c2"
@@ -363,7 +363,7 @@ exports[`Footer snapshots no api version 1`] = `
       class="c3"
     >
       © 
-      2024
+      2025
        Weaveworks
     </span>
   </div>

@@ -11,13 +11,13 @@ import { useListPipelines } from '../../contexts/Pipelines';
   filterConfig,
   formatURL,
 } from '../../gitops.d';*/
+import { toFilterQueryString } from '../../utils/FilterQueryString';
+import { Routes } from '../../utils/nav';
 import Button from '../../weave/components/Button';
 import DataTable, { filterConfig } from '../../weave/components/DataTable';
 import Icon, { IconType } from '../../weave/components/Icon';
 import { formatURL } from '../../weave/lib/nav';
 
-import { toFilterQueryString } from '../../utils/FilterQueryString';
-import { Routes } from '../../utils/nav';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 import { ChipWrapper, LinkWrapper } from '../Policies/PolicyStyles';

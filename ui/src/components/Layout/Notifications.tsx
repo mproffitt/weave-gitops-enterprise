@@ -8,9 +8,9 @@ import useNotifications, {
 //import { Button, Icon, IconType, Text } from '../../gitops.d';
 import Button from '../../weave/components/Button';
 import Icon, { IconType } from '../../weave/components/Icon';
+import Spacer from '../../weave/components/Spacer';
 import Text from '../../weave/components/Text';
 import { ErrorIcon, SuccessIcon, WarningIcon } from '../RemoteSVGIcon';
-import Spacer from '../../weave/components/Spacer';
 
 interface Props {
   isClearable?: boolean;

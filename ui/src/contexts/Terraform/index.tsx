@@ -8,10 +8,10 @@ import {
 import { ObjectRef } from '../../api/terraform/types.pb';
 //import { ListError, RequestError } from '../../gitops.d';
 import { formatError } from '../../utils/formatters';
-import { useEnterpriseClient } from '../API';
-import useNotifications from './../../contexts/Notifications';
 import { ListError } from '../../weave/lib/api/core/core.pb';
 import { RequestError } from '../../weave/lib/types';
+import { useEnterpriseClient } from '../API';
+import useNotifications from './../../contexts/Notifications';
 
 function useTerraform() {
   const { terraform } = useEnterpriseClient();

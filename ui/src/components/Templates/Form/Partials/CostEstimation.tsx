@@ -9,11 +9,11 @@ import {
 } from '../../../../cluster-services/cluster_services.pb';
 import useNotifications from '../../../../contexts/Notifications';
 //import { Button } from '../../../../gitops.d';
-import Button from '../../../../weave/components/Button';
 import useTemplates from '../../../../hooks/templates';
 import { TemplateEnriched } from '../../../../types/custom';
 import { validateFormData } from '../../../../utils/form';
 import { getFormattedCostEstimate } from '../../../../utils/formatters';
+import Button from '../../../../weave/components/Button';
 
 const useStyles = makeStyles(() =>
   createStyles({

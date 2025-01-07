@@ -39,12 +39,12 @@ import { muiTheme } from './muiTheme';
 import { resolver } from './utils/link-resolver';
 import { addTFSupport } from './utils/request';
 import AppContextProvider, { AppContext, ThemeTypes } from './weave/contexts/AppContext';
-import { getBasePath, withBasePath } from './weave/lib/utils';
-import theme from './weave/lib/theme';
-import { Core as coreClient } from './weave/lib/api/core/core.pb';
 import AuthContextProvider, { AuthCheck } from './weave/contexts/AuthContext';
 import CoreClientContextProvider from './weave/contexts/CoreClientContext';
 import { LinkResolverProvider } from './weave/contexts/LinkResolverContext';
+import { Core as coreClient } from './weave/lib/api/core/core.pb';
+import theme from './weave/lib/theme';
+import { getBasePath, withBasePath } from './weave/lib/utils';
 import SignIn from './weave/pages/SignIn';
 
 const GlobalStyle = createGlobalStyle`

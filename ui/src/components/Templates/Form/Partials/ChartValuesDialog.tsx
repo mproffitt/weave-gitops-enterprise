@@ -16,11 +16,11 @@ import {
 } from '../../../../cluster-services/cluster_services.pb';
 import { useEnterpriseClient } from '../../../../contexts/API';
 //import { Button, Icon, IconType } from '../../../../gitops.d';
+import { UpdatedProfile } from '../../../../types/custom';
+import { DEFAULT_PROFILE_REPO } from '../../../../utils/config';
 import Button from '../../../../weave/components/Button';
 import Icon, { IconType } from '../../../../weave/components/Icon';
 
-import { UpdatedProfile } from '../../../../types/custom';
-import { DEFAULT_PROFILE_REPO } from '../../../../utils/config';
 import { Loader } from '../../../Loader';
 import { MuiDialogTitle } from '../../../Shared';
 

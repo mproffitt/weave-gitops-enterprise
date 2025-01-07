@@ -20,12 +20,12 @@ import { useListPolicies } from '../../../../../contexts/PolicyViolations';
   PolicyObj,
   PolicyParam,
 } from '../../../../../gitops.d';*/
+import { Input } from '../../../../../utils/form';
 import Flex from '../../../../../weave/components/Flex';
 import Icon, {IconType} from '../../../../../weave/components/Icon';
 import Text from '../../../../../weave/components/Text';
 import { PolicyObj, PolicyParam } from '../../../../../weave/lib/api/core/core.pb';
 
-import { Input } from '../../../../../utils/form';
 import { ErrorIcon } from '../../../../RemoteSVGIcon';
 import {
   ErrorSection,
@@ -70,7 +70,7 @@ export const SelectedPolicies = ({
 
     if (
       areSameValues ||
-      (value === '' && defaultValue === (null || undefined))
+      (value === '' && (defaultValue === null || defaultValue === undefined))
     ) {
       const policyConfigs = formData.policies;
       delete policyConfigs[id].parameters[name as string];

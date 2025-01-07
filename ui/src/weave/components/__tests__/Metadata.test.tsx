@@ -1,9 +1,9 @@
 import "jest-styled-components";
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import { withTheme } from "../../lib/test-utils";
 import Metadata from "../Metadata";
-import { MemoryRouter } from "react-router-dom";
 
 describe("Metadata", () => {
   describe("snapshots", () => {

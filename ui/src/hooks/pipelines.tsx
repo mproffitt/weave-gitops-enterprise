@@ -1,3 +1,4 @@
+import React from 'react';
 import { useMutation } from 'react-query';
 import {
   ApprovePromotionRequest,
@@ -6,10 +7,9 @@ import {
 } from '../api/pipelines/pipelines.pb';
 import useNotifications from '../contexts/Notifications';
 //import { Link, RequestError } from '../gitops.d';
-import { formatError } from '../utils/formatters';
-import React from 'react';
-import Link from '../weave/components/Link';
 import { RequestError } from '../types/custom';
+import { formatError } from '../utils/formatters';
+import Link from '../weave/components/Link';
 export const useApprove = () => {
   const { setNotifications } = useNotifications();
   const mutation = useMutation<

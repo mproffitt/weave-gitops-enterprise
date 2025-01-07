@@ -11,13 +11,13 @@ import styled from 'styled-components';
   PageRoute,
 } from '../../gitops.d';*/
 
-import { getParentNavRouteValue } from '../../weave/lib/nav';
+import { Routes } from '../../utils/nav';
 import { IconType } from '../../weave/components/Icon';
 import Nav, { NavItem } from '../../weave/components/Nav';
 import { useFeatureFlags } from '../../weave/hooks/featureflags';
+import { getParentNavRouteValue } from '../../weave/lib/nav';
 import { V2Routes, PageRoute } from '../../weave/lib/types';
 
-import { Routes } from '../../utils/nav';
 
 function getParentNavRouteValueExtended(
   route: string,

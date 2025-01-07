@@ -12,10 +12,10 @@ import Rancher from '../../assets/img/Rancher.svg';
 import VCluster from '../../assets/img/VCluster.svg';
 import Vsphere from '../../assets/img/Vsphere.svg';
 //import { Link, formatURL } from '../../gitops.d';
-import Link from '../../weave/components/Link';
-import { formatURL } from '../../weave/lib/nav';
 import { GitopsClusterEnriched } from '../../types/custom';
 import { Routes } from '../../utils/nav';
+import Link from '../../weave/components/Link';
+import { formatURL } from '../../weave/lib/nav';
 
 const IconSpan = styled.span`
   display: flex;

@@ -13,8 +13,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { GitopsCluster } from '../../cluster-services/cluster_services.pb';
 //import { Icon, IconType } from '../../gitops.d';
-import Icon, { IconType } from '../../weave/components/Icon';
 import { CAPICluster } from '../../types/custom';
+import Icon, { IconType } from '../../weave/components/Icon';
 import { sectionTitle } from './ClusterDashboard';
 
 // styles

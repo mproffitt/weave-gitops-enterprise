@@ -1,9 +1,9 @@
 import { CanaryMetric } from '@choclab/progressive-delivery/api/prog/types.pb';
 import React, { useContext } from 'react';
 //import { AppContext, DataTable, Text } from '../../../../gitops.d';
-import { AppContext } from '../../../../weave/contexts/AppContext';
 import DataTable from '../../../../weave/components/DataTable';
 import Text from '../../../../weave/components/Text';
+import { AppContext } from '../../../../weave/contexts/AppContext';
 
 import { TableWrapper } from '../../../Shared';
 

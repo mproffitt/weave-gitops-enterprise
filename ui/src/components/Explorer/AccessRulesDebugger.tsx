@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { AccessRule } from '../../api/query/query.pb';
 //import { DataTable } from '../../gitops.d';
-import DataTable from '../../weave/components/DataTable';
 import { useListAccessRules } from '../../hooks/query';
+import DataTable from '../../weave/components/DataTable';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
 
 type Props = {

@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import Button from '../../weave/components/Button';
 import React, { useState } from 'react';
 import { useLocation, useResolvedPath } from 'react-router-dom';
 import styled from 'styled-components';
@@ -33,18 +32,10 @@ import {
 } from '../../gitops.d';*/
 import { getLabels, getMetadata } from '../../utils/formatters';
 import { Routes } from '../../utils/nav';
-import { Page } from '../Layout/App';
-import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
-import ListEvents from '../ListEvents';
-import { TableWrapper } from '../Shared';
-import useNotifications from './../../contexts/Notifications';
-import { EditButton } from './../Templates/Edit/EditButton';
-import TerraformDependenciesView from './TerraformDependencyView';
-import TerraformInventoryTable from './TerraformInventoryTable';
-import { getLastApplied } from './TerraformListTable';
-import TerraformPlanView from './TerraformPlanView';
+import Button from '../../weave/components/Button';
 import Flex from '../../weave/components/Flex';
 import InfoList from '../../weave/components/InfoList';
+import Interval from '../../weave/components/Interval';
 import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
 import LargeInfo from '../../weave/components/LargeInfo';
 import Metadata from '../../weave/components/Metadata';
@@ -55,7 +46,16 @@ import YamlView from '../../weave/components/YamlView';
 import { LinkResolverProvider } from '../../weave/contexts/LinkResolverContext';
 import { formatURL } from '../../weave/lib/nav';
 import { createYamlCommand } from '../../weave/lib/utils';
-import Interval from '../../weave/components/Interval';
+import { Page } from '../Layout/App';
+import { NotificationsWrapper } from '../Layout/NotificationsWrapper';
+import ListEvents from '../ListEvents';
+import { TableWrapper } from '../Shared';
+import useNotifications from './../../contexts/Notifications';
+import { EditButton } from './../Templates/Edit/EditButton';
+import TerraformDependenciesView from './TerraformDependencyView';
+import TerraformInventoryTable from './TerraformInventoryTable';
+import { getLastApplied } from './TerraformListTable';
+import TerraformPlanView from './TerraformPlanView';
 
 type Props = {
   className?: string;

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useEnterpriseClient } from '../../contexts/API';
 import { CallbackStateContext, CallbackStateContextType } from '../../contexts/GitAuth/CallbackStateContext';
 //import { Button } from '../../gitops.d';
-import Button from '../../weave/components/Button';
 import { bitbucketServerOAuthRedirectURI } from '../../utils/formatters';
+import Button from '../../weave/components/Button';
 import { navigate, storeCallbackState } from './utils';
 
 type Props = {

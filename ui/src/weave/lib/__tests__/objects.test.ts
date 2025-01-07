@@ -355,7 +355,9 @@ describe("objects lib", () => {
       },
     };
     const obj = new HelmRelease(response.object);
-    expect(obj.inventory).toEqual([]);
+    it("handles helmrelease inventory", () => {
+      expect(obj.inventory).toEqual([]);
+    });
   });
 
   describe("supports basic kustomization object", () => {
@@ -443,7 +445,7 @@ describe("objects lib", () => {
 
     const completelyEmpty = new FluxObject({});
 
-    it("extracts name", () => {
+    it("extracts empty name", () => {
       expect(completelyEmpty.name).toEqual("");
     });
   });

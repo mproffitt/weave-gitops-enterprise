@@ -2,9 +2,9 @@ import { List, ListItem } from '@mui/material';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 //import { Link } from '../../gitops.d';
-import Link from '../../weave/components/Link';
 import useClusters from '../../hooks/clusters';
 import { GitopsClusterEnriched } from '../../types/custom';
+import Link from '../../weave/components/Link';
 
 // FIXME: move "a" styling up to a top level CSS rule
 const ListWrapper = styled(List)`

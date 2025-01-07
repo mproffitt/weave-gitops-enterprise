@@ -7,13 +7,13 @@ import React, { FC } from 'react';
   LinkResolverProvider,
   useGetObject,
 } from '../../gitops.d';*/
-import { Kustomization } from '../../weave/lib/objects';
-import { formatURL } from '../../weave/lib/nav';
-import { Kind } from '../../weave/lib/api/core/types.pb';
+import { Routes } from '../../utils/nav';
 import KustomizationDetail from '../../weave/components/KustomizationDetail';
 import { LinkResolverProvider } from '../../weave/contexts/LinkResolverContext';
 import { useGetObject } from '../../weave/hooks/objects';
-import { Routes } from '../../utils/nav';
+import { Kind } from '../../weave/lib/api/core/types.pb';
+import { formatURL } from '../../weave/lib/nav';
+import { Kustomization } from '../../weave/lib/objects';
 import { formatClusterDashboardUrl } from '../Clusters/ClusterDashboardLink';
 import { Page } from '../Layout/App';
 import { NotificationsWrapper } from '../Layout/NotificationsWrapper';

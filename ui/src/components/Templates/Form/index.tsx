@@ -24,12 +24,6 @@ import CallbackStateContextProvider from '../../../contexts/GitAuth/CallbackStat
   useFeatureFlags,
   useListSources,
 } from '../../../gitops.d';*/
-import { Automation, Source, GitRepository } from '../../../weave/lib/objects';
-import { useFeatureFlags } from '../../../weave/hooks/featureflags';
-import Flex from '../../../weave/components/Flex';
-import Link from '../../../weave/components/Link';
-import { PageRoute } from '../../../weave/lib/types';
-import { useListSources } from '../../../weave/hooks/sources';
 
 import {
   expiredTokenNotification,
@@ -53,6 +47,12 @@ import {
 import { validateFormData } from '../../../utils/form';
 import { Routes } from '../../../utils/nav';
 import { removeToken } from '../../../utils/request';
+import Flex from '../../../weave/components/Flex';
+import Link from '../../../weave/components/Link';
+import { useFeatureFlags } from '../../../weave/hooks/featureflags';
+import { useListSources } from '../../../weave/hooks/sources';
+import { Automation, Source, GitRepository } from '../../../weave/lib/objects';
+import { PageRoute } from '../../../weave/lib/types';
 import { getGitRepos } from '../../Clusters';
 import { clearCallbackState, getProviderToken } from '../../GitAuth/utils';
 import { Editor } from '../../Shared';

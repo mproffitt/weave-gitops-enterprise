@@ -7,10 +7,10 @@ import {
 } from '../../../../cluster-services/cluster_services.pb';
 import useNotifications from '../../../../contexts/Notifications';
 //import { Button } from '../../../../gitops.d';
-import Button from '../../../../weave/components/Button';
 import useTemplates from '../../../../hooks/templates';
 import { TemplateEnriched } from '../../../../types/custom';
 import { validateFormData } from '../../../../utils/form';
+import Button from '../../../../weave/components/Button';
 import PreviewModal from './PreviewModal';
 
 export const Preview = ({

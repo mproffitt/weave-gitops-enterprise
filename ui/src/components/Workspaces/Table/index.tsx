@@ -7,10 +7,10 @@ import { Workspace } from '../../../cluster-services/cluster_services.pb';
   Link,
 } from '../../../gitops.d';*/
 import { Routes } from '../../../utils/nav';
-import { TableWrapper } from '../../Shared';
+import DataTable, { filterConfig } from '../../../weave/components/DataTable';
 import Link from '../../../weave/components/Link';
 import { formatURL } from '../../../weave/lib/nav';
-import DataTable, { filterConfig } from '../../../weave/components/DataTable';
+import { TableWrapper } from '../../Shared';
 
 interface Props {
   workspaces: Workspace[];

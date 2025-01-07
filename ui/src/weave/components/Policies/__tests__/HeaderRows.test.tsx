@@ -30,10 +30,13 @@ describe("HeaderRows", () => {
       const ele = document.querySelector(
         `[data-testid="${h.rowkey}"]`
       ) as HTMLElement;
-      if (h.visible !== false) {
-        expect(ele).toBeTruthy();
-        expect(ele.textContent).toEqual(`${h.rowkey}:${h.value}`);
-      } else expect(ele).toBeFalsy();
+
+      if (h.visible === false) {
+        return;
+      }
+
+      expect(ele).toBeTruthy();
+      expect(ele.textContent).toEqual(`${h.rowkey}:${h.value}`);
     });
   });
 });

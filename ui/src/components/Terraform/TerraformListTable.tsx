@@ -14,9 +14,9 @@ import { TerraformObject } from '../../api/terraform/types.pb';
   useFeatureFlags,
 } from '../../gitops.d';*/
 import { getKindRoute, Routes } from '../../utils/nav';
-import Link from '../../weave/components/Link';
 import DataTable, { filterConfig, filterByStatusCallback } from '../../weave/components/DataTable';
 import KubeStatusIndicator from '../../weave/components/KubeStatusIndicator';
+import Link from '../../weave/components/Link';
 import Timestamp from '../../weave/components/Timestamp';
 import { useFeatureFlags } from '../../weave/hooks/featureflags';
 import { formatURL } from '../../weave/lib/nav';

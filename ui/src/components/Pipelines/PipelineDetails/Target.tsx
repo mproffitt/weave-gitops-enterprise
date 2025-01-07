@@ -19,8 +19,8 @@ import Icon, { IconType } from '../../../weave/components/Icon';
 import KubeStatusIndicator, { computeReady } from '../../../weave/components/KubeStatusIndicator';
 import Link from '../../../weave/components/Link';
 import Text from '../../../weave/components/Text';
-import { V2Routes } from '../../../weave/lib/types';
 import { formatURL } from '../../../weave/lib/nav';
+import { V2Routes } from '../../../weave/lib/types';
 
 import { ClusterDashboardLink } from '../../Clusters/ClusterDashboardLink';
 import { EnvironmentCard } from './styles';

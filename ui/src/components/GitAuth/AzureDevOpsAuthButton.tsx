@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { useEnterpriseClient } from '../../contexts/API';
 import { CallbackStateContextType, CallbackStateContext } from '../../contexts/GitAuth/CallbackStateContext';
 //import { Button } from '../../gitops.d';
-import Button from '../../weave/components/Button';
 import { azureDevOpsOAuthRedirectURI } from '../../utils/formatters';
+import Button from '../../weave/components/Button';
 import { navigate, storeCallbackState } from './utils';
 
 type Props = {
